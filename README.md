@@ -16,19 +16,14 @@ Differential Flatness* (T. Duong, C. W. Ramsey, Z. Kingston, W. Thomason, L. E. 
 [arXiv:2603.16059](https://arxiv.org/abs/2603.16059), [project page](https://kavrakilab.org/flask/)).
 
 FLASK plans kinodynamically feasible trajectories in the flat output space of differentially flat robots. It steers
-with a closed-form minimum time/effort BVP and validates edges with SIMD collision checking (FLASKCC). The authors
-have released part of their implementation ([KavrakiLab/ompl-flask](https://github.com/KavrakiLab/ompl-flask),
-branch `flat`). This repository implements the rest from the paper and checks every component against first
-principles, the authors' code and new random problems.
+with a closed-form minimum time/effort BVP and validates edges with SIMD collision checking (FLASKCC).
 
-- **Planners (native C++, Python bindings).** FLASK-RRTConnect, BVP-SST\*, SIMD-SST\* and DP-RRT. They cover
-  manipulators (Panda, UR5, Fetch; VAMP collision checking), a fully actuated point base, the unicycle, and 2D/3D
-  quadrotors at flat order r = 2 or 4.
+- **Planners.** FLASK-RRTConnect, BVP-SST\*, SIMD-SST\* and DP-RRT.
 - **Validation.** Dense collision and limit checks on the original model, an interval-arithmetic certificate for full
   quadrotor models, and certified (Minkowski-inflated) planning.
 - **Paper experiments.** Tables I and II and the UR5 experiments, with baselines (VAMP + TOPP-RA, Dynoplan SST and
   iDb-A\*, the authors' `ompl-flask`) and an evaluation protocol fixed before measuring.
-- **MuJoCo showcases** on four robot types, with sensor models instead of privileged simulator state.
+- **MuJoCo showcases** on four robot types with sensor models.
 
 ## Contents
 1. [Installation](#installation)
