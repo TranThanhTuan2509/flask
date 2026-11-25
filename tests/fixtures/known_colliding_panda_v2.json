@@ -1,0 +1,7 @@
+{
+ "environment": "bookshelf_small",
+ "problem": 1,
+ "seed": 1,
+ "method": "flask_rrt_connect",
+ "source": "results/paper_campaigns/2026-11-23_native_v2/table_ii_panda_v2_res1"
+}

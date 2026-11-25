@@ -1,0 +1,18 @@
+{
+  "center": [
+    1.2249067459802134,
+    0.0,
+    0.0
+  ],
+  "obstacle_radius": 0.08557564990438651,
+  "robot_radius": 0.1,
+  "position": [
+    1.039341096075827,
+    0.0,
+    0.0
+  ],
+  "penetration_m": 1e-05,
+  "native_positions_valid": true,
+  "seed": 1009,
+  "trial": 0
+}
