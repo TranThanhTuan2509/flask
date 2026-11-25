@@ -1,0 +1,295 @@
+{
+ "campaign": "results/paper_campaigns/2026-11-25_final_v10",
+ "calibration": "results/paper_campaigns/2026-11-25_final_v10/hardware_calibration.json",
+ "k_hw": 0.49889166666666673,
+ "table_ii": [
+  {
+   "environment": "bookshelf_thin",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 18,
+   "returned_invalid": 982,
+   "valid_ci": [
+    0.011415740009567788,
+    0.028273255170507345
+   ],
+   "time_ms": {
+    "n": 18,
+    "mean": 2.9346942777777776,
+    "p50": 2.6915735,
+    "p75": 3.348439,
+    "p95": 3.6303203
+   },
+   "length_rad": {
+    "n": 18,
+    "mean": 3.5493331044130114,
+    "p50": 3.2378125103367816,
+    "p75": 3.9653630972392926,
+    "p95": 4.479978517132393
+   },
+   "paper_mean_ms": 0.61,
+   "paper_median_ms": 0.2,
+   "paper_length": 5.25,
+   "ratio_mean": 9.643324487678104,
+   "ratio_median": 26.975530759850997,
+   "ratio_median_ci": [
+    26.381328611756054,
+    34.60497770056959
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "bookshelf_tall",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 95,
+   "returned_invalid": 905,
+   "valid_ci": [
+    0.07834523457904741,
+    0.11475443979425223
+   ],
+   "time_ms": {
+    "n": 95,
+    "mean": 2.6523924631578946,
+    "p50": 2.626275,
+    "p75": 2.6677485,
+    "p95": 2.7725047000000003
+   },
+   "length_rad": {
+    "n": 95,
+    "mean": 4.449289712336823,
+    "p50": 4.385863609087968,
+    "p75": 4.659103143762568,
+    "p95": 5.533140144372199
+   },
+   "paper_mean_ms": 1.09,
+   "paper_median_ms": 0.15,
+   "paper_length": 5.3,
+   "ratio_mean": 4.8775871465992315,
+   "ratio_median": 35.09479345883375,
+   "ratio_median_ci": [
+    34.80259241318256,
+    35.525735380092534
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "bookshelf_small",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 89,
+   "returned_invalid": 911,
+   "valid_ci": [
+    0.07288824391300744,
+    0.10825735156211885
+   ],
+   "time_ms": {
+    "n": 89,
+    "mean": 2.6206152696629212,
+    "p50": 2.605681,
+    "p75": 2.635535,
+    "p95": 2.72886
+   },
+   "length_rad": {
+    "n": 89,
+    "mean": 4.046447205726006,
+    "p50": 3.8767088176050875,
+    "p75": 4.360770292187063,
+    "p95": 6.233208518503719
+   },
+   "paper_mean_ms": 7.8,
+   "paper_median_ms": 0.17,
+   "paper_length": 5.5,
+   "ratio_mean": 0.6734454372995836,
+   "ratio_median": 30.723173623099825,
+   "ratio_median_ci": [
+    30.46713548365543,
+    30.841925090814044
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "cage",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 0,
+   "returned_invalid": 1000,
+   "valid_ci": [
+    2.168404344971009e-19,
+    0.0038267584855551234
+   ],
+   "time_ms": {
+    "n": 0,
+    "mean": null,
+    "p50": null,
+    "p75": null,
+    "p95": null
+   },
+   "length_rad": {
+    "n": 0,
+    "mean": null,
+    "p50": null,
+    "p75": null,
+    "p95": null
+   },
+   "paper_mean_ms": 12.96,
+   "paper_median_ms": 6.35,
+   "paper_length": 10.07,
+   "ratio_mean": null,
+   "ratio_median": null,
+   "ratio_median_ci": [
+    null,
+    null
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "box",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 15,
+   "returned_invalid": 985,
+   "valid_ci": [
+    0.009110978804081668,
+    0.024600976926906798
+   ],
+   "time_ms": {
+    "n": 15,
+    "mean": 2.8114244666666663,
+    "p50": 2.61081,
+    "p75": 2.9076375,
+    "p95": 3.5147701
+   },
+   "length_rad": {
+    "n": 15,
+    "mean": 3.9786893214233108,
+    "p50": 4.007897299517108,
+    "p75": 4.007897299517108,
+    "p95": 4.007897299517108
+   },
+   "paper_mean_ms": 0.86,
+   "paper_median_ms": 0.25,
+   "paper_length": 5.64,
+   "ratio_mean": 6.55272163372996,
+   "ratio_median": 20.932881220037746,
+   "ratio_median_ci": [
+    20.879755457931747,
+    28.052623315014944
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "table_under_pick",
+   "attempts": 1000,
+   "complete": true,
+   "returned": 1000,
+   "validated": 0,
+   "returned_invalid": 1000,
+   "valid_ci": [
+    2.168404344971009e-19,
+    0.0038267584855551234
+   ],
+   "time_ms": {
+    "n": 0,
+    "mean": null,
+    "p50": null,
+    "p75": null,
+    "p95": null
+   },
+   "length_rad": {
+    "n": 0,
+    "mean": null,
+    "p50": null,
+    "p75": null,
+    "p95": null
+   },
+   "paper_mean_ms": 0.34,
+   "paper_median_ms": 0.25,
+   "paper_length": 8.46,
+   "ratio_mean": null,
+   "ratio_median": null,
+   "ratio_median_ci": [
+    null,
+    null
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "table_pick",
+   "attempts": 990,
+   "complete": true,
+   "returned": 990,
+   "validated": 132,
+   "returned_invalid": 858,
+   "valid_ci": [
+    0.11356897070314328,
+    0.15593222231261036
+   ],
+   "time_ms": {
+    "n": 132,
+    "mean": 2.629964613636364,
+    "p50": 2.6029530000000003,
+    "p75": 2.63849775,
+    "p95": 2.77437135
+   },
+   "length_rad": {
+    "n": 132,
+    "mean": 4.1618290539499405,
+    "p50": 4.216401136630085,
+    "p75": 4.273643041129224,
+    "p95": 4.563722817692546
+   },
+   "paper_mean_ms": 0.28,
+   "paper_median_ms": 0.12,
+   "paper_length": 5.24,
+   "ratio_mean": 18.82719514187184,
+   "ratio_median": 43.47892829104515,
+   "ratio_median_ci": [
+    43.24634606711544,
+    43.62496805418678
+   ],
+   "status": "DIFFERENT_INVALID"
+  },
+  {
+   "environment": "overall",
+   "attempts": 6990,
+   "complete": true,
+   "returned": 6990,
+   "validated": 349,
+   "returned_invalid": 6641,
+   "valid_ci": [
+    0.045065320339635874,
+    0.055286033484023604
+   ],
+   "time_ms": {
+    "n": 349,
+    "mean": 2.657201249283667,
+    "p50": 2.609569,
+    "p75": 2.656277,
+    "p95": 3.091031199999999
+   },
+   "length_rad": {
+    "n": 349,
+    "mean": 4.171192248721458,
+    "p50": 4.122774534201316,
+    "p75": 4.417930763429093,
+    "p95": 5.533140144372199
+   },
+   "paper_mean_ms": 3.49,
+   "paper_median_ms": 0.24,
+   "paper_length": 6.5,
+   "ratio_mean": 1.5261343634265123,
+   "ratio_median": 21.794719962583727,
+   "ratio_median_ci": [
+    21.749745268678904,
+    21.879098668715653
+   ],
+   "status": "DIFFERENT_INVALID"
+  }
+ ]
+}

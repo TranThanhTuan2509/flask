@@ -1,0 +1,19 @@
+{
+  "trials": 5,
+  "collision_trials": 5,
+  "goals_reached": [
+    27,
+    25,
+    25,
+    25,
+    25
+  ],
+  "planning_us_median": 15.4355,
+  "planning_us_mean": 38.8957604234262,
+  "simplification_us_median": 0.35,
+  "paper": {
+    "planning_us": 90,
+    "simplification_us": 40,
+    "total_ms": 0.13
+  }
+}

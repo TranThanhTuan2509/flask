@@ -1,0 +1,26 @@
+{
+  "scenes": 100,
+  "problems": 500,
+  "nominal": {
+    "attempts": 500,
+    "solved": 500,
+    "crashed": 0,
+    "over_budget": 0,
+    "returned_invalid": 0,
+    "returned_colliding": 0,
+    "limit_excess_max": 0.0,
+    "median_ms": 0.0898635,
+    "p95_ms": 1.3667195499999993
+  },
+  "lazy_certified": {
+    "attempts": 500,
+    "solved": 498,
+    "crashed": 0,
+    "over_budget": 0,
+    "returned_invalid": 0,
+    "returned_colliding": 0,
+    "limit_excess_max": 0.0,
+    "median_ms": 0.805546,
+    "p95_ms": 2.9911582
+  }
+}

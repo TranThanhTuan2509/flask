@@ -1,0 +1,40 @@
+{
+  "attempts": 480,
+  "outcomes": {
+    "clear": 442,
+    "no_solution": 38
+  },
+  "unique_segments": 1007,
+  "scope": {
+    "scope": "posthoc_full_order_aerial_state_control_bounds",
+    "sources": [
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_order4"
+    ],
+    "arithmetic": "mpmath private interval context",
+    "precision_decimal_digits": 30,
+    "model": "Published fixed inertial models; no extra tolerance on limits; Quad2D per-case |v|, |omega| norm limits from the profile",
+    "quad2d_limits": {
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_order4": {
+        "quad2d_bugtrap": {
+          "velocity_max": 4.0,
+          "angular_velocity_max": 8.0
+        },
+        "quad2d_hole": {
+          "velocity_max": 4.0,
+          "angular_velocity_max": 8.0
+        },
+        "quad3d_block": {},
+        "quad3d_window": {},
+        "unicycle_bugtrap": {},
+        "unicycle_wall": {}
+      }
+    },
+    "limitations": [
+      "Outside planning timing",
+      "Experimental interval backend, not a formal proof tool",
+      "No geometry, tracking, mesh or physical execution guarantee"
+    ]
+  },
+  "raw_sha256": "13b36bc9ad401c5940ea207cf769254f3909a439782e2c27cc7142762dd2c65d",
+  "source_changed_during_validation": []
+}

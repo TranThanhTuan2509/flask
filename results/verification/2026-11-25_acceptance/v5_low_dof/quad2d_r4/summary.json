@@ -1,0 +1,28 @@
+{
+  "robot": "quad2d",
+  "order": 4,
+  "attempts": 200,
+  "crashed": 0,
+  "over_budget": 0,
+  "per_algorithm": {
+    "rrt_connect": {
+      "attempts": 100,
+      "solved": 100,
+      "returned_invalid": 0,
+      "median_plan_ms": 0.07249549999999999
+    },
+    "sst_bvp": {
+      "attempts": 100,
+      "solved": 100,
+      "returned_invalid": 0,
+      "median_plan_ms": 0.097667
+    }
+  },
+  "validity_judged_by": "valid_original",
+  "interval_status_order4": {
+    "clear": 200,
+    "constraint_violation": 0,
+    "unresolved": 0
+  },
+  "note": null
+}

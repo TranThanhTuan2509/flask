@@ -1,0 +1,278 @@
+{
+  "unicycle_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 233.45039086666665,
+      "sd": 260.8916530248994,
+      "p25": 42.121579000000004,
+      "p50": 100.507818,
+      "p75": 402.35054275,
+      "p95": 618.9702144499995
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 233.45039086666665,
+      "sd": 260.8916530248994,
+      "p25": 42.121579000000004,
+      "p50": 100.507818,
+      "p75": 402.35054275,
+      "p95": 618.9702144499995
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 233.69182426666666,
+      "sd": 260.9743104275708,
+      "p25": 42.32311175,
+      "p50": 100.6415615,
+      "p75": 402.624149,
+      "p95": 619.4031570999995
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 14.747076914289066,
+      "sd": 6.177242668192529,
+      "p25": 11.94984339524559,
+      "p50": 12.781760634118857,
+      "p75": 13.689036449736776,
+      "p95": 26.82442625132599
+    }
+  },
+  "unicycle_wall/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 20.232960466666665,
+      "sd": 27.67688282025106,
+      "p25": 5.9108475,
+      "p50": 10.582606,
+      "p75": 19.668910750000002,
+      "p95": 93.46837729999997
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 20.232960466666665,
+      "sd": 27.67688282025106,
+      "p25": 5.9108475,
+      "p50": 10.582606,
+      "p75": 19.668910750000002,
+      "p95": 93.46837729999997
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 20.326050000000006,
+      "sd": 27.69081090710155,
+      "p25": 5.97125425,
+      "p50": 10.7168235,
+      "p75": 19.713419000000002,
+      "p95": 93.59211144999998
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 10.326978815821757,
+      "sd": 3.168431304680147,
+      "p25": 7.551396219159431,
+      "p50": 9.475411437581307,
+      "p75": 12.969907666360882,
+      "p95": 15.472069867126041
+    }
+  },
+  "quad2d_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.6760192333333332,
+      "sd": 0.33599785970069146,
+      "p25": 0.4480285,
+      "p50": 0.5958465,
+      "p75": 0.7398025,
+      "p95": 1.35280385
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad2d_hole/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.3909261999999999,
+      "sd": 0.7450382222168381,
+      "p25": 0.09375075,
+      "p50": 0.19139250000000002,
+      "p75": 0.35433275,
+      "p95": 0.8598577999999989
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_block/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 1.7386440333333337,
+      "sd": 0.66352193538242,
+      "p25": 1.25581625,
+      "p50": 1.572025,
+      "p75": 2.11695075,
+      "p95": 2.8919109999999995
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_window/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.9322067666666668,
+      "sd": 0.5647394119916243,
+      "p25": 0.5744132500000001,
+      "p50": 0.6971244999999999,
+      "p75": 1.144553,
+      "p95": 2.181373749999999
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  }
+}

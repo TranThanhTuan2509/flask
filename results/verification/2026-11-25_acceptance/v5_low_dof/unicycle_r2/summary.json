@@ -1,0 +1,24 @@
+{
+  "robot": "unicycle",
+  "order": 2,
+  "attempts": 200,
+  "crashed": 0,
+  "over_budget": 0,
+  "per_algorithm": {
+    "rrt_connect": {
+      "attempts": 100,
+      "solved": 94,
+      "returned_invalid": 0,
+      "median_plan_ms": 107.6022385
+    },
+    "sst_bvp": {
+      "attempts": 100,
+      "solved": 100,
+      "returned_invalid": 0,
+      "median_plan_ms": 38.7441795
+    }
+  },
+  "validity_judged_by": "valid_original",
+  "interval_status_order4": null,
+  "note": null
+}

@@ -1,0 +1,45 @@
+{
+  "trials": 5,
+  "collision_trials": 5,
+  "goals_reached": [
+    27,
+    25,
+    25,
+    25,
+    25
+  ],
+  "trials_with_contact_while_moving": 4,
+  "contact_steps_stationary": [
+    2599,
+    5648,
+    4785,
+    5051,
+    4421
+  ],
+  "contact_steps_moving": [
+    34,
+    98,
+    1646,
+    711,
+    0
+  ],
+  "decision_codes": {
+    "at_goal": 0,
+    "changed": 1,
+    "keep_plan": 2,
+    "brake": 3,
+    "brake_immediately": 4,
+    "continue_braking": 5,
+    "stationary": 6,
+    "arriving": 7,
+    "stopped_by_obstacle": 8
+  },
+  "planning_us_median": 15.636,
+  "planning_us_mean": 38.21188231864015,
+  "simplification_us_median": 0.337,
+  "paper": {
+    "planning_us": 90,
+    "simplification_us": 40,
+    "total_ms": 0.13
+  }
+}

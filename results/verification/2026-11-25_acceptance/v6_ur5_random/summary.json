@@ -1,0 +1,23 @@
+{
+  "trials": 100,
+  "simulated": 74,
+  "flask": {
+    "collision_trials": 1,
+    "reference_collision_trials": 0,
+    "tracking_only_collision_trials": 1,
+    "object_disturbed_trials": 0,
+    "max_error_median": 0.0028982639761681696,
+    "max_error_p90": 0.0032216759063790875,
+    "mean_error_median": 0.0015276812535151554
+  },
+  "geometric": {
+    "collision_trials": 6,
+    "reference_collision_trials": 0,
+    "tracking_only_collision_trials": 6,
+    "object_disturbed_trials": 1,
+    "max_error_median": 0.10402137148511208,
+    "max_error_p90": 0.1296483983467762,
+    "mean_error_median": 0.009983983905297988
+  },
+  "flask_plan_ms_median": 7.1877165
+}

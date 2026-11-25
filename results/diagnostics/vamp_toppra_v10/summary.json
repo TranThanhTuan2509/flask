@@ -1,0 +1,63 @@
+{
+  "attempts": 6990,
+  "outcomes": {
+    "collision+limit": 1524,
+    "limit_only": 5116,
+    "valid": 349,
+    "collision_only": 1
+  },
+  "per_environment": {
+    "bookshelf_small": {
+      "collision+limit": 175,
+      "limit_only": 736,
+      "valid": 89
+    },
+    "bookshelf_tall": {
+      "limit_only": 777,
+      "collision+limit": 128,
+      "valid": 95
+    },
+    "bookshelf_thin": {
+      "collision+limit": 143,
+      "limit_only": 839,
+      "valid": 18
+    },
+    "box": {
+      "limit_only": 830,
+      "collision+limit": 155,
+      "valid": 15
+    },
+    "cage": {
+      "limit_only": 655,
+      "collision+limit": 345
+    },
+    "table_pick": {
+      "valid": 132,
+      "limit_only": 725,
+      "collision+limit": 132,
+      "collision_only": 1
+    },
+    "table_under_pick": {
+      "limit_only": 554,
+      "collision+limit": 446
+    }
+  },
+  "max_velocity_over_limit": {
+    "p50": 1.0014,
+    "p90": 1.006,
+    "p99": 1.0146,
+    "max": 1.0534
+  },
+  "max_acceleration_over_limit": {
+    "p50": 1.0016,
+    "p90": 1.0537,
+    "p99": 1.1625,
+    "max": 1.4339
+  },
+  "within_1pct_limits": 4612,
+  "collision_free": 5465,
+  "explanation": [
+    "TOPP-RA enforces velocity/acceleration only at its gridpoints; between them the spline curvature term q''(s) sdot^2 exceeds the limits slightly (limit_only).",
+    "SplineInterpolator through the shortcut waypoints leaves the piecewise-linear path VAMP certified; collisions are spline deviation (collision_*)."
+  ]
+}

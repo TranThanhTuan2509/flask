@@ -1,0 +1,152 @@
+{
+  "seed": 7001,
+  "V1a_bvp_optimality_r2_n2": {
+    "count": 10000,
+    "r": 2,
+    "n": 2,
+    "max_boundary_error": 1.715294573045867e-14,
+    "max_relative_variation": 3.4219443997505954e-14,
+    "perturbations_with_lower_effort": 0,
+    "passed": true
+  },
+  "V1b_tstar_r2_n2": {
+    "count": 500,
+    "r": 2,
+    "n": 2,
+    "rho": 1.0,
+    "max_relative_cost_excess_over_scan": 5.3770644551762e-16,
+    "max_relative_duration_gap_when_excess": 0.0,
+    "no_root_failures": 0,
+    "passed": true
+  },
+  "V1c_propagation_r2_n2": {
+    "count": 500,
+    "r": 2,
+    "n": 2,
+    "max_state_error": 7.993605777301127e-15,
+    "passed": true
+  },
+  "V1d_triangle_r2_n2": {
+    "count": 1000,
+    "r": 2,
+    "n": 2,
+    "max_relative_violation": -0.009344899426360903,
+    "passed": true
+  },
+  "V1a_bvp_optimality_r2_n7": {
+    "count": 10000,
+    "r": 2,
+    "n": 7,
+    "max_boundary_error": 1.7319479184152442e-14,
+    "max_relative_variation": 1.8714833939088547e-14,
+    "perturbations_with_lower_effort": 0,
+    "passed": true
+  },
+  "V1b_tstar_r2_n7": {
+    "count": 500,
+    "r": 2,
+    "n": 7,
+    "rho": 1.0,
+    "max_relative_cost_excess_over_scan": 4.3186628949410506e-16,
+    "max_relative_duration_gap_when_excess": 0.0,
+    "no_root_failures": 0,
+    "passed": true
+  },
+  "V1c_propagation_r2_n7": {
+    "count": 500,
+    "r": 2,
+    "n": 7,
+    "max_state_error": 9.769962616701378e-15,
+    "passed": true
+  },
+  "V1d_triangle_r2_n7": {
+    "count": 1000,
+    "r": 2,
+    "n": 7,
+    "max_relative_violation": -0.20581405770075853,
+    "passed": true
+  },
+  "V1a_bvp_optimality_r4_n2": {
+    "count": 10000,
+    "r": 4,
+    "n": 2,
+    "max_boundary_error": 7.551186342880101e-10,
+    "max_relative_variation": 5.162352265479915e-13,
+    "perturbations_with_lower_effort": 0,
+    "passed": true
+  },
+  "V1b_tstar_r4_n2": {
+    "count": 500,
+    "r": 4,
+    "n": 2,
+    "rho": 1.0,
+    "max_relative_cost_excess_over_scan": 5.270092227722467e-15,
+    "max_relative_duration_gap_when_excess": 0.0,
+    "no_root_failures": 0,
+    "passed": true
+  },
+  "V1c_propagation_r4_n2": {
+    "count": 500,
+    "r": 4,
+    "n": 2,
+    "max_state_error": 2.6645352591003757e-14,
+    "passed": true
+  },
+  "V1d_triangle_r4_n2": {
+    "count": 1000,
+    "r": 4,
+    "n": 2,
+    "max_relative_violation": -0.2256233846467497,
+    "passed": true
+  },
+  "V1a_bvp_optimality_r4_n4": {
+    "count": 10000,
+    "r": 4,
+    "n": 4,
+    "max_boundary_error": 1.0128399230424634e-09,
+    "max_relative_variation": 1.8408633352473853e-13,
+    "perturbations_with_lower_effort": 0,
+    "passed": true
+  },
+  "V1b_tstar_r4_n4": {
+    "count": 500,
+    "r": 4,
+    "n": 4,
+    "rho": 1.0,
+    "max_relative_cost_excess_over_scan": 4.428579495540688e-15,
+    "max_relative_duration_gap_when_excess": 0.0,
+    "no_root_failures": 0,
+    "passed": true
+  },
+  "V1c_propagation_r4_n4": {
+    "count": 500,
+    "r": 4,
+    "n": 4,
+    "max_state_error": 3.019806626980426e-14,
+    "passed": true
+  },
+  "V1d_triangle_r4_n4": {
+    "count": 1000,
+    "r": 4,
+    "n": 4,
+    "max_relative_violation": -0.28540596945643,
+    "passed": true
+  },
+  "V1e_flatness_original_dynamics": {
+    "unicycle": {
+      "count": 50,
+      "max_state_error": 2.4282797994601424e-11
+    },
+    "quad2d": {
+      "count": 50,
+      "max_state_error": 4.657290664233926e-10
+    },
+    "quad3d": {
+      "count": 50,
+      "max_state_error": 3.0292282918176205e-10
+    },
+    "passed": true
+  },
+  "all_passed": true,
+  "seconds": 590.150759935379
+}

@@ -1,0 +1,5401 @@
+[
+  {
+    "name": "hardware_calibration",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.hardware_calibration",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/hardware_calibration.json",
+      "--cpu",
+      "10"
+    ],
+    "started_at": "2026-11-25T06:51:41.073244+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T06:51:43.126285+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799757",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5789900",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5800703",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800269",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "72000",
+        "thermal_zone0": "47050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "56000",
+        "thermal_zone6": "44050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.010000000000000009,
+        "1": 0.0,
+        "2": 0.00497512437810943,
+        "3": 0.0,
+        "4": 0.005025125628140725,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0050000000000000044,
+        "9": 0.01005025125628145,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.00995024875621886,
+        "13": 0.0,
+        "14": 0.005025125628140725,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.025000000000000022,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        " 269810  10 73.0 python",
+        "   2442   6  6.6 Xorg",
+        "   3292  16  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  28  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   9  0.9 htop",
+        "   2257  16  0.7 pulseaudio",
+        "3590789   0  0.6 code",
+        "     16  12  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2775167,
+        2727268,
+        2756532,
+        2718287,
+        2731805
+      ],
+      "vamp_rrtc_median_ns": 2731805.0,
+      "flask_cc_ns": [
+        13336202,
+        13260886,
+        13238594,
+        13199335,
+        13266042
+      ],
+      "flask_cc_median_ns": 13260886.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T06:51:46.679620+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T06:51:48.731524+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1938087",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5789653",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1018768",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1660138",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799919",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2920232",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1416884",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "801082",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "826129",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "65000",
+        "thermal_zone0": "68050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "55000",
+        "thermal_zone6": "44050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.00497512437810943,
+        "3": 0.0,
+        "4": 0.005050505050505083,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 0.010000000000000009,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.01005025125628145,
+        "13": 0.0,
+        "14": 0.0050000000000000044,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02985074626865669,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        " 269810  10 38.5 python",
+        "   2442  12  6.6 Xorg",
+        "   3292  16  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  28  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   9  0.9 htop",
+        "   2257  16  0.7 pulseaudio",
+        "3590789   0  0.6 code",
+        "     16  12  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2753288,
+        2746701,
+        2728823,
+        2730316,
+        2746454
+      ],
+      "vamp_rrtc_median_ns": 2746454.0,
+      "flask_cc_ns": [
+        13234879,
+        13256631,
+        13266330,
+        13239469,
+        13234110
+      ],
+      "flask_cc_median_ns": 13239469.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.005362388603871837,
+    "controlled": true
+  },
+  {
+    "name": "table_i_v10b",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.native_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b",
+      "--profile",
+      "config/low_dof_v10_order2_v10b.json",
+      "--cpu",
+      "10",
+      "--final"
+    ],
+    "started_at": "2026-11-25T06:51:48.991839+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T06:51:51.046180+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800667",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5789438",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5418168",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1152233",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800276",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2921180",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800135",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3903649",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2599286",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "72000",
+        "thermal_zone0": "46050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "49000",
+        "thermal_zone6": "44050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.00995024875621886,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.005050505050505083,
+        "5": 0.00497512437810943,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0050000000000000044,
+        "9": 0.015000000000000013,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0050000000000000044,
+        "13": 0.0,
+        "14": 0.010000000000000009,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.00497512437810943,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.025000000000000022,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        " 269810  10 35.0 python",
+        "   2442  12  6.6 Xorg",
+        "   3292  16  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  28  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   9  0.9 htop",
+        "   2257  16  0.7 pulseaudio",
+        "3590789   0  0.6 code",
+        "     16   6  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2775352,
+        2758279,
+        2738074,
+        2718934,
+        2736588
+      ],
+      "vamp_rrtc_median_ns": 2738074.0,
+      "flask_cc_ns": [
+        13358139,
+        13260926,
+        13253070,
+        13236873,
+        13204750
+      ],
+      "flask_cc_median_ns": 13253070.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T07:02:59.651511+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T07:03:01.706352+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5757866",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2601316",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "877321",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1674866",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "66000",
+        "thermal_zone0": "55050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "55000",
+        "thermal_zone6": "49050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.00497512437810943,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.010000000000000009,
+        "7": 0.0,
+        "8": 0.005050505050505083,
+        "9": 0.0050000000000000044,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.005025125628140725,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.00497512437810943,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02010050251256279,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.00497512437810943,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   9  6.6 Xorg",
+        "   3292   4  2.2 firefox-bin",
+        "   2620  14  1.8 gnome-shell",
+        "3590658   8  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789   1  0.6 code",
+        "     16  14  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2759871,
+        2726721,
+        2740992,
+        2740257,
+        2726878
+      ],
+      "vamp_rrtc_median_ns": 2740257.0,
+      "flask_cc_ns": [
+        13291580,
+        13249344,
+        13222166,
+        13225793,
+        13182992
+      ],
+      "flask_cc_median_ns": 13225793.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.002058164636571047,
+    "controlled": true
+  },
+  {
+    "name": "table_i_v10b_scalar_rrtc",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.native_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_scalar_rrtc",
+      "--profile",
+      "config/low_dof_v10_order2_scalar_v10b.json",
+      "--cpu",
+      "10",
+      "--final",
+      "--algorithms",
+      "rrt_connect"
+    ],
+    "started_at": "2026-11-25T07:03:01.968530+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T07:03:04.020431+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800234",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5786728",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1054386",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1185105",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2220418",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800136",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2629671",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1618338",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "77000",
+        "thermal_zone0": "51050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "36050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "60000",
+        "thermal_zone6": "47050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.00995024875621886,
+        "1": 0.0,
+        "2": 0.010000000000000009,
+        "3": 0.0,
+        "4": 0.00497512437810943,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.03482587064676612,
+        "9": 0.0050000000000000044,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.014925373134328401,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "16": 0.005050505050505083,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02985074626865669,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   9  6.6 Xorg",
+        "   3292   4  2.2 firefox-bin",
+        "   2620  12  1.8 gnome-shell",
+        "3590658   8  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789   1  0.6 code",
+        "     16  14  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2753502,
+        2760348,
+        2724363,
+        2716445,
+        2725128
+      ],
+      "vamp_rrtc_median_ns": 2725128.0,
+      "flask_cc_ns": [
+        13324786,
+        13224231,
+        13204729,
+        13264414,
+        13234917
+      ],
+      "flask_cc_median_ns": 13234917.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T07:03:49.608216+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T07:03:51.659489+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2657659",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5500000",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "968739",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1432989",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "4429893",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1458808",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800798",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800847",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799874",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5457644",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1599035",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "63000",
+        "thermal_zone0": "81050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "36050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "54000",
+        "thermal_zone6": "48050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.010000000000000009,
+        "1": 0.0,
+        "2": 0.010000000000000009,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.005025125628140725,
+        "7": 0.0,
+        "8": 0.015000000000000013,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.014925373134328401,
+        "13": 0.0,
+        "14": 0.0050000000000000044,
+        "15": 0.0,
+        "16": 0.010000000000000009,
+        "17": 0.0050000000000000044,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02985074626865669,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442  14  6.6 Xorg",
+        "   3292   6  2.2 firefox-bin",
+        "   2620   8  1.8 gnome-shell",
+        "3590658  14  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789   1  0.6 code",
+        "     16   6  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2766777,
+        2723365,
+        2719698,
+        2750193,
+        2720873
+      ],
+      "vamp_rrtc_median_ns": 2723365.0,
+      "flask_cc_ns": [
+        13285386,
+        13242923,
+        13244540,
+        13254537,
+        13585343
+      ],
+      "flask_cc_median_ns": 13254537.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.001482442239720827,
+    "controlled": true
+  },
+  {
+    "name": "table_i_v10b_repeat_rrtc",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.native_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_repeat_rrtc",
+      "--profile",
+      "config/low_dof_v10_order2_v10b.json",
+      "--cpu",
+      "10",
+      "--final",
+      "--algorithms",
+      "rrt_connect"
+    ],
+    "started_at": "2026-11-25T07:03:51.922323+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T07:03:53.975503+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5787437",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799733",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3223157",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800091",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "964136",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "73000",
+        "thermal_zone0": "50050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "36050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "59000",
+        "thermal_zone6": "46050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.014925373134328401,
+        "1": 0.0,
+        "2": 0.010000000000000009,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.020000000000000018,
+        "9": 0.0050000000000000044,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.005050505050505083,
+        "13": 0.0,
+        "14": 0.010000000000000009,
+        "15": 0.0,
+        "16": 0.00497512437810943,
+        "17": 0.010000000000000009,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.015151515151515138,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442  17  6.6 Xorg",
+        "   3292   6  2.2 firefox-bin",
+        "   2620  14  1.8 gnome-shell",
+        "3590658  14  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        " 269810  10  0.8 python",
+        "   2257  17  0.7 pulseaudio",
+        "3590789   1  0.6 code",
+        "     16   9  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2775710,
+        2728087,
+        2753764,
+        2722516,
+        2728527
+      ],
+      "vamp_rrtc_median_ns": 2728527.0,
+      "flask_cc_ns": [
+        13312975,
+        13262480,
+        13247503,
+        13241716,
+        13202372
+      ],
+      "flask_cc_median_ns": 13247503.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T07:04:39.029188+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T07:04:41.082675+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5787358",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2301282",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800361",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1703224",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2100301",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800786",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2647198",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "65000",
+        "thermal_zone0": "64050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "56000",
+        "thermal_zone6": "48050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.010000000000000009,
+        "1": 0.0,
+        "2": 0.00995024875621886,
+        "3": 0.0,
+        "4": 0.010101010101010055,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.020000000000000018,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.005025125628140725,
+        "12": 0.0050000000000000044,
+        "13": 0.0,
+        "14": 0.010000000000000009,
+        "15": 0.0,
+        "16": 0.00497512437810943,
+        "17": 0.0050000000000000044,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.025000000000000022,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   2  6.6 Xorg",
+        "   3292   6  2.2 firefox-bin",
+        "   2620   8  1.8 gnome-shell",
+        "3590658   8  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789   9  0.6 code",
+        "     16  14  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2761611,
+        2939174,
+        2725146,
+        2735389,
+        2715212
+      ],
+      "vamp_rrtc_median_ns": 2735389.0,
+      "flask_cc_ns": [
+        13327520,
+        13246575,
+        13238830,
+        13197679,
+        13235190
+      ],
+      "flask_cc_median_ns": 13238830.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.0025149100595303064,
+    "controlled": true
+  },
+  {
+    "name": "table_ii_v10b_rest",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.manipulator_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_ii_v10b_rest",
+      "--profile",
+      "config/manipulator_v10_rest_v10b.json",
+      "--cpu",
+      "10",
+      "--methods",
+      "flask_rrt_connect"
+    ],
+    "started_at": "2026-11-25T07:04:41.346775+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T07:04:43.400610+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799505",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "823337",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5787381",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1357583",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800501",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800139",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1936146",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2852433",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "74000",
+        "thermal_zone0": "51050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "36050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "59000",
+        "thermal_zone6": "46050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.010101010101010055,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.015075376884422065,
+        "9": 0.00995024875621886,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0,
+        "13": 0.0,
+        "14": 0.005025125628140725,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.00497512437810943,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02010050251256279,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   2  6.6 Xorg",
+        "   3292   6  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  12  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        " 269810  10  0.8 python",
+        "   2257  17  0.7 pulseaudio",
+        "3590789   9  0.6 code",
+        "     16   4  0.2 rcu_preempt",
+        "  15734   9  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2759940,
+        2750849,
+        2724702,
+        2714080,
+        2723592
+      ],
+      "vamp_rrtc_median_ns": 2724702.0,
+      "flask_cc_ns": [
+        13611801,
+        13339597,
+        13251843,
+        13310701,
+        13249315
+      ],
+      "flask_cc_median_ns": 13310701.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T07:05:54.552262+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T07:05:56.605027+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800450",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800599",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5775180",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2977826",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1321669",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2767245",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "68000",
+        "thermal_zone0": "73050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "37050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "55000",
+        "thermal_zone6": "49050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.014851485148514865,
+        "1": 0.0050000000000000044,
+        "2": 0.005025125628140725,
+        "3": 0.0,
+        "4": 0.005025125628140725,
+        "5": 0.0,
+        "6": 0.010000000000000009,
+        "7": 0.0,
+        "8": 0.02970297029702973,
+        "9": 0.010000000000000009,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.010000000000000009,
+        "13": 0.0,
+        "14": 0.01990049751243783,
+        "15": 0.0,
+        "16": 0.010000000000000009,
+        "17": 0.010000000000000009,
+        "18": 0.00497512437810943,
+        "19": 0.015075376884422065,
+        "20": 0.010000000000000009,
+        "21": 0.0050000000000000044,
+        "22": 0.010000000000000009,
+        "23": 0.040000000000000036,
+        "24": 0.00990099009900991,
+        "25": 0.0,
+        "26": 0.00497512437810943,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   1  6.6 Xorg",
+        "   3292  14  2.2 firefox-bin",
+        "   2620   8  1.8 gnome-shell",
+        "3590658  12  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789   9  0.6 code",
+        "     16   9  0.2 rcu_preempt",
+        "  15734   0  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2796433,
+        2729801,
+        2732814,
+        2720873,
+        2744974
+      ],
+      "vamp_rrtc_median_ns": 2732814.0,
+      "flask_cc_ns": [
+        14052921,
+        13230474,
+        13257866,
+        13297105,
+        13346947
+      ],
+      "flask_cc_median_ns": 13297105.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.0029772063146722427,
+    "controlled": true
+  },
+  {
+    "name": "table_ii_v10b_rest_repeat",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.manipulator_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_ii_v10b_rest_repeat",
+      "--profile",
+      "config/manipulator_v10_rest_v10b.json",
+      "--cpu",
+      "10",
+      "--methods",
+      "flask_rrt_connect"
+    ],
+    "started_at": "2026-11-25T07:05:56.869533+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T07:05:58.923178+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799758",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5764339",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3012214",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "798652",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800430",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800478",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "79000",
+        "thermal_zone0": "54050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "35050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "61000",
+        "thermal_zone6": "48050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0050000000000000044,
+        "1": 0.0050000000000000044,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.005025125628140725,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.01005025125628145,
+        "9": 0.010000000000000009,
+        "10": 0.0050000000000000044,
+        "11": 0.0,
+        "12": 0.010000000000000009,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.025000000000000022,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   1  6.6 Xorg",
+        "   3292  14  2.2 firefox-bin",
+        "   2620  12  1.8 gnome-shell",
+        "3590658   9  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        " 269810  10  0.8 python",
+        "   2257  17  0.7 pulseaudio",
+        "3590789  12  0.6 code",
+        "     16  12  0.2 rcu_preempt",
+        "  15734   0  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2748836,
+        2735945,
+        2741944,
+        2736232,
+        2724316
+      ],
+      "vamp_rrtc_median_ns": 2736232.0,
+      "flask_cc_ns": [
+        13623148,
+        13246820,
+        13252386,
+        13250123,
+        13261954
+      ],
+      "flask_cc_median_ns": 13252386.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T07:07:09.950884+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T07:07:12.005693+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800187",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5736777",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800129",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "888235",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2515621",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "69000",
+        "thermal_zone0": "59050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "36050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "57000",
+        "thermal_zone6": "50050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.005025125628140725,
+        "1": 0.0,
+        "2": 0.015000000000000013,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.005025125628140725,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.010000000000000009,
+        "13": 0.0,
+        "14": 0.01005025125628145,
+        "15": 0.0,
+        "16": 0.0050000000000000044,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02010050251256279,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   4  6.6 Xorg",
+        "   3292  14  2.2 firefox-bin",
+        "   2620  12  1.8 gnome-shell",
+        "3590658   9  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789  12  0.6 code",
+        "     16   2  0.2 rcu_preempt",
+        "  15734  20  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2749367,
+        2730488,
+        2724735,
+        2767200,
+        2736631
+      ],
+      "vamp_rrtc_median_ns": 2736631.0,
+      "flask_cc_ns": [
+        13292903,
+        13199938,
+        13328479,
+        13302502,
+        13378485
+      ],
+      "flask_cc_median_ns": 13302502.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.003781658638678298,
+    "controlled": true
+  },
+  {
+    "name": "table_i_v10b_order4",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.native_campaign",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_order4",
+      "--profile",
+      "config/low_dof_v10_order4_v10b.json",
+      "--cpu",
+      "10",
+      "--final",
+      "--cases",
+      "quad2d_bugtrap",
+      "quad2d_hole",
+      "quad3d_block",
+      "quad3d_window"
+    ],
+    "started_at": "2026-11-25T07:07:12.268300+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T07:07:14.322225+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5787675",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1242208",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "801138",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "907956",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3349619",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3528960",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "798667",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800343",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "78000",
+        "thermal_zone0": "54050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "37050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "62000",
+        "thermal_zone6": "49050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.005025125628140725,
+        "1": 0.00497512437810943,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.015000000000000013,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.015075376884422065,
+        "9": 0.00497512437810943,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.010000000000000009,
+        "13": 0.0,
+        "14": 0.020000000000000018,
+        "15": 0.0,
+        "16": 0.00497512437810943,
+        "17": 0.00497512437810943,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.02985074626865669,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442  12  6.6 Xorg",
+        "   3292  14  2.2 firefox-bin",
+        "   2620  12  1.8 gnome-shell",
+        "3590658   9  1.1 code",
+        "3927575   2  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257  17  0.7 pulseaudio",
+        " 269810  10  0.7 python",
+        "3590789  12  0.6 code",
+        "     16   2  0.2 rcu_preempt",
+        "  15734   4  0.2 Isolated Web Co"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2761390,
+        2721259,
+        2718895,
+        2716315,
+        2733554
+      ],
+      "vamp_rrtc_median_ns": 2721259.0,
+      "flask_cc_ns": [
+        13310173,
+        13244276,
+        13268433,
+        13265462,
+        13333466
+      ],
+      "flask_cc_median_ns": 13268433.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T08:20:41.901024+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T08:20:43.956826+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2231253",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5789574",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799875",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2316196",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800996",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "73000",
+        "thermal_zone0": "62050",
+        "thermal_zone7": "26050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "38050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "61000",
+        "thermal_zone6": "54050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.010000000000000009,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.00497512437810943,
+        "6": 0.00990099009900991,
+        "7": 0.0,
+        "8": 0.01005025125628145,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0,
+        "13": 0.0,
+        "14": 0.0050000000000000044,
+        "15": 0.0050000000000000044,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.00497512437810943,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.00497512437810943,
+        "22": 0.0,
+        "23": 0.02985074626865669,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442  12  6.5 Xorg",
+        " 292493   7  5.9 Discord",
+        " 292565  30  3.3 Discord",
+        "   3292   3  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  14  1.1 code",
+        "3927575  25  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257   8  0.8 pulseaudio",
+        "3590789   6  0.5 code",
+        " 292450  19  0.4 Discord"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2767142,
+        2733910,
+        2750058,
+        2717276,
+        2763393
+      ],
+      "vamp_rrtc_median_ns": 2750058.0,
+      "flask_cc_ns": [
+        13456763,
+        13498350,
+        13467493,
+        13468689,
+        13421734
+      ],
+      "flask_cc_median_ns": 13467493.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.015002525166310177,
+    "controlled": true
+  },
+  {
+    "name": "table_i_v10b_order4_interval",
+    "command": [
+      "/work/flask_repro/flask_repro/.venv/bin/python",
+      "-m",
+      "benchmarks.validate_continuous_aerial",
+      "--sources",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_order4",
+      "--output",
+      "results/paper_campaigns/2026-11-25_final_v10b/table_i_v10b_order4_interval",
+      "--cpu",
+      "10"
+    ],
+    "started_at": "2026-11-25T08:20:44.224849+00:00",
+    "environment_before": {
+      "timestamp_utc": "2026-11-25T08:20:46.279014+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800469",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "900000",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5706565",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800773",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1618782",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800244",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "860626",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2753779",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "83000",
+        "thermal_zone0": "57050",
+        "thermal_zone7": "27050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "39050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "61000",
+        "thermal_zone6": "53050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.005025125628140725,
+        "3": 0.00497512437810943,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0050000000000000044,
+        "7": 0.0,
+        "8": 0.015000000000000013,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.015075376884422065,
+        "13": 0.0,
+        "14": 0.0,
+        "15": 0.0,
+        "16": 0.0,
+        "17": 0.0,
+        "18": 0.0,
+        "19": 0.0,
+        "20": 0.0,
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.025000000000000022,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.00497512437810943,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442  12  6.5 Xorg",
+        " 292493   7  5.9 Discord",
+        " 292565  30  3.2 Discord",
+        "   3292   3  2.2 firefox-bin",
+        "   2620   4  1.8 gnome-shell",
+        "3590658  14  1.1 code",
+        "3927575  25  1.1 anydesk",
+        " 217323   8  0.9 htop",
+        "   2257   8  0.8 pulseaudio",
+        "3590789   6  0.5 code",
+        " 292450  19  0.4 Discord"
+      ]
+    },
+    "probe_before": {
+      "vamp_rrtc_ns": [
+        2758906,
+        2715265,
+        2709125,
+        2742106,
+        2725071
+      ],
+      "vamp_rrtc_median_ns": 2725071.0,
+      "flask_cc_ns": [
+        13364809,
+        13403788,
+        13454314,
+        13459969,
+        13417132
+      ],
+      "flask_cc_median_ns": 13417132.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "exit_code": 0,
+    "ended_at": "2026-11-25T08:21:04.443479+00:00",
+    "environment_after": {
+      "timestamp_utc": "2026-11-25T08:21:06.496289+00:00",
+      "measurement_cpu": 10,
+      "smt_siblings": [
+        11
+      ],
+      "affinity": [
+        10
+      ],
+      "power_profile": "performance",
+      "no_turbo": "0",
+      "per_cpu": {
+        "0": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2541751",
+          "max_khz": "5500000"
+        },
+        "1": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1685625",
+          "max_khz": "5500000"
+        },
+        "10": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5500000",
+          "max_khz": "5800000"
+        },
+        "11": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "5500000",
+          "max_khz": "5800000"
+        },
+        "12": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "13": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1570226",
+          "max_khz": "5500000"
+        },
+        "14": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3322466",
+          "max_khz": "5500000"
+        },
+        "15": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "16": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3355466",
+          "max_khz": "4300000"
+        },
+        "17": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "1790267",
+          "max_khz": "4300000"
+        },
+        "18": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799869",
+          "max_khz": "4300000"
+        },
+        "19": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "2": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "20": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "21": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "22": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "23": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "3262920",
+          "max_khz": "4300000"
+        },
+        "24": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "25": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "26": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "27": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "28": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "29": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "3": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "30": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "31": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "4300000"
+        },
+        "4": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2100538",
+          "max_khz": "5500000"
+        },
+        "5": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "6": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "988904",
+          "max_khz": "5500000"
+        },
+        "7": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "800000",
+          "max_khz": "5500000"
+        },
+        "8": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "2884612",
+          "max_khz": "5800000"
+        },
+        "9": {
+          "governor": "powersave",
+          "energy_performance_preference": "performance",
+          "cur_khz": "799281",
+          "max_khz": "5800000"
+        }
+      },
+      "power_supply": {
+        "ucsi-source-psy-USBC000:002/online": "0",
+        "ucsi-source-psy-USBC000:003/online": "0",
+        "ucsi-source-psy-USBC000:001/online": "0",
+        "ucsi-source-psy-USBC000:002/type": "USB",
+        "ucsi-source-psy-USBC000:003/type": "USB",
+        "ucsi-source-psy-USBC000:001/type": "USB"
+      },
+      "cpuinfo_max_khz": {
+        "0": "5500000",
+        "1": "5500000",
+        "10": "5800000",
+        "11": "5800000",
+        "12": "5500000",
+        "13": "5500000",
+        "14": "5500000",
+        "15": "5500000",
+        "16": "4300000",
+        "17": "4300000",
+        "18": "4300000",
+        "19": "4300000",
+        "2": "5500000",
+        "20": "4300000",
+        "21": "4300000",
+        "22": "4300000",
+        "23": "4300000",
+        "24": "4300000",
+        "25": "4300000",
+        "26": "4300000",
+        "27": "4300000",
+        "28": "4300000",
+        "29": "4300000",
+        "3": "5500000",
+        "30": "4300000",
+        "31": "4300000",
+        "4": "5500000",
+        "5": "5500000",
+        "6": "5500000",
+        "7": "5500000",
+        "8": "5800000",
+        "9": "5800000"
+      },
+      "thermal_millicelsius": {
+        "thermal_zone2": "84000",
+        "thermal_zone0": "99050",
+        "thermal_zone7": "27050",
+        "thermal_zone5": "26050",
+        "thermal_zone3": "37050",
+        "thermal_zone1": "20000",
+        "thermal_zone8": "72000",
+        "thermal_zone6": "54050",
+        "thermal_zone4": "50"
+      },
+      "cpu_load": {
+        "0": 0.0,
+        "1": 0.010000000000000009,
+        "2": 0.015000000000000013,
+        "3": 0.0,
+        "4": 0.02985074626865669,
+        "5": 0.0,
+        "6": 0.005050505050505083,
+        "7": 0.0,
+        "8": 0.020000000000000018,
+        "9": 0.01005025125628145,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.020000000000000018,
+        "13": 0.0,
+        "14": 0.024752475247524774,
+        "15": 0.0,
+        "16": 0.010101010101010055,
+        "17": 0.0,
+        "18": 0.005025125628140725,
+        "19": 0.00497512437810943,
+        "20": 0.005050505050505083,
+        "21": 0.00497512437810943,
+        "22": 0.00995024875621886,
+        "23": 0.034653465346534684,
+        "24": 0.00497512437810943,
+        "25": 0.0,
+        "26": 0.0,
+        "27": 0.0,
+        "28": 0.0,
+        "29": 0.0,
+        "30": 0.0,
+        "31": 0.0
+      },
+      "top_processes": [
+        "    PID PSR %CPU COMMAND",
+        "   2442   4  6.5 Xorg",
+        " 292493  15  5.7 Discord",
+        " 292565   6  3.2 Discord",
+        "   3292   3  2.2 firefox-bin",
+        "   2620  20  1.8 gnome-shell",
+        "3590658  17  1.1 code",
+        "3927575  19  1.1 anydesk",
+        " 217323  12  0.9 htop",
+        "   2257   4  0.8 pulseaudio",
+        "3590789  17  0.5 code",
+        " 288396  13  0.3 evince"
+      ]
+    },
+    "probe_after": {
+      "vamp_rrtc_ns": [
+        2911459,
+        2783747,
+        2744572,
+        2716888,
+        2848978
+      ],
+      "vamp_rrtc_median_ns": 2783747.0,
+      "flask_cc_ns": [
+        14145006,
+        14032225,
+        13952201,
+        13907697,
+        13936556
+      ],
+      "flask_cc_median_ns": 13952201.0,
+      "problems": 50,
+      "edges": 2000
+    },
+    "probe_drift": 0.03987953610354289,
+    "controlled": true
+  }
+]

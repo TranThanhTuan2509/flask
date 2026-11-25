@@ -1,0 +1,278 @@
+{
+  "unicycle_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 202.22255799999996,
+      "sd": 283.20173516793005,
+      "p25": 26.31236525,
+      "p50": 114.9608245,
+      "p75": 223.317874,
+      "p95": 633.6630658499993
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 202.22255799999996,
+      "sd": 283.20173516793005,
+      "p25": 26.31236525,
+      "p50": 114.9608245,
+      "p75": 223.317874,
+      "p95": 633.6630658499993
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 202.44365716666664,
+      "sd": 283.3003687589551,
+      "p25": 26.46753975,
+      "p50": 115.2583865,
+      "p75": 223.4487785,
+      "p95": 634.1337522999993
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 13.656656855353885,
+      "sd": 4.068370766071986,
+      "p25": 11.85978334050968,
+      "p50": 12.37796109060157,
+      "p75": 13.07138778495929,
+      "p95": 23.962566764517227
+    }
+  },
+  "unicycle_wall/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 20.475615733333328,
+      "sd": 37.591460081519315,
+      "p25": 1.81670975,
+      "p50": 5.1638285,
+      "p75": 15.07507125,
+      "p95": 110.69964954999988
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 20.475615733333328,
+      "sd": 37.591460081519315,
+      "p25": 1.81670975,
+      "p50": 5.1638285,
+      "p75": 15.07507125,
+      "p95": 110.69964954999988
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 20.575332333333332,
+      "sd": 37.64625056329822,
+      "p25": 1.8677467499999998,
+      "p50": 5.2315570000000005,
+      "p75": 15.181186,
+      "p95": 110.97184239999987
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 10.794984350151193,
+      "sd": 4.587948817434367,
+      "p25": 7.677405387232476,
+      "p50": 8.753801482065679,
+      "p75": 11.922296969802566,
+      "p95": 19.558732785746482
+    }
+  },
+  "quad2d_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.6408296333333335,
+      "sd": 0.3358246226737485,
+      "p25": 0.45426975,
+      "p50": 0.5751820000000001,
+      "p75": 0.7298672500000001,
+      "p95": 0.9719880499999997
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad2d_hole/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.3283466333333333,
+      "sd": 0.46466306050717965,
+      "p25": 0.08509875,
+      "p50": 0.121978,
+      "p75": 0.34577625,
+      "p95": 1.4759640999999974
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_block/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 2.0817783,
+      "sd": 0.6126602023220348,
+      "p25": 1.7370584999999998,
+      "p50": 1.96469,
+      "p75": 2.53133,
+      "p95": 3.06516515
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_window/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.8169243666666668,
+      "sd": 0.3193266290067777,
+      "p25": 0.538172,
+      "p50": 0.780267,
+      "p75": 1.0722087500000002,
+      "p95": 1.3762742499999994
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "quad3d_block/rrt_dp": {
+    "attempts": 2,
+    "returned_solutions": 0,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.6576197724933469
+    ],
+    "all_attempt_planning_ms": {
+      "n": 2,
+      "mean": 168864.59995200002,
+      "sd": 30333.170379000003,
+      "p25": 153698.0147625,
+      "p50": 168864.59995200002,
+      "p75": 184031.1851415,
+      "p95": 196164.4532931
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  }
+}
