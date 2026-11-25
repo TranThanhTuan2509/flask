@@ -1,0 +1,94 @@
+diff --git a/src/impl/vamp/collision/capt.hh b/src/impl/vamp/collision/capt.hh
+index 52af89a..36ffeb9 100644
+--- a/src/impl/vamp/collision/capt.hh
++++ b/src/impl/vamp/collision/capt.hh
+@@ -210,42 +210,46 @@ namespace vamp::collision
+ 
+                 uint32_t hi_len = 0;
+                 uint32_t lo_len = 0;
++                // [flask_repro VA 2026-11-22] (a) le chep diem sang o ben canh phai la max_affordance_l1 = r_max + r_point
++                // (truy van cong r_point vao ban kinh), ban goc dung r_max. (b) argsort da sap TANG dan theo d, nen cac
++                // diem nua duoi gan mat chia nam o CUOI nua duoi: ban goc quet tu DAU (diem xa nhat) -> vong lap dung
++                // ngay, khong chep diem nao -> sot va cham (do: 23-37 / 5000 cau hinh UR5 lun toi 61 mm).
+                 for (const auto idx : hi_afford)
+                 {
+-                    if (points[idx][frame.d] <= test + r_max)
++                    if (points[idx][frame.d] <= test + max_affordance_l1)
+                     {
+                         lo_afford[lo_len++] = idx;
+                     }
+ 
+-                    if (points[idx][frame.d] >= test - r_max)
++                    if (points[idx][frame.d] >= test - max_affordance_l1)
+                     {
+                         hi_afford[hi_len++] = idx;
+                     }
+                 }
+ 
+-                uint32_t new_hi_afford = frame.points_begin;
++                uint32_t new_hi_afford = frame.points_begin + next_width;   // quet NGUOC tu mat chia xuong
+                 uint32_t new_lo_afford = frame.points_begin + next_width;
+-                while (new_hi_afford < frame.points_begin + next_width and
+-                       points[argsort[new_hi_afford]][frame.d] >= test - r_max and
+-                       std::isfinite(points[argsort[new_hi_afford]][frame.d]))
++                while (new_hi_afford > frame.points_begin and
++                       points[argsort[new_hi_afford - 1]][frame.d] >= test - max_affordance_l1 and
++                       std::isfinite(points[argsort[new_hi_afford - 1]][frame.d]))
+                 {
+-                    ++new_hi_afford;
++                    --new_hi_afford;
+                 }
+ 
+                 while (new_lo_afford < frame.points_begin + frame.how_many_points and
+-                       points[argsort[new_lo_afford]][frame.d] <= test + r_max and
++                       points[argsort[new_lo_afford]][frame.d] <= test + max_affordance_l1 and
+                        std::isfinite(points[argsort[new_lo_afford]][frame.d]))
+                 {
+                     ++new_lo_afford;
+                 }
+ 
+-                uint32_t num_new_hi = new_hi_afford - frame.points_begin;
++                uint32_t num_new_hi = frame.points_begin + next_width - new_hi_afford;
+                 uint32_t num_new_lo = new_lo_afford - (frame.points_begin + next_width);
+ 
+                 hi_afford.resize(hi_len + num_new_hi);
+                 std::copy(
+-                    argsort.begin() + frame.points_begin,
+                     argsort.begin() + new_hi_afford,
++                    argsort.begin() + frame.points_begin + next_width,
+                     hi_afford.begin() + hi_len);
+                 lo_afford.resize(lo_len + num_new_lo);
+                 std::copy(
+@@ -369,6 +373,12 @@ namespace vamp::collision
+         //  Returns `true` if in collision and `false` if not.
+         [[nodiscard]] auto collides(const Point &center, float r) const noexcept -> bool
+         {
++            // [flask_repro VA] ban kinh vuot r_max (cau bao 0.25-0.29 m cua fkcc UR5, min_max_radii chi tinh cau la)
++            // nam ngoai hop dong cua cay -> tra "co the va" de fkcc kiem tiep cac cau con (an toan, chi ton them kiem).
++            if (r > r_max)
++            {
++                return aabb_top.distsq_to(center) <= (r + r_point) * (r + r_point);
++            }
+             // Pad query radii by radius of points.
+             r = r + r_point;
+             const float radius_sq = r * r;
+@@ -424,6 +434,8 @@ namespace vamp::collision
+         // - `radii`: SIMD vector of the radii of each sphere.
+         auto collides_simd(const std::array<FVectorT, 3> &centers, FVectorT radii) const noexcept -> bool
+         {
++            // [flask_repro VA] xem collides(): lan co ban kinh > r_max ma cham hop bao toan cay -> "co the va".
++            const FVectorT qua_lon = radii > FVectorT::fill(r_max);
+             // Padd radii by radius of points.
+             radii = radii + r_point;
+             // Test against top AABB
+@@ -440,6 +452,10 @@ namespace vamp::collision
+             {
+                 return false;
+             }
++            if ((inbounds & qua_lon).any())
++            {
++                return true;
++            }
+ 
+             FVectorT these_tests = FVectorT::fill(tests[0]);
+             FVectorT cmp_results = centers[0].greater_equal(these_tests);
