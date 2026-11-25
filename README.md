@@ -215,7 +215,6 @@ results/              summaries of the campaigns behind every table and figure
 - **BVP-SST\* anytime output.** The search cost decreases monotonically, but after the greedy Alg. 4 shortcut the
   returned cost is non-monotone in 27/60 runs.
 - **Simulation only.** Nothing here has run on a physical robot. The obstacle map is assumed known, as in the paper.
-- **Hardware.** x86-64 with AVX2 only; there is no GPU (Kino-PAX) comparison.
 
 ## Citation
 
