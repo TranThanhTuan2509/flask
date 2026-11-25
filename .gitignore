@@ -1,0 +1,52 @@
+# environments and builds (machine-specific, -march=native)
+.venv*/
+build/
+*.so
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# third-party sources: fetched at pinned commits by scripts/fetch_third_party.sh
+third_party/*
+!third_party/VAMP_COMMIT
+!third_party/vamp_capture_validation.patch
+!third_party/dynobench_subset/
+!third_party/SOURCES.md
+third_party/baseline_prefix/
+
+# copyrighted papers (download from the publishers)
+docs/sources/*.pdf
+
+# results: only reports, summaries and manifests are tracked; raw per-attempt data stays local (archived separately)
+results/**
+!results/**/
+!results/README.md
+!results/readme_figures_data.json
+!results/paper_campaigns/2026-11-25_final_v10*/report*/*
+!results/paper_campaigns/2026-11-25_final_v10*/jobs.json
+!results/paper_campaigns/2026-11-25_final_v10*/hardware_calibration.json
+!results/paper_campaigns/2026-11-25_final_v10*/*/summary.json
+!results/paper_campaigns/launch_v10*.sh
+!results/paper_campaigns/launch_baselines_v10.sh
+!results/verification/2026-11-25_acceptance/**/summary.json
+!results/verification/2026-11-25_acceptance/v1_math.json
+!results/verification/2026-11-25_acceptance/v3_relative.json
+!results/verification/2026-11-25_acceptance/v4_long_budget/unsolved_at_60s.json
+!results/verification/2026-11-25_acceptance/v4_long_budget/profile_budget600.json
+!results/verification/2026-11-25_acceptance/v4_long_budget/run.sh
+!results/verification/2026-11-25_v10_gates_on_laptop_v8/*
+!results/diagnostics/vamp_toppra_v10/*
+!results/diagnostics/propagation_dynoplan_v10/*.md
+!results/diagnostics/unicycle_faithful_v10/*.json
+!results/diagnostics/unicycle_faithful_v10/*.py
+!results/diagnostics/unicycle_omega_v10/*.md
+!results/diagnostics/unicycle_omega_v10/*.py
+!results/ur5_sim_v10/*/summary.json
+!results/ur5_sim_v10/*/manifest.json
+
+.tmp/
+
+# showcases: showcase/showcase_<k>/ keeps README, selection, summaries, stills and GIFs; videos and raw logs stay local
+showcase/*/**/*.mp4
+showcase/*/**/execution.npz
+showcase/*/**/*.log

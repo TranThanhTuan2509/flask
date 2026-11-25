@@ -1,0 +1,2 @@
+# MuJoCo showcases only (Unitree G1 walking policy runs on CPU torch)
+torch==2.14.1
