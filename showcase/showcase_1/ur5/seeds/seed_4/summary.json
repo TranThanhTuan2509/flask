@@ -1,0 +1,33 @@
+{
+  "robot": "UR5",
+  "seed": 4,
+  "legs": 6,
+  "contact_samples": 0,
+  "reference_collision_samples": 0,
+  "plan_us": [
+    16.076,
+    105.373,
+    20.214,
+    18.475,
+    57.024,
+    62.95
+  ],
+  "shortcut_us": [
+    263.938,
+    755.355,
+    326.606,
+    190.452,
+    736.955,
+    967.819
+  ],
+  "max_track_error_rad": null,
+  "planner": "FLASK-RRTConnect + Alg. 4 (native, VAMP), lazy-certified",
+  "total_us": [
+    280.014,
+    860.728,
+    346.82,
+    208.927,
+    793.979,
+    1030.769
+  ]
+}

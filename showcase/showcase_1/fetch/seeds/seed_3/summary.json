@@ -1,0 +1,30 @@
+{
+  "robot": "Fetch",
+  "seed": 3,
+  "steps": 5,
+  "contact_steps": 0,
+  "base_first_ms": [
+    81.546191,
+    281.630144
+  ],
+  "base_plan_ms": [
+    81.54656,
+    281.630781
+  ],
+  "base_post_ms": [
+    0.262477,
+    1.381183
+  ],
+  "arm_shortcut_us": [
+    211.685,
+    0.232,
+    46.522
+  ],
+  "arm_plan_us": [
+    434.212,
+    14.085,
+    302.634
+  ],
+  "max_base_error_m": 0.053558833074907226,
+  "planner": "FLASK: base BVP-SST* (unicycle), arm RRTConnect + Alg. 4 (native, VAMP Fetch)"
+}
