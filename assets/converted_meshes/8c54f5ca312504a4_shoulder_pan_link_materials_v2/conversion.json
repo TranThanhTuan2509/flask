@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/shoulder_pan_link.dae",
+  "source_sha256": "8c54f5ca312504a4938214e23d70779f5a3e53c20700401006fedbc7e7c896ad",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/8c54f5ca312504a4_shoulder_pan_link_materials_v2/shoulder_pan_link_8c54f5ca_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.051999978721141815,
+          -0.0744999572634697,
+          -0.047999970614910126
+        ],
+        [
+          0.1774909943342209,
+          0.051999978721141815,
+          0.1204930990934372
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

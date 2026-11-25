@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/base_link.dae",
+  "source_sha256": "5bce2661b072f9402f4af89b40b107271054e3c7705e2f9f23ffaf286e4a3b7c",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/5bce2661b072f940_base_link_materials_v2/base_link_5bce2661_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.28686949610710144,
+          -0.26414310932159424,
+          1.3945699492978747e-06
+        ],
+        [
+          0.2863999903202057,
+          0.2641417980194092,
+          0.35891181230545044
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

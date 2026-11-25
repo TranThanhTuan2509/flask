@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/torso_lift_link.dae",
+  "source_sha256": "45f38616be359918c6dd5a73bde21672d40730aed3c251084e09d1d79bcd2c7d",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/45f38616be359918_torso_lift_link_materials_v2/torso_lift_link_45f38616_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.18521369993686676,
+          -0.1708381026983261,
+          0.0284991804510355
+        ],
+        [
+          0.17145830392837524,
+          0.1708381026983261,
+          0.6029999852180481
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "source": "third_party/vamp/resources/ur5/meshes/ur5/visual/shoulder.dae",
+  "source_sha256": "ede06757e0d1a8d7232222ff1a109aa680f9fb706aec86a54cb24a6beeb555e5",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "vertex_count": 8256,
+  "face_count": 13492,
+  "bounds_m": [
+    [
+      -0.05949980020523071,
+      -0.05949995670522412,
+      -0.06520012769902905
+    ],
+    [
+      0.05949980020523071,
+      0.0704997926572446,
+      0.06851074848378857
+    ]
+  ],
+  "scene_transforms_applied": true
+}

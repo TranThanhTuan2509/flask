@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/forearm_roll_link.dae",
+  "source_sha256": "0556b2360bba65612e6179292d71fd1785b3ec5936c580f478e7644b70bbccdb",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/0556b2360bba6561_forearm_roll_link_materials_v2/forearm_roll_link_0556b236_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.03200000151991844,
+          -0.08699995279312134,
+          -0.051999978721141815
+        ],
+        [
+          0.17649999260902405,
+          0.051999978721141815,
+          0.051999978721141815
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

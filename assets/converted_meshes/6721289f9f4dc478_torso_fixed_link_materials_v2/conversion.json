@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/torso_fixed_link.dae",
+  "source_sha256": "6721289f9f4dc4789cd587b97763009f498ee47fb37275d0cdaffd3d3562c350",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/6721289f9f4dc478_torso_fixed_link_materials_v2/torso_fixed_link_6721289f_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.16828769445419312,
+          -0.155349999666214,
+          -0.018569229170680046
+        ],
+        [
+          -0.03206508979201317,
+          0.155349999666214,
+          0.4433057904243469
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

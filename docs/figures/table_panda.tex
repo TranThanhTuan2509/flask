@@ -1,0 +1,18 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{booktabs}
+\begin{document}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Scene} & \textbf{Paper median (mean)} & \textbf{Ours median (mean)} & \textbf{Ours ÷ k\_hw, median} & \textbf{Ours valid} & \textbf{VAMP+TOPP-RA median} & \textbf{TOPP-RA valid} \\
+\midrule
+bookshelf small & 170 $\mu$s (7.80) & 137 $\mu$s (352 $\mu$s) & 292 $\mu$s & 98.6\% & 3.72 & 9\% \\
+bookshelf tall & 150 $\mu$s (1.09) & 120 $\mu$s (213 $\mu$s) & 258 $\mu$s & 98.8\% & 3.67 & 10\% \\
+bookshelf thin & 200 $\mu$s (610 $\mu$s) & 149 $\mu$s (222 $\mu$s) & 319 $\mu$s & 97.9\% & 3.80 & 2\% \\
+box & 250 $\mu$s (860 $\mu$s) & 325 $\mu$s (347 $\mu$s) & 696 $\mu$s & 99.4\% & 3.91 & 2\% \\
+cage & 6.35 (13.0) & 1.39 (1.70) & 2.97 & 98.1\% & 4.93 & 0\% \\
+table pick & 120 $\mu$s (280 $\mu$s) & 91 $\mu$s (108 $\mu$s) & 194 $\mu$s & 99.3\% & 3.40 & 13\% \\
+table under pick & 250 $\mu$s (340 $\mu$s) & 205 $\mu$s (227 $\mu$s) & 438 $\mu$s & 98.7\% & 4.63 & 0\% \\
+\bottomrule
+\end{tabular}
+% Panda, MotionBenchMaker, 1000 problems per scene, times in ms on each CPU (VAMP+TOPP-RA on ours). Ours: held-out seeds, one P-core of an i9-14900 (k_hw = 0.467: our CPU is about 2× faster than the paper's i7-6900K). Valid = dense (1 kHz) + URDF collision and limit checks on the original model. TOPP-RA retimes a geometric path; its spline leaves the checked path.
+\end{document}

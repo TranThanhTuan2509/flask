@@ -1,0 +1,21 @@
+{
+  "source": "third_party/vamp/resources/ur5/meshes/ur5/visual/base.dae",
+  "source_sha256": "2c043bc6cd7b27856e44951abdd33cf2d23f06f15b944216457efd63374d1fbc",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "vertex_count": 1877,
+  "face_count": 1932,
+  "bounds_m": [
+    [
+      -0.07336580008268356,
+      -0.10999999940395355,
+      -0.0029999609105288982
+    ],
+    [
+      0.07336585968732834,
+      0.07336580008268356,
+      0.020999839529395103
+    ]
+  ],
+  "scene_transforms_applied": true
+}

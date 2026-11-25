@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/wrist_roll_link.dae",
+  "source_sha256": "3df20e834a404da01a25bfee84c655036b64461a75533ef0e8aaa4c04134ae90",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/3df20e834a404da0_wrist_roll_link_materials_v2/wrist_roll_link_3df20e83_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.023000000044703484,
+          -0.05194681137800217,
+          -0.051963500678539276
+        ],
+        [
+          0.019499950110912323,
+          0.05194681137800217,
+          0.051963500678539276
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

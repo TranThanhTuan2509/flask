@@ -1,0 +1,21 @@
+{
+  "source": "third_party/vamp/resources/ur5/meshes/ur5/visual/wrist3.dae",
+  "source_sha256": "a788d3ea756d6a760ecbbfc5ef4f36d0ddc335de7deec9b996e4262048d8e18d",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "vertex_count": 1569,
+  "face_count": 1658,
+  "bounds_m": [
+    [
+      -0.037499960511922836,
+      0.047324951738119125,
+      -0.037499960511922836
+    ],
+    [
+      0.037499960511922836,
+      0.081824891269207,
+      0.042999979108572006
+    ]
+  ],
+  "scene_transforms_applied": true
+}

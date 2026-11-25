@@ -1,0 +1,57 @@
+{
+  "source": "third_party/vamp/resources/fetch/meshes/shoulder_lift_link.dae",
+  "source_sha256": "230f01402296c58c01cbf833b57ff92a987ca3684020b94f9a04b55c38c022ee",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "unit_scale_m": 1.0,
+  "scene_transforms_applied": true,
+  "parts": [
+    {
+      "file": "assets/converted_meshes/230f01402296c58c_shoulder_lift_link_materials_v2/shoulder_lift_link_230f0140_visual_000.obj",
+      "rgba": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bounds_m": [
+        [
+          -0.05999999865889549,
+          -0.051999978721141815,
+          -0.05967127904295921
+        ],
+        [
+          0.1720000058412552,
+          0.070499949157238,
+          0.05967127904295921
+        ]
+      ],
+      "scene_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

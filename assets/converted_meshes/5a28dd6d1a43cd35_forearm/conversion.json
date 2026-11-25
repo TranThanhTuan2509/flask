@@ -1,0 +1,21 @@
+{
+  "source": "third_party/vamp/resources/ur5/meshes/ur5/visual/forearm.dae",
+  "source_sha256": "5a28dd6d1a43cd3587f154f65971394ffc05b2ad3cb53d2bf3df7da90007e0c8",
+  "tool": "trimesh",
+  "version": "4.11.0",
+  "vertex_count": 12333,
+  "face_count": 21028,
+  "bounds_m": [
+    [
+      -0.05799983814358711,
+      -0.05719995126128197,
+      -0.05799977853894234
+    ],
+    [
+      0.05799977853894234,
+      0.05449998006224632,
+      0.4311800003051758
+    ]
+  ],
+  "scene_transforms_applied": true
+}
