@@ -130,7 +130,7 @@ python -m benchmarks.report_v10 --campaign results/paper_campaigns/<date>_v10b -
 python -m experiments.ur5_mujoco --acceleration_feedforward True
 ```
 
-## MuJoCo showcases
+## [MuJoCo showcases](https://drive.google.com/drive/folders/1tR735UjNGVpZDkEKdCtvVsk5S1-iuNps?usp=sharing)
 
 | Unitree G1 | Skydio X2 | UR5 | Fetch |
 |:-:|:-:|:-:|:-:|
