@@ -1,0 +1,305 @@
+{
+  "source": "arXiv:2603.16059v4 (paper PDF)",
+  "version": "arXiv:2603.16059v4",
+  "sha256": "0f693245d6c8284860fc410abb42bc532d47d0a8037281ec37c10fb5fa261ba2",
+  "paper_cpu": "Intel i7-6900K",
+  "table_i_page": 14,
+  "table_i": {
+    "unicycle_bugtrap": {
+      "rrt_connect": {
+        "planning_ms": 6,
+        "length_m": 12.39
+      },
+      "sst_bvp": {
+        "planning_ms": 48.6,
+        "length_m": 12.51
+      },
+      "sst_simd": {
+        "planning_ms": 407,
+        "length_m": 12.27
+      },
+      "rrt_dp": {
+        "planning_ms": 565,
+        "length_m": 12.25
+      },
+      "idbastar": {
+        "planning_ms": 375,
+        "length_m": 11.51
+      },
+      "original_sst_star": {
+        "planning_ms": 126,
+        "length_m": 12.38
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 5.8,
+        "length_m": 13.77
+      }
+    },
+    "unicycle_wall": {
+      "rrt_connect": {
+        "planning_ms": 0.6,
+        "length_m": 4.82
+      },
+      "sst_bvp": {
+        "planning_ms": 11,
+        "length_m": 5.24
+      },
+      "sst_simd": {
+        "planning_ms": 30,
+        "length_m": 5.27
+      },
+      "rrt_dp": {
+        "planning_ms": 25,
+        "length_m": 5.61
+      },
+      "idbastar": {
+        "planning_ms": 77,
+        "length_m": 3.89
+      },
+      "original_sst_star": {
+        "planning_ms": 67,
+        "length_m": 4.97
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 2.6,
+        "length_m": 5.28
+      }
+    },
+    "quad2d_bugtrap": {
+      "rrt_connect": {
+        "planning_ms": 2.7,
+        "length_m": 11.46
+      },
+      "sst_bvp": {
+        "planning_ms": 45,
+        "length_m": 11.67
+      },
+      "sst_simd": {
+        "planning_ms": 388,
+        "length_m": 11.46
+      },
+      "rrt_dp": {
+        "planning_ms": 909,
+        "length_m": 11.5
+      },
+      "idbastar": {
+        "planning_ms": 10746,
+        "length_m": 9.69
+      },
+      "original_sst_star": {
+        "planning_ms": 28667,
+        "length_m": 9.64
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 19.7,
+        "length_m": 18.59
+      }
+    },
+    "quad2d_hole": {
+      "rrt_connect": {
+        "planning_ms": 0.4,
+        "length_m": 5.16
+      },
+      "sst_bvp": {
+        "planning_ms": 270,
+        "length_m": 4.93
+      },
+      "sst_simd": {
+        "planning_ms": 1813,
+        "length_m": 5.14
+      },
+      "rrt_dp": {
+        "planning_ms": 2133,
+        "length_m": 5.24
+      },
+      "idbastar": {
+        "planning_ms": 353,
+        "length_m": 4.62
+      },
+      "original_sst_star": {
+        "planning_ms": 17602,
+        "length_m": 4.59
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 124.9,
+        "length_m": 17.82
+      }
+    },
+    "quad3d_block": {
+      "rrt_connect": {
+        "planning_ms": 0.9,
+        "length_m": 8.08
+      },
+      "sst_bvp": {
+        "planning_ms": 1.4,
+        "length_m": 8.61
+      },
+      "sst_simd": {
+        "planning_ms": 4752,
+        "length_m": 9.56
+      },
+      "rrt_dp": {
+        "planning_ms": 7602,
+        "length_m": 8.75
+      },
+      "idbastar": {
+        "planning_ms": 4573,
+        "length_m": 7.94
+      },
+      "original_sst_star": {
+        "planning_ms": 46289,
+        "length_m": 9.32
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 21.4,
+        "length_m": 10.36
+      }
+    },
+    "quad3d_window": {
+      "rrt_connect": {
+        "planning_ms": 0.5,
+        "length_m": 5.49
+      },
+      "sst_bvp": {
+        "planning_ms": 22.6,
+        "length_m": 6.28
+      },
+      "sst_simd": {
+        "planning_ms": 629,
+        "length_m": 6.96
+      },
+      "rrt_dp": {
+        "planning_ms": 2631,
+        "length_m": 7.98
+      },
+      "idbastar": {
+        "planning_ms": 2667,
+        "length_m": 5.12
+      },
+      "original_sst_star": {
+        "planning_ms": 45798,
+        "length_m": 6.72
+      },
+      "kino_pax_gpu": {
+        "planning_ms": 178.6,
+        "length_m": 16.41
+      }
+    }
+  },
+  "table_ii_page": 16,
+  "table_ii": {
+    "bookshelf_thin": {
+      "flask_rrt_connect": {
+        "mean_ms": 0.61,
+        "median_ms": 0.2,
+        "length_rad": 5.25,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 3.96,
+        "median_ms": 3.7,
+        "length_rad": 4.66,
+        "collision_risk": 0.32
+      }
+    },
+    "bookshelf_tall": {
+      "flask_rrt_connect": {
+        "mean_ms": 1.09,
+        "median_ms": 0.15,
+        "length_rad": 5.3,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 3.91,
+        "median_ms": 3.57,
+        "length_rad": 4.86,
+        "collision_risk": 0.34
+      }
+    },
+    "bookshelf_small": {
+      "flask_rrt_connect": {
+        "mean_ms": 7.8,
+        "median_ms": 0.17,
+        "length_rad": 5.5,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 4.11,
+        "median_ms": 3.85,
+        "length_rad": 4.83,
+        "collision_risk": 0.32
+      }
+    },
+    "cage": {
+      "flask_rrt_connect": {
+        "mean_ms": 12.96,
+        "median_ms": 6.35,
+        "length_rad": 10.07,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 5.81,
+        "median_ms": 5.32,
+        "length_rad": 7.09,
+        "collision_risk": 0.29
+      }
+    },
+    "box": {
+      "flask_rrt_connect": {
+        "mean_ms": 0.86,
+        "median_ms": 0.25,
+        "length_rad": 5.64,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 4.22,
+        "median_ms": 4.25,
+        "length_rad": 4.68,
+        "collision_risk": 0.13
+      }
+    },
+    "table_under_pick": {
+      "flask_rrt_connect": {
+        "mean_ms": 0.34,
+        "median_ms": 0.25,
+        "length_rad": 8.46,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 5.13,
+        "median_ms": 5.1,
+        "length_rad": 6.8,
+        "collision_risk": 0.4
+      }
+    },
+    "table_pick": {
+      "flask_rrt_connect": {
+        "mean_ms": 0.28,
+        "median_ms": 0.12,
+        "length_rad": 5.24,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 3.78,
+        "median_ms": 3.6,
+        "length_rad": 4.76,
+        "collision_risk": 0.42
+      }
+    },
+    "overall": {
+      "flask_rrt_connect": {
+        "mean_ms": 3.49,
+        "median_ms": 0.24,
+        "length_rad": 6.5,
+        "collision_risk": 0
+      },
+      "vamp_toppra": {
+        "mean_ms": 4.43,
+        "median_ms": 4.19,
+        "length_rad": 5.26,
+        "collision_risk": 0.33
+      }
+    }
+  },
+  "note": "Table I anytime baseline first-solution time and final length use 180 seconds. GPU Kino-PAX is an attributed paper reference. Table II transcription here contains mean/median timing, mean length, and trajectory collision risk; full local distributions are retained separately."
+}

@@ -1,0 +1,53 @@
+{
+  "profile": "v10_panda_rest_v10b",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": false,
+  "robot": "panda",
+  "methods": [
+    "flask_rrt_connect",
+    "vamp_toppra"
+  ],
+  "settings": {
+    "prefix_steering": false,
+    "velocity_sample_scale": 0.0,
+    "range": 1.0,
+    "neighbor_mode": "A",
+    "dynamic_domain": true,
+    "max_ns": 1000000000,
+    "max_iterations": 10000000,
+    "max_samples": 100000
+  },
+  "planning_validation_profile": "peak_speed",
+  "additional_validation_profile": "strict_development",
+  "independent_urdf_samples_per_trajectory": 129,
+  "baseline_halton_stride": 2048,
+  "baseline_parameterization": "chord_length",
+  "unresolved": [
+    "Source contains 700 pairs; source-invalid table_pick/40 is retained in the inventory and excluded from planning, leaving 699 eligible pairs",
+    "Author dataset revision and exact limits, sampling, metric, stopping rule and interpolation are not available",
+    "One-second FLASK timeout and ten-million-iteration cap are reconstructed measurement settings",
+    "VAMP geometric planner uses deterministic Halton subsequences offset by (seed-1)*2048, not stochastic RNG seeds",
+    "Baseline VAMP has an iteration/sample budget and no native wall-clock timeout; record actual wall time",
+    "Native FLASK uses rounded square root; the unmodified upstream VAMP baseline retains its precision policy",
+    "Original VAMP sphere/capsule/box geometry is used; all-sphere author scene correspondence is unconfirmed",
+    "TOPP-RA retimes a cubic waypoint spline; interpolation choice is reconstructed",
+    "Additional dense and strict collision checks are sampled checks, not continuous certificates",
+    "Independent URDF checks cover 129 distributed configurations and environment distances; self-collision exclusions remain supplied by VAMP",
+    "No PyBullet physics or showcase execution is performed by this planning benchmark",
+    "v2: velocity sampling distribution is not stated in the paper; rest samples (velocity_sample_scale 0) reconstructed from timing/length/Fig. 7a evidence; full-velocity sampling reported as a sensitivity profile",
+    "v2: extension = VAMP-style clipping of the target configuration to range 2.0 rad (VAMP C++ default), single BVP per extension, no halving retries",
+    "v2: collision resolution profiles x1 (32 samples/rad, VAMP and author default), x4 and x16 are all reported; finite sampling is not a continuous certificate",
+    "v7: paper-resolution profile (32 samples/rad); collision risk measured by dense and URDF checks",
+    "v7: held-out seeds 2001-2010",
+    "flask_rrt_connect_lazy_certified (v9): the returned path only is certified against the 1 mm inflated scene with sweep-bounded sampling; failed certificates replan with the next RNG stream and all attempts are charged.",
+    "v9: extension range 1.0 rad (VAMP Python Panda default, same as the baseline) instead of 2.0 (VAMP C++ default); the paper does not state it.",
+    "v10: edge sample count = duration x peak joint speed x 32/rad (authors validSegmentCount rule; profile peak_speed), declared 2026-11-25 by evidence priority paper > author code, before any v10 run",
+    "v10: both Panda samplers (rest, full-state) are reported side by side; neither is tuned toward the paper (user decision 2026-11-25)"
+  ],
+  "planning_limit_overrides": {},
+  "selection_evidence": "v9: results/diagnostics/panda_length_v9{,_rest} (development seeds 1001-1003, 40 problems per scene, benchmarks/diagnose_panda_length.py): extension range 1.0 rad -- the VAMP Python default for the Panda (ROBOT_RRT_RANGES, the configuration the geometric VAMP baseline uses) -- replaces 2.0 (VAMP C++ RRTCSettings default). Total search iterations over the 7 scenes fall 2.2x (7829 -> 3486; table_under_pick +13%, table_pick +5%); one Alg. 4 pass already converges. Path length was recorded but not used for selection. Earlier evidence: results/diagnostics/ablation_panda_v2 (development seed 1001): VAMP-style range clipping of the target configuration with rest (zero-velocity) samples reproduces the paper's per-scene medians and success; full-velocity sampling (v1) and the authors' public OMPL configuration are 6x slower at the median and the latter solves cage only ~31% within 1 s with ~2x longer paths. Paper Fig. 7a shows rest-to-rest segments (zero slope at pick/place).",
+  "seed_set": "manipulator_final_v10b",
+  "certify_delta": 0.001,
+  "lazy_max_attempts": 20,
+  "v10_protocol": "reconstructed sampler: every sampled node at rest (velocity_sample_scale 0); edges are straight joint-space segments with cubic timing"
+}

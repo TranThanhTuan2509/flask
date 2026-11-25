@@ -1,0 +1,191 @@
+[
+ {
+  "name": "R2_heading_fwd_lift0.3",
+  "declared": "2026-11-25, round 2, declared after round 1 (U1-U6) partial results and before running these. Reason: the boundary lift (speed and chart kappa of the DynoBench pose start/goal) is unspecified in the paper and DynoBench poses carry no speed; round 1 fixed lift 1.0 (= paper v_max). Same selection rule as round 1 over the union of rounds; never selected by time or length.",
+  "base_profile": "config/low_dof_final_v9_order2.json",
+  "cases": [
+   "unicycle_bugtrap",
+   "unicycle_wall"
+  ],
+  "algorithms": [
+   "rrt_connect"
+  ],
+  "case_overrides": {
+   "unicycle_bugtrap": {
+    "boundary": {
+     "lift_speed": 0.3,
+     "reverse_chart": false,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   },
+   "unicycle_wall": {
+    "boundary": {
+     "lift_speed": 0.3,
+     "reverse_chart": false,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   }
+  }
+ },
+ {
+  "name": "R2_heading_fwd_lift0.6",
+  "declared": "2026-11-25, round 2, declared after round 1 (U1-U6) partial results and before running these. Reason: the boundary lift (speed and chart kappa of the DynoBench pose start/goal) is unspecified in the paper and DynoBench poses carry no speed; round 1 fixed lift 1.0 (= paper v_max). Same selection rule as round 1 over the union of rounds; never selected by time or length.",
+  "base_profile": "config/low_dof_final_v9_order2.json",
+  "cases": [
+   "unicycle_bugtrap",
+   "unicycle_wall"
+  ],
+  "algorithms": [
+   "rrt_connect"
+  ],
+  "case_overrides": {
+   "unicycle_bugtrap": {
+    "boundary": {
+     "lift_speed": 0.6,
+     "reverse_chart": false,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   },
+   "unicycle_wall": {
+    "boundary": {
+     "lift_speed": 0.6,
+     "reverse_chart": false,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   }
+  }
+ },
+ {
+  "name": "R2_heading_rev_lift0.3",
+  "declared": "2026-11-25, round 2, declared after round 1 (U1-U6) partial results and before running these. Reason: the boundary lift (speed and chart kappa of the DynoBench pose start/goal) is unspecified in the paper and DynoBench poses carry no speed; round 1 fixed lift 1.0 (= paper v_max). Same selection rule as round 1 over the union of rounds; never selected by time or length.",
+  "base_profile": "config/low_dof_final_v9_order2.json",
+  "cases": [
+   "unicycle_bugtrap",
+   "unicycle_wall"
+  ],
+  "algorithms": [
+   "rrt_connect"
+  ],
+  "case_overrides": {
+   "unicycle_bugtrap": {
+    "boundary": {
+     "lift_speed": 0.3,
+     "reverse_chart": true,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   },
+   "unicycle_wall": {
+    "boundary": {
+     "lift_speed": 0.3,
+     "reverse_chart": true,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   }
+  }
+ },
+ {
+  "name": "R2_heading_rev_lift0.6",
+  "declared": "2026-11-25, round 2, declared after round 1 (U1-U6) partial results and before running these. Reason: the boundary lift (speed and chart kappa of the DynoBench pose start/goal) is unspecified in the paper and DynoBench poses carry no speed; round 1 fixed lift 1.0 (= paper v_max). Same selection rule as round 1 over the union of rounds; never selected by time or length.",
+  "base_profile": "config/low_dof_final_v9_order2.json",
+  "cases": [
+   "unicycle_bugtrap",
+   "unicycle_wall"
+  ],
+  "algorithms": [
+   "rrt_connect"
+  ],
+  "case_overrides": {
+   "unicycle_bugtrap": {
+    "boundary": {
+     "lift_speed": 0.6,
+     "reverse_chart": true,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   },
+   "unicycle_wall": {
+    "boundary": {
+     "lift_speed": 0.6,
+     "reverse_chart": true,
+     "rest_turns": false
+    },
+    "settings": {
+     "unicycle_rest_turns": false,
+     "rest_sample_probability": 0.0,
+     "metric_mode": 2,
+     "rrt_mode": 2,
+     "extension_range": 1.5,
+     "bound1": 1.0,
+     "speed_min": 0.01
+    }
+   }
+  }
+ },
+ {
+  "name": "_selection_rule",
+  "declared": "2026-11-25 before any run. Development seeds 1001-1010, FLASK-RRTConnect, both unicycle cases. Eligible: 20/20 attempts valid on the ORIGINAL unicycle model (exact |v|<=1, |omega|<=1.5 along every edge, original boxes, DynoBench goal with heading). Choose the eligible candidate with the smallest sum over the two cases of the median number of edge checks; ties by median iterations. If no candidate is eligible: the most valid attempts, then the same work rule. Times and lengths are recorded but never used for selection. Evidence priority for any further candidate: paper > author code > library defaults.",
+  "cases": []
+ }
+]

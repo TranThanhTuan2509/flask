@@ -1,0 +1,35 @@
+{
+  "version": "v10",
+  "declared": "2026-11-25, before any measurement on the PC (i9-14900). Must not be edited after v10 results exist; a change requires a new version file and re-labelling every claim.",
+  "hardware_factor": {
+    "definition": "k_hw from benchmarks/hardware_calibration.py on the SAME machine and measurement CPU: median over the 7 Table II environments x (mean, median, p75) of local/paper VAMP geometric RRTConnect time (paper Table II 'RRTConnect time' of the baseline). Paper times are multiplied by k_hw before comparison. If k_hw is outside [0.25, 4] time claims are labelled HARDWARE_UNCALIBRATED.",
+    "file": "config/hardware_calibration_<machine>.json (laptop record: config/hardware_calibration.json, k_hw = 1.067)"
+  },
+  "time_band": {
+    "statistic": "mean and median of per-attempt total planning time (search + Alg. 4), each attempt summarised by the median of its k timing repeats; cold first repeat reported separately",
+    "reproduced_if": "1/3 <= local / (k_hw * paper) <= 3 for the mean (and for the median where the paper reports it)",
+    "faster_label": "DIFFERENT_FASTER when the ratio < 1/3: requires an explanation (protocol difference, easier problem) and is never counted as reproduced",
+    "slower_label": "DIFFERENT_SLOWER when the ratio > 3"
+  },
+  "length_band": {
+    "reproduced_if": "|local mean / paper mean - 1| <= 0.20"
+  },
+  "validity": {
+    "denominator": "all attempts (failures, timeouts and invalid returns stay in the denominator)",
+    "valid_means": "passes the independent check on the ORIGINAL model: original geometry, original state/control limits (norms where the paper writes norms), start state, goal region; Panda: dense VAMP check and URDF/NumPy check",
+    "reproduced_requires": "valid fraction >= 0.95 (Table I, Table II per environment); Wilson 95% interval reported",
+    "reduced_order_aerial": "order-2 aerial trajectories have attitude/body-rate jumps at joins; they are reported under the label REDUCED_ORDER_PROTOCOL (paper Sec. V-C1 practice) and can never support an 'original-model valid' claim. Original-model validity for aerial robots is claimed only from order-4 runs that pass the interval oracle."
+  },
+  "protocol_labels": {
+    "unicycle_faithful": "primary: flat unicycle (Example 2), curved edges, |v|<=1 and |omega|<=1.5 checked along edges",
+    "unicycle_stop_turn": "variant only: rest nodes, straight edges, in-place turns; never counted as reproducing Table I",
+    "panda_rest": "reconstructed sampler: all nodes at rest",
+    "panda_full_state": "Alg. 2 literal: flat state (q, qdot) sampled within limits",
+    "note": "Panda rest and full-state are both reported; neither is tuned toward paper numbers."
+  },
+  "measurement_control": {
+    "controlled_requires": "preflight passed on the measurement P-core with idle SMT sibling; fixed-work probe drift before/after the stage <= 10%; source hash unchanged",
+    "uncontrolled_label": "UNCONTROLLED: values reported, no reproduced/different verdict"
+  },
+  "uncertainty": "cluster bootstrap over (environment, problem) for Table II and over seeds for Table I; 95% percentile intervals on ratios"
+}

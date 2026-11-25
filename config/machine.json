@@ -1,0 +1,7 @@
+{
+  "machine": "PC Intel Core i9-14900 (8 P-cores with SMT: CPUs 0-15, siblings (2k,2k+1); 16 E-cores: CPUs 16-31; AVX2, no AVX-512), Ubuntu 22.04.4",
+  "measurement_cpu": 10,
+  "measurement_cpu_sibling": 11,
+  "selection_note": "CPU 10 is a 5.8 GHz favoured P-core (cpuinfo_max_freq 5800000 on CPUs 8-11). Chosen 2026-11-25 before any PC measurement; its sibling 11 must stay idle. Not portable: recreate on every machine.",
+  "background_cpus": "16-31 (E-cores) for untimed work such as primitive generation"
+}

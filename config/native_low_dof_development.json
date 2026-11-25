@@ -1,0 +1,18 @@
+{
+  "profile": "reconstructed_native_development",
+  "fidelity": "implemented_different_conditions",
+  "published": {"rho": 1.0},
+  "geometry": {"radius": 0.1, "sphere_spacing": 0.15},
+  "boundary": {"lift_speed": 0.3, "reverse_chart": false},
+  "settings": {"budget_s": 1.0, "max_iterations": 100000, "max_nodes": 100000},
+  "case_overrides": {},
+  "unresolved": [
+    "Exact author scene and configuration revisions are unavailable",
+    "Robot sphere radius and obstacle sphere cover are reconstructed",
+    "Nonzero unicycle boundary speed and direction chart are reconstructed",
+    "Aerial boundary thrust and flat derivative values are reconstructed",
+    "Order-four aerial formulation checks physical attitude/body-rate continuity; author benchmark derivative order is undisclosed",
+    "Sampling bounds, search metric, radii, propagation durations, range, and native stopping budget are reconstructed",
+    "This profile is a diagnostic starting point, not a frozen final reproduction setting"
+  ]
+}

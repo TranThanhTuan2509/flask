@@ -1,0 +1,33 @@
+{
+  "profile": "orig_sst_star_measurement_v2",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "geometry": {
+    "radius": 0.1,
+    "sphere_spacing": 0.15,
+    "shell_only": true
+  },
+  "settings": {
+    "budget_s": 180.0,
+    "stop_first": false,
+    "goal_bias": 0.1,
+    "selection_radius": 1.0,
+    "pruning_radius": 0.1,
+    "shrink": 0.8,
+    "phase_iterations": 10000
+  },
+  "note": "Unexecuted ten-seed supplementary reconstruction profile. It does not run the original Dynoplan/OMPL baseline and does not fulfill the agreed thirty-seed baseline campaign.",
+  "implementation_origin": "first_party_reconstruction",
+  "upstream_baseline": false,
+  "measurement_class": "supplementary_diagnostic_not_final_thirty_seed_baseline"
+}

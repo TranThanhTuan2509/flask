@@ -1,0 +1,20 @@
+{
+  "profile": "paper_case_reconstruction_measurement_v1",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": true,
+  "published": {"rho": 1.0},
+  "geometry": {"radius": 0.1, "sphere_spacing": 0.15},
+  "boundary": {"lift_speed": 0.3, "reverse_chart": false},
+  "settings": {"budget_s": 10.0, "max_iterations": 1000000000, "max_nodes": 1000000},
+  "case_overrides": {},
+  "unresolved": [
+    "Candidate matching DynoBench scenes; exact author scene revisions unconfirmed",
+    "Sphere radius and conservative sphere-cover spacing reconstructed",
+    "Unicycle boundary speed and direction chart reconstructed",
+    "Aerial boundary thrust derivatives reconstructed; native order four checks attitude and body-rate continuity",
+    "Sampling bounds, metric, steering range, propagation interval and SST-star radii reconstructed",
+    "Ten-second FLASK first-solution timeout and resource caps are reconstruction choices; Table I specifies 180 seconds for anytime baselines only",
+    "Failed attempts remain in success statistics; successful timings are explicitly success-conditioned",
+    "This is a frozen measurement of the current reconstruction, not a declaration of reproduction acceptance"
+  ]
+}

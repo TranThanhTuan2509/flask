@@ -1,0 +1,41 @@
+[
+ {"name": "U1_author_fwd",
+  "declared": "2026-11-25 before any run. Author-code protocol (KavrakiLab/ompl-flask flat: FlatStateSpace metric = metric_mode 1, og::RRTConnect growTree = rrt_mode 1, range 0.2 x extent), box velocity proposals |v_i| <= 1, forward chart.",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": false, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.0}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": false, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.0}}}},
+ {"name": "U2_author_rev",
+  "declared": "as U1 with the backward chart (kappa = 1, Eq. 10).",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.0}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.0}}}},
+ {"name": "U3_author_annulus_fwd",
+  "declared": "as U1, velocity proposals in the annulus 0.1 <= |v| <= 1 so that theta = atan2(ydot) is defined on every sample (Example 2 chart validity).",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": false, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.1}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": false, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.1}}}},
+ {"name": "U4_author_annulus_rev",
+  "declared": "as U3 with the backward chart.",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.1}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 1, "rrt_mode": 1, "range_fraction": 0.2, "bound1": 1.0, "speed_min": 0.1}}}},
+ {"name": "U5_v7strict_rev",
+  "declared": "reference: v7 strict protocol (velocity-weighted metric, VAMP-style range clipping 1.5 m, disk proposals, backward chart) as recorded in the v7 ablation.",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 0, "rrt_mode": 2, "extension_range": 1.5, "bound1": 1.0, "speed_min": 0.01}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 0, "rrt_mode": 2, "extension_range": 1.5, "bound1": 1.0, "speed_min": 0.01}}}},
+ {"name": "U6_heading_metric_rev",
+  "declared": "as U5 with the position/velocity/heading metric (metric_mode 2) that removes the heading collapse at low speed (docs/experiment_diagnosis.md).",
+  "base_profile": "config/low_dof_final_v9_order2.json", "cases": ["unicycle_bugtrap", "unicycle_wall"], "algorithms": ["rrt_connect"],
+  "case_overrides": {
+   "unicycle_bugtrap": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 2, "rrt_mode": 2, "extension_range": 1.5, "bound1": 1.0, "speed_min": 0.01}},
+   "unicycle_wall": {"boundary": {"lift_speed": 1.0, "reverse_chart": true, "rest_turns": false}, "settings": {"unicycle_rest_turns": false, "rest_sample_probability": 0.0, "metric_mode": 2, "rrt_mode": 2, "extension_range": 1.5, "bound1": 1.0, "speed_min": 0.01}}}},
+ {"name": "_selection_rule",
+  "declared": "2026-11-25 before any run. Development seeds 1001-1010, FLASK-RRTConnect, both unicycle cases. Eligible: 20/20 attempts valid on the ORIGINAL unicycle model (exact |v|<=1, |omega|<=1.5 along every edge, original boxes, DynoBench goal with heading). Choose the eligible candidate with the smallest sum over the two cases of the median number of edge checks; ties by median iterations. If no candidate is eligible: the most valid attempts, then the same work rule. Times and lengths are recorded but never used for selection. Evidence priority for any further candidate: paper > author code > library defaults.",
+  "cases": []}
+]

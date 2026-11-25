@@ -1,0 +1,220 @@
+{
+  "profile": "final_v7_order4",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": true,
+  "published": {
+    "rho": 1.0,
+    "unicycle_limits": {
+      "v": 1.0,
+      "omega": 1.5
+    },
+    "quad3d": {
+      "v": 4.0,
+      "omega": 8.0,
+      "thrust": "1.5 m g",
+      "torque": 2.0
+    }
+  },
+  "geometry": {
+    "radius": 0.1,
+    "sphere_spacing": 0.15,
+    "shell_only": false
+  },
+  "boundary": {
+    "lift_speed": 0.3,
+    "reverse_chart": false
+  },
+  "settings": {
+    "algorithm": "rrt_connect",
+    "rho": 1.0,
+    "extension_range": 0.35,
+    "budget_s": 10.0,
+    "max_iterations": 1000000000,
+    "max_nodes": 1000000,
+    "goal_bias": 0.1,
+    "validation_dt": 0.01,
+    "validation_spacing": 0.015,
+    "derivative_bound": 1.0,
+    "derivative_metric_weight": 0.2,
+    "propagation_min": 0.0,
+    "propagation_max": 0.3,
+    "control_bound": 2.0,
+    "selection_radius": 1.0,
+    "witness_radius": 0.15,
+    "shrink_factor": 0.8,
+    "phase_iterations": 10000,
+    "goal_tolerance": 0.1,
+    "stop_first": true,
+    "trace": false,
+    "validation_backend": "simd",
+    "metric_mode": 0,
+    "rrt_mode": 2,
+    "goal_mode": 1,
+    "range_fraction": 0.2,
+    "bound1": 0.0,
+    "bound2": 0.0,
+    "bound3": 0.0,
+    "speed_min": 0.0,
+    "rest_sample_probability": 0.0,
+    "control_bounds": [],
+    "indexed_search": true,
+    "early_constraint_screening": true,
+    "spatial_only_validation": true,
+    "phase_restart": true
+  },
+  "case_overrides": {
+    "quad2d_bugtrap": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.010756841964886334
+      }
+    },
+    "quad2d_hole": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.010756841964886334
+      }
+    },
+    "quad3d_block": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.015212471795046305
+      }
+    },
+    "quad3d_window": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.015212471795046305
+      }
+    },
+    "unicycle_bugtrap": {
+      "boundary": {
+        "lift_speed": 1.0,
+        "reverse_chart": true
+      },
+      "settings": {
+        "extension_range": 6.0,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1,
+        "metric_mode": 2,
+        "speed_min": 0.01
+      }
+    },
+    "unicycle_wall": {
+      "boundary": {
+        "lift_speed": 1.0,
+        "reverse_chart": true
+      },
+      "settings": {
+        "extension_range": 6.0,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1,
+        "metric_mode": 2,
+        "speed_min": 0.01
+      }
+    }
+  },
+  "selection_evidence": "results/diagnostics/ablation_low_dof_v7 (dev seeds 1001-1010): unicycle disk sampling + reverse chart + lift 1.0 was the only configuration solving 10/10 on both unicycle cases; spatial-only edge sampling leaves search work unchanged and is the authors' validSegmentCount rule; keeping the SST* graph across phases did not help and is not adopted.",
+  "unresolved": [
+    "VAMP-style extension (target position clipped to range, sampled derivatives kept); ranges 1.5 m (aerial) and 6 m (unicycle, i.e. no clipping) reconstructed",
+    "Flat velocity sampling bound 0.5 m/s (aerial), 1.0 m/s (unicycle) reconstructed",
+    "Unicycle reverse chart (kappa=1 of Eq. 10) and boundary lift speed 1.0 m/s reconstructed; forward chart fails Bugtrap",
+    "Unicycle yaw-rate limit 1.5 rad/s enforced exactly; without it the paper's unicycle times are matched but trajectories violate the stated limit (diagnostic round 7)",
+    "Goal regions of propagation planners: DynoBench distance weights and goal_epsilon (sst_v0.yaml); order-two aerial goal uses position/velocity terms only",
+    "SST* first phase 10000 iterations; unicycle selection/pruning radii 0.5/0.1 reconstructed",
+    "Ten-second FLASK budget; failures retained",
+    "Corrective campaign: full order-four aerial original-state validation; all variants retain physical continuity and original boundaries.",
+    "Filled conservative sphere cover is used; no surface-only occupancy assumption.",
+    "This is a corrected reconstruction profile, not recovered author experiment settings.",
+    "Reconstructed aerial rest/uniform sampling mixture with probability 0.5; author sampler unavailable.",
+    "Reconstructed unicycle heading-aware metric, scaled by published maximum-speed/maximum-yaw-rate ratio; author metric unavailable.",
+    "Physical limits, original boundaries and filled sphere-cover geometry are unchanged from v3.",
+    "Per-output control bounds remain an optional diagnostic interface; v4 retains scalar pseudo-control bound 2 for controlled attribution.",
+    "Indexed candidate queries refine the original double-precision metric and insertion-order ties; author compound-norm metric retains its scan fallback.",
+    "Aerial pruning radius reconstructed as one quarter of RMS propagation displacement; author radius, control bounds and propagation horizon are unconfirmed. This corrects a zero-growth initial phase in Quad2D, not the remaining physical-model or performance gaps.",
+    "v7: aerial order 4 = full model",
+    "v7: flat velocity of the unicycle sampled in the disk |v|<=1 (paper speed limit) with a 0.01 m/s hole at the chart singularity",
+    "v7: spatial-only edge sampling; between-sample dynamic limits established post hoc by the interval validator"
+  ],
+  "frozen": true,
+  "author_settings_confirmed": false,
+  "derived_parameter_evidence": {
+    "quad2d_bugtrap": {
+      "parameter": "witness_radius",
+      "value": 0.010756841964886334,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.13081785524155332,
+      "rms_initial_step_metric": 0.043027367859545335,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad2d_hole": {
+      "parameter": "witness_radius",
+      "value": 0.010756841964886334,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.13081785524155332,
+      "rms_initial_step_metric": 0.043027367859545335,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad3d_block": {
+      "parameter": "witness_radius",
+      "value": 0.015212471795046305,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.185004385083165,
+      "rms_initial_step_metric": 0.06084988718018522,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad3d_window": {
+      "parameter": "witness_radius",
+      "value": 0.015212471795046305,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.185004385083165,
+      "rms_initial_step_metric": 0.06084988718018522,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    }
+  },
+  "seed_set": "low_dof_final_v7"
+}

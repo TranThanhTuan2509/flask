@@ -1,0 +1,33 @@
+{
+  "profile": "table_ii_panda_reconstruction_measurement_v1",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": true,
+  "robot": "panda",
+  "methods": ["flask_rrt_connect", "vamp_toppra"],
+  "settings": {
+    "velocity_sample_scale": 1.0,
+    "neighbor_mode": "A",
+    "prefix_steering": true,
+    "max_ns": 1000000000,
+    "max_iterations": 10000000,
+    "max_samples": 1000000
+  },
+  "planning_validation_profile": "published_resolution",
+  "additional_validation_profile": "strict_development",
+  "independent_urdf_samples_per_trajectory": 129,
+  "baseline_halton_stride": 2048,
+  "baseline_parameterization": "chord_length",
+  "unresolved": [
+    "Source contains 700 pairs; source-invalid table_pick/40 is retained in the inventory and excluded from planning, leaving 699 eligible pairs",
+    "Author dataset revision and exact limits, sampling, metric, stopping rule and interpolation are not available",
+    "One-second FLASK timeout and ten-million-iteration cap are reconstructed measurement settings",
+    "VAMP geometric planner uses deterministic Halton subsequences offset by (seed-1)*2048, not stochastic RNG seeds",
+    "Baseline VAMP has an iteration/sample budget and no native wall-clock timeout; record actual wall time",
+    "Native FLASK uses rounded square root; the unmodified upstream VAMP baseline retains its precision policy",
+    "Original VAMP sphere/capsule/box geometry is used; all-sphere author scene correspondence is unconfirmed",
+    "TOPP-RA retimes a cubic waypoint spline; interpolation choice is reconstructed",
+    "Additional dense and strict collision checks are sampled checks, not continuous certificates",
+    "Independent URDF checks cover 129 distributed configurations and environment distances; self-collision exclusions remain supplied by VAMP",
+    "No PyBullet physics or showcase execution is performed by this planning benchmark"
+  ]
+}

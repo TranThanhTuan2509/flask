@@ -1,0 +1,116 @@
+{
+  "profile": "original_model_corrective_measurement_v3",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": true,
+  "published": {
+    "rho": 1.0,
+    "unicycle_limits": {
+      "v": 1.0,
+      "omega": 1.5
+    },
+    "quad3d": {
+      "v": 4.0,
+      "omega": 8.0,
+      "thrust": "1.5 m g",
+      "torque": 2.0
+    }
+  },
+  "geometry": {
+    "radius": 0.1,
+    "sphere_spacing": 0.15,
+    "shell_only": false
+  },
+  "boundary": {
+    "lift_speed": 0.3,
+    "reverse_chart": false
+  },
+  "settings": {
+    "budget_s": 10.0,
+    "max_iterations": 1000000000,
+    "max_nodes": 1000000,
+    "rrt_mode": 2,
+    "goal_mode": 1,
+    "phase_iterations": 10000
+  },
+  "case_overrides": {
+    "quad2d_bugtrap": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5
+      }
+    },
+    "quad2d_hole": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5
+      }
+    },
+    "quad3d_block": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7
+      }
+    },
+    "quad3d_window": {
+      "model": {
+        "order": 4
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7
+      }
+    },
+    "unicycle_bugtrap": {
+      "boundary": {
+        "lift_speed": 1.0,
+        "reverse_chart": true
+      },
+      "settings": {
+        "extension_range": 6.0,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1
+      }
+    },
+    "unicycle_wall": {
+      "boundary": {
+        "lift_speed": 1.0,
+        "reverse_chart": true
+      },
+      "settings": {
+        "extension_range": 6.0,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1
+      }
+    }
+  },
+  "selection_evidence": "results/diagnostics/ablation_low_dof_v2 rounds 1-12 (development seeds 1001-1005)",
+  "unresolved": [
+    "VAMP-style extension (target position clipped to range, sampled derivatives kept); ranges 1.5 m (aerial) and 6 m (unicycle, i.e. no clipping) reconstructed",
+    "Flat velocity sampling bound 0.5 m/s (aerial), 1.0 m/s (unicycle) reconstructed",
+    "Unicycle reverse chart (kappa=1 of Eq. 10) and boundary lift speed 1.0 m/s reconstructed; forward chart fails Bugtrap",
+    "Unicycle yaw-rate limit 1.5 rad/s enforced exactly; without it the paper's unicycle times are matched but trajectories violate the stated limit (diagnostic round 7)",
+    "Goal regions of propagation planners: DynoBench distance weights and goal_epsilon (sst_v0.yaml); order-two aerial goal uses position/velocity terms only",
+    "SST* first phase 10000 iterations; unicycle selection/pruning radii 0.5/0.1 reconstructed",
+    "Ten-second FLASK budget; failures retained",
+    "Corrective campaign: full order-four aerial original-state validation; all variants retain physical continuity and original boundaries.",
+    "Filled conservative sphere cover is used; no surface-only occupancy assumption.",
+    "This is a corrected reconstruction profile, not recovered author experiment settings."
+  ]
+}
