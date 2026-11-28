@@ -12,7 +12,8 @@ scripts/fetch_third_party.sh ${1:-}
 python3.10 -m venv .venv
 .venv/bin/pip install -q --upgrade pip
 .venv/bin/pip install -q -r requirements.txt
-.venv/bin/pip install -q --no-build-isolation ./third_party/vamp
+# VAMP's cmake/Python.cmake writes its stubs elsewhere when GITHUB_ACTIONS is set and then cannot install them
+env -u GITHUB_ACTIONS .venv/bin/pip install -q --no-build-isolation ./third_party/vamp
 # MotionBenchMaker problems exactly as used for every reported result (sha256 in data/mbm/SHA256SUMS);
 # regenerating them from VAMP's problems.tar.bz2 differs by ~1e-16 rad in a few box orientations.
 (cd data/mbm && sha256sum -c --quiet SHA256SUMS)
