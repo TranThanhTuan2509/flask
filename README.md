@@ -1,4 +1,4 @@
-# FLASK: an independent reproduction
+# 2026 TRO - Ultrafast Sampling-based Kinodynamic Planning via Differential Flatness (reproduced ver)
 
 <p align="left">
 <img src="https://img.shields.io/badge/license-BSD--3--Clause-blue.svg">
@@ -28,7 +28,7 @@ and multi-robot showcases.
   manipulator planning.
 - **Paper experiments:** Tables I and II and the UR5 tracking experiment, on held-out seeds, with criteria fixed
   before measuring.
-- **Showcases:** six MuJoCo scenes, including pick-and-place and two multi-robot teams.
+- **Demos:** six MuJoCo scenes, including pick-and-place and two multi-robot teams.
 
 **v2.** Read literally, the paper left every unicycle row 3–200× slower than published. v2 fills the unspecified
 parts with options chosen on development seeds by rules written before the runs. On held-out seeds, 7 of 8 unicycle
