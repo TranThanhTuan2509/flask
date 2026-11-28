@@ -1,0 +1,43 @@
+{
+  "robot": "Fetch",
+  "task": "pick a carton on table A, place it on table B",
+  "seed": 7,
+  "steps": 10,
+  "placed": 1,
+  "place_error_m": 0.007566769615348795,
+  "upright": 1.0,
+  "contact_pairs": [],
+  "contacts": 0,
+  "base_plan_ms": [
+    3.621389,
+    1.671481
+  ],
+  "base_post_ms": [
+    0.287232,
+    0.719439
+  ],
+  "arm_plan_us": [
+    68.546,
+    15.506,
+    27.686,
+    458.801,
+    1642.48,
+    62.322,
+    12.848,
+    25.972
+  ],
+  "arm_shortcut_us": [
+    15.68,
+    0.428,
+    0.396,
+    139.691,
+    407.351,
+    3.231,
+    0.215,
+    0.233
+  ],
+  "total_ms": 9.180926999999999,
+  "max_base_error_m": 0.03328055782543484,
+  "duration_s": 90.50999999997046,
+  "planner": "FLASK: base BVP-SST* (unicycle, v2 profile), arm RRTConnect + Alg. 4 (native, VAMP Fetch, carton attached)"
+}

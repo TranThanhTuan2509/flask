@@ -1,0 +1,21 @@
+{
+  "robot": "Skydio X2 (paper quadrotor model)",
+  "seed": 5,
+  "legs": 3,
+  "contact_steps": 0,
+  "max_error_m": 0.11584419585299942,
+  "mean_error_m": 0.03024333555656992,
+  "plan_ms": [
+    72.113461,
+    0.070513,
+    44.927263
+  ],
+  "post_ms": [
+    8.195729,
+    0.0,
+    10.325783
+  ],
+  "max_estimate_error_m": 0.009572935213816554,
+  "sensing": "motion capture 100 Hz / 2 mm / 0.3 deg / 10 ms + gyro (noise, bias); alpha-beta velocity filter",
+  "planner": "FLASK RRTConnect + Alg. 4, Quad3D order 4; interval-certified"
+}

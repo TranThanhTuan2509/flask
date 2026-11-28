@@ -1,0 +1,44 @@
+{
+  "robots": "3 x Skydio X2 (paper quadrotor model, r = 4)",
+  "task": "cross the hall through two windows, head-on traffic",
+  "seed": 9,
+  "priority_order": [
+    "red",
+    "green",
+    "blue"
+  ],
+  "priority_attempts": [
+    {
+      "order": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "failed": null
+    }
+  ],
+  "plan_ms": {
+    "red": 303.686175,
+    "green": 111.970169,
+    "blue": 44.163577
+  },
+  "post_ms": {
+    "red": 2.203956,
+    "green": 3.4349,
+    "blue": 0.97778
+  },
+  "total_ms": 466.436557,
+  "planned_min_surface_gap_m": 0.18785528458718925,
+  "planned_min_gap_where": [
+    0,
+    1,
+    6.037
+  ],
+  "flown_min_centre_distance_m": 1.0990417651832722,
+  "contact_steps": 0,
+  "max_error_m": 0.08259396570298831,
+  "mean_error_m": 0.030211615745097904,
+  "interval_certified": true,
+  "planner": "FLASK-RRT forward tree (v2 profile, Quad3D r = 4), prioritized space-time planning with exact polynomial clearance to higher-priority drones and lower-priority start positions",
+  "sensing": "per drone: motion capture 100 Hz / 2 mm / 0.3 deg / 10 ms + gyro; alpha-beta filter"
+}

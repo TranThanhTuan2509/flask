@@ -1,0 +1,296 @@
+{
+  "g1": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 1.184724
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 0.8715539999999999
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 1.4829959999999998
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 1.106115
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 1.179583
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 1.0985850000000001
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 10.599514
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 1.459169
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 0.8933899999999999
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 1.8507710000000002
+      }
+    },
+    "median_total_ms": 1.1821535,
+    "primary": 1,
+    "backup": 5,
+    "success": "10/10"
+  },
+  "drone": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 178.960815
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 235.96687500000002
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 62.183582
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 104.676623
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 117.11123700000002
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 57.141816
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 184.52457099999998
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 55.578618
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 60.135386
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 34.123977
+      }
+    },
+    "median_total_ms": 83.4301025,
+    "primary": 3,
+    "backup": 4,
+    "success": "10/10"
+  },
+  "ur5": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 10.170172999999998
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 15.563903000000002
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 12.422367
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 16.581152000000003
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 11.178657000000003
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 12.058771
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 13.901566
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 15.545879
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 12.716682
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 12.363279
+      }
+    },
+    "median_total_ms": 12.5695245,
+    "primary": 3,
+    "backup": 9,
+    "success": "10/10"
+  },
+  "fetch": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 6.539176000000001
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 22.007582000000003
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 19.514564
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 8.975799
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 11.659687000000002
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 7.0593319999999995
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 9.180926999999999
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 13.664677
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 11.408707
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 29.385135000000002
+      }
+    },
+    "median_total_ms": 11.534197,
+    "primary": 5,
+    "backup": 9,
+    "success": "10/10"
+  },
+  "multiarm": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 71.78497700000001
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 76.30462700000001
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 67.578438
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 70.471631
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 67.07584499999999
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 66.34434399999999
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 67.18352700000001
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 64.856373
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 69.480039
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 63.890238999999994
+      }
+    },
+    "median_total_ms": 67.38098250000002,
+    "primary": 3,
+    "backup": 7,
+    "success": "10/10"
+  },
+  "multidrone": {
+    "rule": "closest total planning time to the median of contact-free, successful runs",
+    "runs": {
+      "1": {
+        "ok": true,
+        "total_ms": 346.065205
+      },
+      "2": {
+        "ok": true,
+        "total_ms": 379.505818
+      },
+      "3": {
+        "ok": true,
+        "total_ms": 98.871185
+      },
+      "4": {
+        "ok": true,
+        "total_ms": 192.816656
+      },
+      "5": {
+        "ok": true,
+        "total_ms": 304.54459899999995
+      },
+      "6": {
+        "ok": true,
+        "total_ms": 334.81750500000004
+      },
+      "7": {
+        "ok": true,
+        "total_ms": 741.25503
+      },
+      "8": {
+        "ok": true,
+        "total_ms": 259.303739
+      },
+      "9": {
+        "ok": true,
+        "total_ms": 466.436557
+      },
+      "10": {
+        "ok": true,
+        "total_ms": 83.731801
+      }
+    },
+    "median_total_ms": 319.681052,
+    "primary": 6,
+    "backup": 5,
+    "success": "10/10"
+  }
+}

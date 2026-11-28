@@ -1,0 +1,28 @@
+{
+  "robot": "Unitree G1",
+  "seed": 6,
+  "legs": 5,
+  "contact_steps": 0,
+  "min_pelvis_height": 0.7578933687863163,
+  "max_track_error_m": 0.15581867904197602,
+  "mean_track_error_m": 0.03541033257334524,
+  "fell": false,
+  "max_estimate_error_m": 0.06822649333137493,
+  "sensing": "IMU gyro (noise+bias), AHRS attitude, SLAM-like pose 30 Hz / 2 cm / 1 deg / 40 ms, 17-bit encoders",
+  "plan_us": [
+    358.955,
+    52.512,
+    262.26,
+    293.506,
+    131.352
+  ],
+  "shortcut_us": [
+    20.015,
+    4.102,
+    17.111,
+    15.244,
+    26.02
+  ],
+  "planner": "FLASK-RRTConnect + Alg. 4, fully actuated point base (r = 2, native)",
+  "locomotion": "Unitree unitree_rl_gym G1 policy (vx, vy, yaw rate commands)"
+}
