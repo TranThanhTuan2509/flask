@@ -28,6 +28,7 @@ from simulation.robot_assets import load_robot
 
 ROOT = Path(__file__).resolve().parents[2]
 BOUNDS = ([0., 0., 0.], [16., 8., 5.])
+KP_POS, KD_POS = 4.0, 3.0   # position loop of the geometric controller (showcase_1: 4, 3)
 RADIUS = 0.47          # m: Skydio X2 collision geometry reaches 0.372 m (rotor discs) + 10 cm tracking margin
 WALL, FRAME, PILLAR = (0.70, 0.82, 0.92, 0.22), (0.12, 0.62, 0.86, 1), (0.42, 0.44, 0.48, 1)
 # partitions: (x, window centre y, window centre z, window size)
@@ -94,12 +95,18 @@ def build_model():
     return spec.compile()
 
 
-def settings():
-    p = json.loads((ROOT / 'config/low_dof_v10_order4.json').read_text())
-    o = p['case_overrides']['quad3d_block']['settings']
-    # showcase: tighter goal region (0.25 m instead of Dynoplan's 0.7 m); RRTConnect as recommended in the README;
-    # rho = 100 (time weight of the LQMT cost, Eq. 20) for brisker flight than the benchmark's rho = 1
-    return PlannerSettings(**(p['settings'] | o | dict(algorithm='rrt_connect', budget_s=10.0, goal_tolerance=0.25, rho=100.0)))
+def settings(profile='v2'):
+    """showcase_2: the v2 profile (v2d) of RRTConnect for the full quadrotor model (L7 shortcut rounds), rho = 10 (time
+    weight of the LQMT cost, Eq. 20): smoother than showcase_1's rho = 100, max tracking error 0.08-0.12 m instead of
+    0.12-0.31 m on seeds 1-10. 'v1': the showcase_1 settings (config/low_dof_v10_order4.json, rho = 100). Goal region
+    0.25 m in both."""
+    if profile == 'v1':
+        p = json.loads((ROOT / 'config/low_dof_v10_order4.json').read_text())
+        o = p['case_overrides']['quad3d_block']['settings']
+        return PlannerSettings(**(p['settings'] | o | dict(algorithm='rrt_connect', budget_s=10.0, goal_tolerance=0.25, rho=100.0)))
+    from flask_repro.profiles import load_profile
+    return dataclasses.replace(load_profile('quad3d_block', 'rrt_connect').settings, budget_s=10.0, goal_tolerance=0.25,
+                               rho=10.0, stop_first=True)
 
 
 def hover(p, yaw=0.):
@@ -147,7 +154,7 @@ def run(seed, output):
             jet = traj.jet([tk], 4)[0]; des = quad.recover(jet[None])
             target = des['position'][0]; vel = des['velocity'][0]
             p, v, R, omega = est.update(data.time)
-            acc = jet[2, :3] + 4 * (target - p) + 3 * (vel - v) + [0, 0, 9.81]
+            acc = jet[2, :3] + KP_POS * (target - p) + KD_POS * (vel - v) + [0, 0, 9.81]
             Rd = desired_attitude(acc, jet[0, 3])
             sk = Rd.T @ R - R.T @ Rd; att = np.array([sk[2, 1], sk[0, 2], sk[1, 0]]) / 2
             tau = quadrotor_tracking_torque(R, des['rotation'][0], omega, des['omega'][0], des['omega_dot'][0], J, att)

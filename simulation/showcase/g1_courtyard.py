@@ -41,7 +41,9 @@ OBSTACLES = [
 ]
 WAYPOINTS = [(0.9, 0.9, 0.0), (3.4, 6.05, 0.0), (7.0, 6.3, -1.3), (8.6, 1.0, 0.3), (12.2, 2.2, 1.4), (13.0, 8.0, 1.57)]
 SLEW = np.array([0.05, 0.05, 0.08])
-SLOW = 1.4   # uniform time scaling of each FLASK plan (same path; v/1.4, a/1.96) to leave command headroom   # max command change per 20 ms policy step
+# uniform time scaling of each FLASK plan (same path; v/2, a/4) to leave command headroom. showcase_2: 2.0
+# (showcase_1 used 1.4, with tracking errors up to 0.31-0.60 m around sharp turns; 2.0 keeps them below 0.16 m)
+SLOW = 2.0
 V_BASE, A_BASE = 0.7, 1.0           # base limits for the point model (m/s, m/s^2)
 V_MAX, W_MAX = 0.6, 0.9            # executed limits, inside the range the G1 policy tracks
 # FLASK plans with the paper's unicycle (|v| <= 1, |omega| <= 1.5); each plan is then uniformly time-scaled by

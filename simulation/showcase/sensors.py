@@ -7,6 +7,7 @@ noise, its own rate and latency, and estimate what they need from them:
   * pose fix (motion capture for the drone, SLAM / AMCL-like localization for G1 and Fetch)
                                                               -> position / yaw noise, update rate, latency
   * joint encoders                                            -> quantization (and velocity by finite differences)
+  * object detection (head/wrist camera, fiducial-like)       -> object position relative to the robot, with noise
 
 Ground-truth simulator state is used only to *evaluate* runs (contacts, tracking error vs. truth), never to control.
 Noise levels are typical published figures; see SENSOR_PROFILES.
@@ -23,7 +24,18 @@ SENSOR_PROFILES = dict(
     slam=dict(pos_sigma=0.02, yaw_sigma=np.radians(1.0), att_sigma=np.radians(0.5), rate=30., latency=0.040),
     imu=dict(gyro_sigma=0.005, gyro_bias=0.002, acc_sigma=0.05),
     encoder=dict(counts_per_rad=2 ** 17 / (2 * np.pi)),          # 17-bit absolute encoders
+    detection=dict(pos_sigma=0.004),                             # fiducial / RGB-D object detection at ~1 m
 )
+
+
+def detect_relative(model, data, frame_body, object_body, seed=0):
+    """Object position in a robot body frame (e.g. the Fetch base), as a camera detection would report it: the true
+    relative position plus Gaussian noise (SENSOR_PROFILES['detection']). Used once, before a grasp."""
+    rng = np.random.default_rng(seed)
+    b, o = model.body(frame_body).id, model.body(object_body).id
+    R = data.xmat[b].reshape(3, 3)
+    rel = R.T @ (data.xpos[o] - data.xpos[b])
+    return rel + rng.normal(0, SENSOR_PROFILES['detection']['pos_sigma'], 3)
 
 
 def quat_to_R(q):

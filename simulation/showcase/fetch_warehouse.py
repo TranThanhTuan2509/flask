@@ -48,7 +48,10 @@ TUCK = np.array([0.05, 1.32, 1.40, -0.20, 1.72, 0.0, 1.66, 0.0])
 REACH = [np.array([0.92, 0.22, 0.95]), np.array([0.92, -0.26, 0.95])]
 
 
-def build_model():
+def build_root(obstacles=None, items=None):
+    """MJCF tree of the scene (showcase_2 reuses it with its own obstacles and items)."""
+    obstacles = OBSTACLES if obstacles is None else obstacles
+    items = ITEMS if items is None else items
     root = urdf_root('fetch')
     w = root.find('worldbody')
     base = next(b for b in w.iter('body') if b.get('name') == 'base_link')
@@ -96,7 +99,7 @@ def build_model():
     ET.SubElement(w, 'geom', name='floor', type='plane', size='10 8 0.05', pos='6 4 0', material='wh_floor', contype='0', conaffinity='0')
     for line_y in (1.95, 6.05):                                   # painted aisle lines (visual)
         ET.SubElement(w, 'geom', type='box', size='5.5 0.03 0.001', pos=f'5.5 {line_y} 0.002', rgba='.95 .78 .15 1', contype='0', conaffinity='0')
-    for name, shape, (x, y), size, h, rgba in OBSTACLES:
+    for name, shape, (x, y), size, h, rgba in obstacles:
         attrs = dict(name=f'scene_{name}', contype='1', conaffinity='2', rgba=' '.join(map(str, rgba)))
         if shape == 'cyl':
             ET.SubElement(w, 'geom', type='cylinder', size=f'{size} {h / 2}', pos=f'{x} {y} {h / 2}', **attrs)
@@ -121,7 +124,7 @@ def build_model():
                     ET.SubElement(w, 'geom', type='box', size=f'{(a if long_x else b) / 2} {(b if long_x else a) / 2} {c / 2}',
                                   pos=f'{px} {py} {z + 0.02 + c / 2}', rgba=f'{0.72 * shade} {0.56 * shade} {0.36 * shade} 1', **vis)
                     u += a + rng.uniform(0.05, 0.2)
-    for k, ((x, y), (sx, sy, sz), rgba) in enumerate(ITEMS):
+    for k, ((x, y), (sx, sy, sz), rgba) in enumerate(items):
         ET.SubElement(w, 'geom', name=f'scene_item_{k}', type='box', size=f'{sx / 2} {sy / 2} {sz / 2}', pos=f'{x} {y} {0.74 + sz / 2}',
                       rgba=' '.join(map(str, rgba)), contype='1', conaffinity='2')
     ET.SubElement(w, 'light', name='key', directional='true', pos='4 -3 8', dir='0.25 0.45 -1', diffuse='.55 .55 .53', castshadow='true')
@@ -137,7 +140,11 @@ def build_model():
         ET.SubElement(act, 'position', name=f'p_{name}', joint=name, kp='20000' if name == 'torso_lift_joint' else '600')
     opt = root.find('option') if root.find('option') is not None else ET.SubElement(root, 'option')
     opt.set('timestep', '0.002'); opt.set('integrator', 'implicitfast')
-    return mujoco.MjModel.from_xml_string(ET.tostring(root, encoding='unicode'))
+    return root
+
+
+def build_model():
+    return mujoco.MjModel.from_xml_string(ET.tostring(build_root(), encoding='unicode'))
 
 
 def planning_world():

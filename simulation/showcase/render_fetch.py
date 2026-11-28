@@ -94,7 +94,7 @@ class FetchRenderer:
                                   detail=f'+ smoothing {post * 1000:.0f} µs' if post < 1 else f'+ smoothing {post:.1f} ms')
             v = np.linalg.norm(np.gradient(self.log['qpos'][:, :2], self.log['time'], axis=0)[i])
             if not self.compact:
-                self.hud.rows(img, [('time', f'{t:5.1f} s  ({self.SPEED:g}× speed)'), ('task', f'{step + 1}/5  {LABEL[step]}'),
+                self.hud.rows(img, [('time', f'{t:5.1f} s  ({self.SPEED:g}× speed)'), ('task', f'{step + 1}/{len(LABEL)}  {LABEL[step]}'),
                                     ('base speed', f'{v:4.2f} m/s'), ('torso lift', f'{100 * self.data.qpos[self.torso]:4.1f} cm'),
                                     ('gripper height', f'{self.data.xpos[self.grip][2]:4.2f} m'),
                                     ('base error' if p['kind'] == 'base' else 'arm error',
