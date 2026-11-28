@@ -1,0 +1,6 @@
+{"name": "hardware_calibration", "exit_code": 0, "probe_drift": 0.004957674546101742, "controlled": true}
+{"name": "table_i_v2", "exit_code": 0, "probe_drift": 0.004399673003639748, "controlled": true}
+{"name": "table_i_v1_literal", "exit_code": 0, "probe_drift": 0.049475249287127765, "controlled": true}
+{"name": "table_i_v2_repeat_rrtc", "exit_code": 0, "probe_drift": 0.03669283621859065, "controlled": true}
+{"name": "table_i_v2_order4", "exit_code": 0, "probe_drift": 0.00520551001713665, "controlled": true}
+{"name": "table_i_v2_order4_interval", "exit_code": 0, "probe_drift": 0.0433138722060733, "controlled": true}

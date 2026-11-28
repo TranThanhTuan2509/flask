@@ -1,0 +1,3 @@
+{"name": "hardware_calibration", "exit_code": 0, "probe_drift": 0.034857519869555764, "controlled": true}
+{"name": "table_i_v2b", "exit_code": 0, "probe_drift": 0.04137738038082617, "controlled": true}
+{"name": "table_i_v1_literal_v2b", "exit_code": 0, "probe_drift": 0.07215268766595972, "controlled": true}

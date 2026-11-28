@@ -1,0 +1,278 @@
+{
+  "unicycle_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 3.841227433333333,
+      "sd": 1.6071620946926435,
+      "p25": 2.7789525,
+      "p50": 3.6618265,
+      "p75": 4.617029,
+      "p95": 6.174576349999999
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 3.841227433333333,
+      "sd": 1.6071620946926435,
+      "p25": 2.7789525,
+      "p50": 3.6618265,
+      "p75": 4.617029,
+      "p95": 6.174576349999999
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 3.948288933333333,
+      "sd": 1.6048130408149923,
+      "p25": 2.89729175,
+      "p50": 3.780645,
+      "p75": 4.70509025,
+      "p95": 6.314373549999998
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 11.920746172863796,
+      "sd": 1.3100938650585672,
+      "p25": 11.169845597545951,
+      "p50": 11.65919612383235,
+      "p75": 12.088414398145433,
+      "p95": 13.877529311810168
+    }
+  },
+  "unicycle_wall/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 30,
+    "validated_success_rate": 1.0,
+    "success_rate_wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.27043083333333334,
+      "sd": 0.21217591727276425,
+      "p25": 0.1501205,
+      "p50": 0.205809,
+      "p75": 0.329264,
+      "p95": 0.6198241499999998
+    },
+    "valid_solution_planning_ms": {
+      "n": 30,
+      "mean": 0.27043083333333334,
+      "sd": 0.21217591727276425,
+      "p25": 0.1501205,
+      "p50": 0.205809,
+      "p75": 0.329264,
+      "p95": 0.6198241499999998
+    },
+    "valid_solution_total_ms": {
+      "n": 30,
+      "mean": 0.2997216666666667,
+      "sd": 0.21924753650646925,
+      "p25": 0.16870325,
+      "p50": 0.2285655,
+      "p75": 0.38047725,
+      "p95": 0.6445522999999997
+    },
+    "valid_solution_length_m": {
+      "n": 30,
+      "mean": 7.496594334398807,
+      "sd": 1.3565315603686983,
+      "p25": 6.626035844062601,
+      "p50": 7.184434000234265,
+      "p75": 7.813790556158823,
+      "p95": 10.069496936363642
+    }
+  },
+  "quad2d_bugtrap/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.20162523333333335,
+      "sd": 0.08695930940874333,
+      "p25": 0.14079925,
+      "p50": 0.18546400000000002,
+      "p75": 0.2340965,
+      "p95": 0.3809831499999999
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad2d_hole/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.12487073333333334,
+      "sd": 0.21037519629524348,
+      "p25": 0.032993999999999996,
+      "p50": 0.0456805,
+      "p75": 0.07529749999999999,
+      "p95": 0.5829688499999995
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_block/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.5013286,
+      "sd": 0.1791689747221135,
+      "p25": 0.37488225000000003,
+      "p50": 0.46238250000000003,
+      "p75": 0.587146,
+      "p95": 0.86946105
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  },
+  "quad3d_window/rrt_connect": {
+    "attempts": 30,
+    "returned_solutions": 30,
+    "validated_solutions": 0,
+    "validated_success_rate": 0.0,
+    "success_rate_wilson_95": [
+      0.0,
+      0.11351339317396876
+    ],
+    "all_attempt_planning_ms": {
+      "n": 30,
+      "mean": 0.2365118333333333,
+      "sd": 0.11518951947785393,
+      "p25": 0.16795025,
+      "p50": 0.2124585,
+      "p75": 0.28985125,
+      "p95": 0.4523268499999998
+    },
+    "valid_solution_planning_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_total_ms": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    },
+    "valid_solution_length_m": {
+      "n": 0,
+      "mean": null,
+      "sd": null,
+      "p25": null,
+      "p50": null,
+      "p75": null,
+      "p95": null
+    }
+  }
+}

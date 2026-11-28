@@ -1,0 +1,130 @@
+[
+ {
+  "case": "unicycle_wall",
+  "alg": "rrt_connect",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 0.5379942000000001,
+  "length": 6.364013590183874
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "rrt_connect",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 0.512566,
+  "length": 6.062711032106054
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "sst_bvp",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 0.1589457,
+  "length": 7.375173963728381
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "sst_bvp",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 0.33077290000000004,
+  "length": 4.42456836669975
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "sst_simd",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 72.332685,
+  "length": 8.312488382924531
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "sst_simd",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 68.3876843,
+  "length": 5.6992176899971785
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "rrt_dp",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 36.3040476,
+  "length": 8.765306882295672
+ },
+ {
+  "case": "unicycle_wall",
+  "alg": "rrt_dp",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 22.9623721,
+  "length": 7.941027624429099
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "rrt_connect",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 4.079352300000001,
+  "length": 12.368010198472408
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "rrt_connect",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 6.5015923,
+  "length": 15.299123501110694
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "sst_bvp",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 2.4009166,
+  "length": 11.862255955080126
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "sst_bvp",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 7.3948396,
+  "length": 13.233550182478897
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "sst_simd",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 116.6220428,
+  "length": 12.028895462794194
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "sst_simd",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 127.2092502,
+  "length": 13.008909871952275
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "rrt_dp",
+  "chart": "reverse",
+  "valid": 10,
+  "mean_ms": 101.23574190000001,
+  "length": 11.785319179665132
+ },
+ {
+  "case": "unicycle_bugtrap",
+  "alg": "rrt_dp",
+  "chart": "forward",
+  "valid": 10,
+  "mean_ms": 213.0341984,
+  "length": 14.334963414646921
+ }
+]

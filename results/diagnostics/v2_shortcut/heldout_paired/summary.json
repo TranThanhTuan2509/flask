@@ -1,0 +1,105 @@
+{
+ "note": "Lever L7 off (shortcut 1/1, = release v2c settings) vs on (campaign final_v2d) on the held-out seeds 8101-8130; path lengths only (deterministic), off-runs on an E-core, no timing. postprocess_share_of_time_on: postprocess_ns / (plan_ns + postprocess_ns) summed over the controlled final_v2d attempts (P-core 10).",
+ "seeds": [
+  8101,
+  8130
+ ],
+ "rows": {
+  "unicycle_bugtrap/rrt_connect": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 11.909937722280285,
+   "length_on_mean": 10.50344820014521,
+   "length_off_max": 16.399987145346167,
+   "length_on_max": 11.071992533710379,
+   "ratio_mean": 0.8878644758556398,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.11748293592634355
+  },
+  "unicycle_bugtrap/sst_bvp": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 11.717372935930648,
+   "length_on_mean": 10.605728626162195,
+   "length_off_max": 12.939479507965618,
+   "length_on_max": 11.684433693631977,
+   "ratio_mean": 0.9072293676823062,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.09746179171733028
+  },
+  "unicycle_bugtrap/sst_simd": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 11.971053689831622,
+   "length_on_mean": 10.529549961880265,
+   "length_off_max": 13.764332355293773,
+   "length_on_max": 12.404298212107905,
+   "ratio_mean": 0.8823400299853897,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.02535323593208461
+  },
+  "unicycle_bugtrap/rrt_dp": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 12.173181021375655,
+   "length_on_mean": 10.731523664968758,
+   "length_off_max": 19.10142464767997,
+   "length_on_max": 15.748511027069917,
+   "ratio_mean": 0.8845363967211954,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.029557749847926938
+  },
+  "unicycle_wall/rrt_connect": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 6.4311556452564345,
+   "length_on_mean": 3.634840678626483,
+   "length_off_max": 12.016672303717138,
+   "length_on_max": 5.632012946972857,
+   "ratio_mean": 0.6383456968140445,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.4202105196868256
+  },
+  "unicycle_wall/sst_bvp": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 5.215851212555628,
+   "length_on_mean": 3.5460147744920136,
+   "length_off_max": 9.27419872679436,
+   "length_on_max": 5.097638695634496,
+   "ratio_mean": 0.7483619377085396,
+   "shorter": 27,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.3556914852079771
+  },
+  "unicycle_wall/sst_simd": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 5.753576744196574,
+   "length_on_mean": 4.226440932878102,
+   "length_off_max": 10.257895656027397,
+   "length_on_max": 8.67336199617216,
+   "ratio_mean": 0.7696016719821881,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.02851713550886059
+  },
+  "unicycle_wall/rrt_dp": {
+   "valid_off": 30,
+   "same_search": 30,
+   "length_off_mean": 7.78178893224361,
+   "length_on_mean": 5.183432416531526,
+   "length_off_max": 15.418976602436077,
+   "length_on_max": 7.795956311546591,
+   "ratio_mean": 0.7035823187114348,
+   "shorter": 30,
+   "longer": 0,
+   "postprocess_share_of_time_on": 0.04491025422456164
+  }
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "source": "results/paper_campaigns/2026-11-25_final_v10b/table_ii_v10b_rest/attempts.jsonl (raw, local)",
+ "attempts": 6990,
+ "solved": 6990,
+ "returned_invalid": 92,
+ "all_invalid_collide_in_dense_check": true,
+ "contact_duration_ms": {
+  "median": 20.0,
+  "p90": 38.80000000000001,
+  "max": 65.0
+ },
+ "deepest_sampled_penetration_m": 0.002144480205026767,
+ "caught_by_sparse_independent_check": 37,
+ "note": "Penetration is the most negative sampled clearance of the independent environment check (sparse samples), so the true depth can be larger. Durations come from the dense 1 kHz VAMP check."
+}
