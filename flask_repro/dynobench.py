@@ -5,7 +5,10 @@ import numpy as np
 from .flat_models import Unicycle, Quad2D, Quad3D
 from .flat_planner import World
 ROOT = Path(__file__).resolve().parents[1] / 'third_party/dynobench_subset'
-CASES = {'unicycle_bugtrap': ('unicycle1_v0/bugtrap_0.yaml', Unicycle), 'unicycle_wall': ('unicycle1_v2/wall_0.yaml', Unicycle), 'quad2d_bugtrap': ('quad2d_v0/quad_bugtrap.yaml', Quad2D), 'quad2d_hole': ('quad2d_v0/fall_through.yaml', Quad2D), 'quad3d_block': ('quadrotor_v0/quad_one_obs.yaml', Quad3D), 'quad3d_window': ('quadrotor_v0/window.yaml', Quad3D)}
+CASES = {'unicycle_bugtrap': ('unicycle1_v0/bugtrap_0.yaml', Unicycle), 'unicycle_wall': ('unicycle1_v2/wall_0.yaml', Unicycle), 'quad2d_bugtrap': ('quad2d_v0/quad_bugtrap.yaml', Quad2D), 'quad2d_hole': ('quad2d_v0/fall_through.yaml', Quad2D), 'quad3d_block': ('quadrotor_v0/quad_one_obs.yaml', Quad3D), 'quad3d_window': ('quadrotor_v0/window.yaml', Quad3D),
+         # unseen maps (never used to choose a setting; flask_v2 generalization check, not in the paper)
+         'unicycle_kink': ('unicycle1_v0/kink_0.yaml', Unicycle), 'unicycle_kink_v1': ('unicycle1_v1/kink_0.yaml', Unicycle),
+         'unicycle_parallelpark': ('unicycle1_v0/parallelpark_0.yaml', Unicycle)}
 
 def load(name, radius=0.1, sphere_spacing=0.15, simd=True, lift_speed=0.1, shell_only=False, shell_keep_boxes=True):
     (path, factory) = CASES[name]

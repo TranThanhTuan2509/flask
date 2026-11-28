@@ -6,7 +6,7 @@ conversion, provenance, and independent validation are outside those timings.
 from dataclasses import dataclass, field, asdict, replace
 from typing import Protocol
 import numpy as np
-from . import _core
+from . import _core, require_native
 from .flat_bvp import FlatEdge
 from .flat_models import SingularFlatState, Unicycle, Quad2D, Quad3D
 
@@ -54,10 +54,21 @@ class PlannerSettings:
     control_bounds: tuple = ()
     indexed_search: bool = False
     early_constraint_screening: bool = True
+    exact_bounds: bool = True       # flask_v2: exact workspace-bound check on the polynomial (False: v1 sampled check)
     phase_restart: bool = True
     spatial_only_validation: bool = False
     unicycle_rest_turns: bool = False
     yaw_winding: bool = False  # v10: Quad3D yaw on S^1, cheapest winding (author FlatStateSpace::optimalEdge)
+    # flask_v2 levers (results/diagnostics/v2_mechanism): L1 cost-ranked parent among k metric-nearest nodes,
+    # L3 fixed-time fallbacks at c * T* after a dynamic-limit rejection. Defaults reproduce v1.
+    parent_candidates: int = 1
+    duration_multipliers: tuple = ()
+    shortcut_subdivisions: int = 1    # flask_v2 L7 (beyond the paper): Alg. 4 also over states inside edges
+    shortcut_rounds: int = 1          # number of Alg. 4 passes in total (1 = the paper's single pass)
+    # Prioritized space-time planning (showcases, beyond the paper): other robots' trajectories as moving
+    # spheres, from moving_pieces(); checked exactly in the forward-tree planners. Empty: no effect.
+    moving_obstacles: tuple = ()
+    moving_margin: float = 0.
 
     def native(self):
         if self.algorithm not in ALGORITHMS:
@@ -95,16 +106,38 @@ class PlannerSettings:
         bounds=np.asarray(self.control_bounds,float)
         if bounds.ndim!=1 or np.any(~np.isfinite(bounds)) or np.any(bounds<=0):
             raise ValueError('control_bounds must be a finite positive per-output vector')
+        if isinstance(self.parent_candidates,bool) or not isinstance(self.parent_candidates,(int,np.integer)) or self.parent_candidates<1:
+            raise ValueError('parent_candidates must be a positive integer')
+        if any(not np.isfinite(c) or c<=1 for c in self.duration_multipliers):
+            raise ValueError('duration_multipliers must be finite and greater than one')
+        for name in ('shortcut_subdivisions','shortcut_rounds'):
+            value=getattr(self,name)
+            if isinstance(value,bool) or not isinstance(value,(int,np.integer)) or value<1:
+                raise ValueError(f'{name} must be a positive integer')
+        if not np.isfinite(self.moving_margin) or self.moving_margin<0:
+            raise ValueError('moving_margin must be finite and nonnegative')
+        if self.moving_obstacles and self.algorithm=='rrt_connect':
+            raise ValueError('moving_obstacles need a forward-tree planner (rrt_forward, sst_bvp, sst_simd, rrt_dp)')
+        pieces=[]
+        for m in self.moving_obstacles:
+            piece=_core.MovingPiece();piece.t0=float(m['t0']);piece.T=float(m['T']);piece.radius=float(m['radius'])
+            c=[list(map(float,row)) for row in m['c']]
+            if not (np.isfinite(piece.t0) and piece.T>0 and piece.radius>=0 and len(c)==3 and all(len(r)>0 for r in c)
+                    and np.isfinite(np.concatenate(c)).all()):
+                raise ValueError('invalid moving obstacle piece')
+            piece.c=c;pieces.append(piece)
         c=_core.LowDOFSettings()
+        c.moving_obstacles=pieces
         aliases=dict(extension_range='range',validation_spacing='spacing',shrink_factor='shrink')
         for name,value in asdict(self).items():
-            if name in ['algorithm','budget_s']:continue
+            if name in ['algorithm','budget_s','moving_obstacles']:continue
             if name=='validation_backend':c.scalar_validation=value=='scalar';continue
             setattr(c,aliases.get(name,name),value)
         c.budget_ns=int(self.budget_s*1e9)
         return c
 
-ALGORITHMS={'rrt_connect':0,'sst_bvp':1,'sst_simd':2,'rrt_dp':3}
+ALGORITHMS={'rrt_connect':0,'sst_bvp':1,'sst_simd':2,'rrt_dp':3,
+            'rrt_forward':4}   # showcase (beyond the paper's Table I variants): single forward tree, BVP extension + goal connection
 
 @dataclass
 class Trajectory:
@@ -165,6 +198,7 @@ class RunRecord:
 
 
 def plan(model: RobotModel, world, start, goal, settings=None, seed=0):
+    require_native()
     cfg=settings or PlannerSettings()
     robot='unicycle' if isinstance(model,Unicycle) else 'quad2d' if isinstance(model,Quad2D) else 'quad3d' if isinstance(model,Quad3D) else None
     if robot is None:raise ValueError('Use the manipulator native interface for joint-space models')
@@ -190,6 +224,19 @@ def plan(model: RobotModel, world, start, goal, settings=None, seed=0):
     if isinstance(model,Quad3D) and (model.mass!=1. or model.gravity!=9.81 or not np.array_equal(np.asarray(model.inertia),np.diag([.1,.1,.2]))):
         raise ValueError('Native Quad3D recovery currently requires the published mass, diagonal inertia, and gravity; use the numerical oracle for other models')
     if world.cpp_environment is None:world.prepare_simd()
+    # Input check (flask_v2): fail fast with a reason instead of spending the whole budget on an impossible query.
+    # Uses the same world the planner checks collisions against, so valid queries are unaffected.
+    start,goal=np.asarray(start,float),np.asarray(goal,float)
+    if not (np.isfinite(start).all() and np.isfinite(goal).all()):
+        raise ValueError('start and goal must be finite')
+    dim=len(world.lower)
+    for name,state in (('start',start),('goal',goal)):
+        exact=world.source.positions_valid(state[:dim],independent=True) if world.source is not None else True
+        if not (exact and world.positions_valid(state[:dim])):
+            lifted=model.lift(start)
+            return RunRecord(solved=False,trajectory=Trajectory([],lifted),plan_ns=0,postprocess_ns=0,first_solution_ns=0,
+                             iterations=0,nodes=0,terminal_error=float('inf'),reason=f'invalid_{name}',seed=seed,
+                             settings=asdict(cfg),start_state=start.tolist(),goal_state=goal.tolist())
     native_settings=cfg.native()
     native_settings.max_speed=model.velocity_max
     native_settings.max_yaw_rate=model.angular_velocity_max
@@ -298,3 +345,47 @@ def validate(record,model,world,settings=None,refinement=4,*,allow_reduced_model
                 original_model_valid=not errors and not (reduced and allow_reduced_model),
                 continuity_error=record.trajectory.continuity_error(),
                 physical_continuity_error=physical_jump,reduced_order=reduced_order)
+
+
+def moving_pieces(trajectory, radius, start_time=0., hold=True, dims=3):
+    """Pieces of a planned flat trajectory as moving spheres for PlannerSettings.moving_obstacles.
+
+    Position on each edge is sum_k c[j][k] s^k, s = (t - t0) / T. With hold=True the robot is taken to stay at its
+    final position forever afterwards (a robot hovering at its goal)."""
+    pieces, t = [], float(start_time)
+    for e in trajectory.edges:
+        c = np.asarray(e.coefficients, float)
+        rows = [c[:, j].tolist() if j < c.shape[1] and j < dims else [0.] for j in range(3)]
+        pieces.append(dict(t0=t, T=float(e.duration), radius=float(radius), c=rows))
+        t += float(e.duration)
+    if hold:
+        end = trajectory.jet([trajectory.duration], through=0)[0, 0]
+        pieces.append(dict(t0=t, T=float('inf'), radius=float(radius),
+                           c=[[float(end[j])] if j < len(end) and j < dims else [0.] for j in range(3)]))
+    return tuple(pieces)
+
+
+def hold_piece(position, radius, start_time=0., dims=3):
+    """A robot parked at `position` from start_time on (e.g. a lower-priority robot waiting at its start)."""
+    position = np.asarray(position, float)
+    return dict(t0=float(start_time), T=float('inf'), radius=float(radius),
+                c=[[float(position[j])] if j < len(position) and j < dims else [0.] for j in range(3)])
+
+
+def space_time_clearance(trajectories, radii, dt=1e-3, dims=3, horizon=None):
+    """Independent dense check of prioritized plans: the smallest pairwise surface distance (centre distance minus
+    both radii) over a common clock, sampled every dt; robots hold their final position after they arrive."""
+    horizon = max(t.duration for t in trajectories) if horizon is None else horizon
+    times = np.arange(0., horizon + dt, dt)
+    pos = []
+    for tr in trajectories:
+        p = tr.jet(np.minimum(times, tr.duration), through=0)[:, 0, :dims]
+        pos.append(p)
+    best, where = np.inf, None
+    for a in range(len(pos)):
+        for b in range(a + 1, len(pos)):
+            d = np.linalg.norm(pos[a] - pos[b], axis=1) - radii[a] - radii[b]
+            k = int(np.argmin(d))
+            if d[k] < best:
+                best, where = float(d[k]), (a, b, float(times[k]))
+    return best, where

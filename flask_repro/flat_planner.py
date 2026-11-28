@@ -44,6 +44,8 @@ class World:
     spheres: list = field(default_factory=list)
     radius: float = 0.1
     cpp_environment: object = None
+    # The world a sphere cover was built from (exact boxes); used to reject start/goal states inside hollow shells.
+    source: object = field(default=None, repr=False, compare=False)
 
     def __post_init__(self):
         (self.lower, self.upper) = (np.asarray(self.lower, float), np.asarray(self.upper, float))
@@ -69,7 +71,8 @@ class World:
         return True
 
     def prepare_simd(self):
-        from . import _core
+        from . import require_native
+        _core = require_native()
         env = _core.Environment()
         d = len(self.lower)
         for (center, size) in self.boxes:
@@ -125,7 +128,7 @@ class World:
         # shell thickness (enforced by benchmarks/native_campaign.py); returned paths are re-checked
         # against the original boxes.
         return World(self.lower, self.upper, boxes=list(self.boxes) if shell_only and keep_boxes else [],
-                     spheres=covered, radius=self.radius)
+                     spheres=covered, radius=self.radius, source=self.source or self)
 
 def edge_times(edge, settings, refinement=1):
     from numpy.polynomial import polynomial as poly

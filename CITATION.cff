@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "This is an unofficial reproduction. If you use it, please cite the original FLASK paper (preferred citation below)."
+title: "FLASK: an independent reproduction"
+type: software
+version: 2.0.0
+date-released: 2026-11-28
+license: BSD-3-Clause
+authors:
+  - name: "the FLASK reproduction contributors"
+preferred-citation:
+  type: article
+  title: "Ultrafast Sampling-based Kinodynamic Planning via Differential Flatness"
+  authors:
+    - family-names: Duong
+      given-names: Thai
+    - family-names: Ramsey
+      given-names: Clayton W.
+    - family-names: Kingston
+      given-names: Zachary
+    - family-names: Thomason
+      given-names: Wil
+    - family-names: Kavraki
+      given-names: Lydia E.
+  journal: "IEEE Transactions on Robotics"
+  year: 2026
+  notes: "arXiv:2603.16059"
