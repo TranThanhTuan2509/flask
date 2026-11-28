@@ -102,7 +102,11 @@ def test_planning_radius_covers_the_simulated_robot(module):
     if module == 'g1_courtyard':
         pytest.importorskip('torch')
     S = importlib.import_module(f'simulation.showcase.{module}')
-    m = S.build_model(); d = mujoco.MjData(m); mujoco.mj_forward(m, d)
+    try:
+        m = S.build_model()
+    except FileNotFoundError as e:           # showcase assets are fetched only by ./install.sh --showcase
+        pytest.skip(f'showcase assets not installed: {e.filename}')
+    d = mujoco.MjData(m); mujoco.mj_forward(m, d)
     body = m.body('airframe' if module == 'drone_hall' else 'pelvis').id
     if module == 'drone_hall':
         extent = max(np.linalg.norm(d.geom_xpos[g] - d.xpos[body]) + m.geom_rbound[g]
@@ -115,3 +119,89 @@ def test_planning_radius_covers_the_simulated_robot(module):
                 P = v @ d.geom_xmat[g].reshape(3, 3).T + d.geom_xpos[g]
                 extent = max(extent, np.linalg.norm(P[:, :2] - d.xpos[body][:2], axis=1).max())
     assert S.RADIUS >= extent + 0.05
+
+
+# ---------------- showcase_2 ----------------
+
+def _model_or_skip(build):
+    try:
+        return build()
+    except (FileNotFoundError, ValueError) as e:     # Menagerie assets are fetched by ./install.sh --showcase
+        pytest.skip(f'showcase assets not installed: {e}')
+
+
+def test_robotiq_2f85_stays_inside_the_planners_ur5_spheres():
+    """The actuated Menagerie 2F-85 (simulation) replaces the URDF Robotiq 85 that VAMP's spheres model: every vertex
+    of its collision meshes (fingers open) must lie inside the UR5's VAMP spheres, within 1.5 cm."""
+    import mujoco
+    from simulation.showcase import arms as A
+    arm = A.Arm('ur5', 'ur5/')
+    m = _model_or_skip(lambda: A.build([arm], [], {}, lambda n: (.6, .6, .6, 1)))
+    d = mujoco.MjData(m); io = A.ArmIO(arm, m)
+    for q in ([0.0, -1.57, 1.57, -1.57, -1.57, 0.0], [0.6, -1.2, 1.4, -1.8, -1.2, 0.7]):
+        d.qpos[io.qadr] = q; mujoco.mj_forward(m, d)
+        S = arm.world_spheres(np.asarray(q))
+        worst = 0.
+        for g in range(m.ngeom):
+            if not m.geom(g).name.startswith('ur5/g_') and not m.body(m.geom_bodyid[g]).name.startswith('ur5/g_'):
+                continue
+            if m.geom_contype[g] == 0 or m.geom_type[g] != mujoco.mjtGeom.mjGEOM_MESH:
+                continue
+            k = m.geom_dataid[g]; v = m.mesh_vert[m.mesh_vertadr[k]:m.mesh_vertadr[k] + m.mesh_vertnum[k]]
+            P = v @ d.geom_xmat[g].reshape(3, 3).T + d.geom_xpos[g]
+            out = np.min(np.linalg.norm(P[:, None, :] - S[None, :, :3], axis=2) - S[None, :, 3], axis=1)
+            worst = max(worst, float(out.max()))
+        assert worst <= 0.015, worst
+
+
+@pytest.mark.parametrize('module', ['ur5_pickplace', 'multiarm_handover'])
+def test_pickplace_poses_are_reachable_and_free(module):
+    """Every grasp / place / hand-over pose has an IK solution (the action queues build), and the static poses that
+    are not inside a support are collision free in the planner's padded scene."""
+    import importlib
+    from simulation.showcase import arms as A
+    from simulation.showcase.manip import PADDING
+    S = importlib.import_module(f'simulation.showcase.{module}')
+    queues = [S.queue(None)] if module == 'ur5_pickplace' else list(S.queues())
+    arms = [S.ARM] if module == 'ur5_pickplace' else S.ARMS
+    for arm, Q in zip(arms, queues):
+        env = A.environment(arm, S.scene(), PADDING)
+        moves = [a for a in Q if a[0] == 'move']
+        assert moves
+        for a in moves:
+            if len(a) > 3 and a[3]:                      # approach / lift / lower: may touch what they ignore
+                continue
+            assert arm.mod.validate(env, list(map(float, a[1]))), (module, a[2])
+
+
+def test_multidrone_scene_starts_and_goals():
+    """Starts and goals lie in the free space of the planning world, and no goal is within reach of any start (a
+    lower-priority drone waits at its start; revised prioritized planning)."""
+    from flask_repro.flat_planner import World
+    from simulation.showcase import multidrone_swap as S
+    world = World(S.BOUNDS[0], S.BOUNDS[1], S.obstacle_boxes(), [], S.RADIUS)
+    pts = [np.array(s) for s, _, _ in S.DRONES.values()] + [np.array(g) for _, g, _ in S.DRONES.values()]
+    assert np.all(world.positions_valid(np.array(pts)))
+    starts = [np.array(s) for s, _, _ in S.DRONES.values()]; goals = [np.array(g) for _, g, _ in S.DRONES.values()]
+    for g in goals:
+        assert min(np.linalg.norm(g - s) for s in starts) >= 2 * S.RADIUS + S.MARGIN
+
+
+def test_fetch_carry_pose_fits_the_carry_footprint():
+    """While the Fetch drives with the carton, its arm, gripper and carton stay inside the base planner's disk."""
+    import vamp
+    from flask_repro import _core
+    from simulation.showcase import fetch_pickplace as F, fetch_warehouse as W
+    from simulation.showcase.arms import held_spheres, object_T
+    pose = np.array(F.STATION_A)
+    pick = F.to_base(pose, np.array(F.CARTON) + [-F.GRASP_DX, 0, F.GRASP_DZ])
+    q_pick = F.ik(pick, F.ik(pick - [0.11, 0, 0], W.TUCK))
+    G = np.linalg.inv(np.asarray(vamp.fetch.eefk(list(q_pick)))) @ object_T(F.to_base(pose, np.array(F.CARTON)), -pose[2])
+    env = mbm.native_environment(dict(problem='f', sphere=[], cylinder=[], box=[])); env.attach(held_spheres(F.HALF, G))
+    q = F.ik(F.CARRY_POINT, q_pick, env, restarts=30)
+    assert q is not None
+    S = np.array(_core.fetch.sphere_fk(list(q))); S = S[S[:, 2] > 0.45]
+    T = np.asarray(vamp.fetch.eefk(list(q)))
+    H = np.array([[*(T[:3, :3] @ s[:3] + T[:3, 3]), s[3]] for s in held_spheres(F.HALF, G)])
+    reach = max(np.max(np.hypot(S[:, 0], S[:, 1]) + S[:, 3]), np.max(np.hypot(H[:, 0], H[:, 1]) + H[:, 3]))
+    assert reach <= F.CARRY_RADIUS

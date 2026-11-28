@@ -1,0 +1,21 @@
+# Fresh install (pinned third-party sources, native build) and the full test suite, as in the README.
+name: tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  core:
+    runs-on: ubuntu-22.04          # the tested platform (Python 3.10, GCC 11, CMake 3.22); x86-64 runners have AVX2
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: System packages
+        run: sudo apt-get update && sudo apt-get install -y build-essential cmake git python3.10-venv python3.10-dev libeigen3-dev
+      - name: Install (fetch pinned sources, build, run tests)
+        run: ./install.sh
+      - name: Examples
+        run: |
+          .venv/bin/python examples/flat_quickstart.py unicycle_wall rrt_connect
+          .venv/bin/python examples/flat_quickstart.py quad3d_block sst_bvp --seeds 2
+          .venv/bin/python examples/panda_quickstart.py
