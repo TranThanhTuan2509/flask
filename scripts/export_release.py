@@ -20,6 +20,8 @@ EXCLUDE_PREFIXES = (
     'benchmarks/generate_tables.py', 'benchmarks/verify_migration.py', 'scripts/flask_deep_dive_checks.py',   # internal-doc tools
     'results/paper_campaigns/launch_v8.sh', 'results/paper_campaigns/launch_v9.sh',
     'results/paper_campaigns/launch_idbastar_v9.sh',
+    'results/diagnostics/v2_chart/paper_fig5a_crop.png',   # crop of the paper's Fig. 5a (publisher copyright)
+    'showcase/showcase_1/',     # first showcase (v1 settings): superseded by showcase_2, kept in the git history
 )
 KEEP_PREFIXES = ('docs/figures/',)
 

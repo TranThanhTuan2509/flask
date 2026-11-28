@@ -1,0 +1,297 @@
+{
+  "profile": "low_dof_v2b_order2",
+  "fidelity": "implemented_different_conditions",
+  "frozen_for_measurement": false,
+  "published": {
+    "rho": 1.0,
+    "unicycle_limits": {
+      "v": 1.0,
+      "omega": 1.5
+    },
+    "quad3d": {
+      "v": 4.0,
+      "omega": 8.0,
+      "thrust": "1.5 m g",
+      "torque": 2.0
+    }
+  },
+  "geometry": {
+    "radius": 0.1,
+    "sphere_spacing": 0.15,
+    "shell_only": true,
+    "shell_keep_boxes": false
+  },
+  "boundary": {
+    "lift_speed": 0.3,
+    "reverse_chart": false
+  },
+  "settings": {
+    "algorithm": "rrt_connect",
+    "rho": 1.0,
+    "extension_range": 0.35,
+    "budget_s": 10.0,
+    "max_iterations": 1000000000,
+    "max_nodes": 1000000,
+    "goal_bias": 0.1,
+    "validation_dt": 0.01,
+    "validation_spacing": 0.015,
+    "derivative_bound": 1.0,
+    "derivative_metric_weight": 0.2,
+    "propagation_min": 0.0,
+    "propagation_max": 0.3,
+    "control_bound": 2.0,
+    "selection_radius": 1.0,
+    "witness_radius": 0.15,
+    "shrink_factor": 0.8,
+    "phase_iterations": 10000,
+    "goal_tolerance": 0.1,
+    "stop_first": true,
+    "trace": false,
+    "validation_backend": "simd",
+    "metric_mode": 0,
+    "rrt_mode": 2,
+    "goal_mode": 1,
+    "range_fraction": 0.2,
+    "bound1": 0.0,
+    "bound2": 0.0,
+    "bound3": 0.0,
+    "speed_min": 0.0,
+    "rest_sample_probability": 0.0,
+    "control_bounds": [],
+    "indexed_search": true,
+    "early_constraint_screening": true,
+    "spatial_only_validation": true,
+    "phase_restart": true
+  },
+  "case_overrides": {
+    "quad2d_bugtrap": {
+      "model": {
+        "order": 2,
+        "velocity_max": 4.0,
+        "angular_velocity_max": 8.0
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.03267261850540908
+      }
+    },
+    "quad2d_hole": {
+      "model": {
+        "order": 2,
+        "velocity_max": 4.0,
+        "angular_velocity_max": 8.0
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.5,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.03267261850540908
+      }
+    },
+    "quad3d_block": {
+      "model": {
+        "order": 2
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.046206060208591686,
+        "yaw_winding": true
+      }
+    },
+    "quad3d_window": {
+      "model": {
+        "order": 2
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 0.5,
+        "goal_tolerance": 0.7,
+        "rest_sample_probability": 0.5,
+        "witness_radius": 0.046206060208591686,
+        "yaw_winding": true
+      }
+    },
+    "unicycle_bugtrap": {
+      "boundary": {
+        "lift_speed": 0.6,
+        "reverse_chart": true,
+        "rest_turns": false
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1,
+        "metric_mode": 2,
+        "rrt_mode": 2,
+        "speed_min": 0.01,
+        "unicycle_rest_turns": false,
+        "rest_sample_probability": 0.0
+      },
+      "algorithm_settings": {
+        "rrt_connect": {
+          "parent_candidates": 5,
+          "duration_multipliers": [
+            1.5,
+            2.0,
+            3.0
+          ]
+        },
+        "sst_bvp": {
+          "duration_multipliers": [
+            1.5,
+            2.0,
+            3.0
+          ],
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        },
+        "sst_simd": {
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        },
+        "rrt_dp": {
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        }
+      }
+    },
+    "unicycle_wall": {
+      "boundary": {
+        "lift_speed": 0.6,
+        "reverse_chart": false,
+        "rest_turns": false
+      },
+      "settings": {
+        "extension_range": 1.5,
+        "bound1": 1.0,
+        "goal_tolerance": 0.2,
+        "selection_radius": 0.5,
+        "witness_radius": 0.1,
+        "metric_mode": 2,
+        "rrt_mode": 2,
+        "speed_min": 0.01,
+        "unicycle_rest_turns": false,
+        "rest_sample_probability": 0.0
+      },
+      "algorithm_settings": {
+        "rrt_connect": {
+          "parent_candidates": 5,
+          "duration_multipliers": [
+            1.5,
+            2.0,
+            3.0
+          ]
+        },
+        "sst_bvp": {
+          "duration_multipliers": [
+            1.5,
+            2.0,
+            3.0
+          ],
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        },
+        "sst_simd": {
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        },
+        "rrt_dp": {
+          "control_bound": 1.0,
+          "propagation_min": 0.2,
+          "propagation_max": 2.0
+        }
+      }
+    }
+  },
+  "selection_evidence": "v10 unicycle (faithful flat protocol, primary): curved BVP edges, exact |v|<=1 and |omega|<=1.5 along every edge, heading-aware metric (metric_mode 2), VAMP-style range clipping 1.5 m, velocity proposals |v| in [0.01, 1], boundary lift 0.6 m/s backward chart. Selected by the pre-declared work rule: results/diagnostics/unicycle_faithful_v10/selection.json (rounds declared in config/ablation_unicycle_faithful_v10*.json). DynoBench goal epsilon 0.2 (Dynoplan sst_v0.yaml). Earlier evidence retained: results/diagnostics/ablation_v8 (dev seeds 1001-1010, benchmarks/ablation_v8.py): unicycle stop-turn-go (first-order unicycle1 stops and turns in place at nodes; straight edges have zero yaw rate) solves 10/10 on both cases for every variant with 100% independent original-model validation; extension range 1.5 m has the least work among {0.35, 1.5, 6.0}. Pure-sphere shell cover yields identical search work (iterations, edges) to the filled cover on all aerial cases and variants. v7 evidence: results/diagnostics/ablation_low_dof_v7 (dev seeds 1001-1010): unicycle disk sampling + reverse chart + lift 1.0 was the only configuration solving 10/10 on both unicycle cases; spatial-only edge sampling leaves search work unchanged and is the authors' validSegmentCount rule; keeping the SST* graph across phases did not help and is not adopted.",
+  "unresolved": [
+    "Goal regions of propagation planners: DynoBench distance weights and goal_epsilon (sst_v0.yaml); order-two aerial goal uses position/velocity terms only",
+    "Ten-second FLASK budget; failures retained",
+    "Corrective campaign: full order-four aerial original-state validation; all variants retain physical continuity and original boundaries.",
+    "Filled conservative sphere cover is used; no surface-only occupancy assumption.",
+    "This is a corrected reconstruction profile, not recovered author experiment settings.",
+    "Reconstructed aerial rest/uniform sampling mixture with probability 0.5; author sampler unavailable.",
+    "Physical limits, original boundaries and filled sphere-cover geometry are unchanged from v3.",
+    "Per-output control bounds remain an optional diagnostic interface; v4 retains scalar pseudo-control bound 2 for controlled attribution.",
+    "Indexed candidate queries refine the original double-precision metric and insertion-order ties; author compound-norm metric retains its scan fallback.",
+    "Aerial pruning radius reconstructed as one quarter of RMS propagation displacement; author radius, control bounds and propagation horizon are unconfirmed. This corrects a zero-growth initial phase in Quad2D, not the remaining physical-model or performance gaps.",
+    "v7: aerial order 2 = paper-protocol reduced order (Sec. V-C1); attitude/body-rate jumps at joins reported",
+    "v7: spatial-only edge sampling; between-sample dynamic limits established post hoc by the interval validator",
+    "Aerial obstacles: pure-sphere shell cover, equivalent for tree planners because every validator step (<= validation_spacing) is shorter than the shell layer; every returned path is re-checked against the original boxes.",
+    "v10 unicycle (faithful flat protocol, primary): curved BVP edges, exact |v|<=1 and |omega|<=1.5 along every edge, heading-aware metric (metric_mode 2), VAMP-style range clipping 1.5 m, velocity proposals |v| in [0.01, 1], boundary lift 0.6 m/s backward chart. Selected by the pre-declared work rule: results/diagnostics/unicycle_faithful_v10/selection.json (rounds declared in config/ablation_unicycle_faithful_v10*.json). DynoBench goal epsilon 0.2 (Dynoplan sst_v0.yaml).",
+    "v10: Quad3D yaw_winding (cheapest yaw winding per BVP, authors FlatStateSpace::optimalEdge; bounded candidate set)",
+    "v10: aerial order 2 = reduced-order protocol (paper Sec. V-C1 practice); attitude/body-rate jump at joins, never an original-model claim",
+    "v10: goal tolerances 0.5 (Quad2D) / 0.7 (Quad3D) / 0.2 (unicycle) are Dynoplan sst_v0.yaml goal_epsilon defaults for these models (library defaults of the paper baseline)",
+    "v10: Quad2D |v|<=4 and |omega|<=8 as for the 3D quadrotor (paper: the 2D model is a special case of the 3D one) and as in the DynoBench quad2d model used by the SST/iDb-A* baselines (symmetric limits); the paper states only the thrust limits for the 2D model",
+    "flask_v2: unicycle levers frozen per planner by config/v2_selection_rule.json on dev seeds 1001-1010 (results/diagnostics/v2_factorial/selection.json); mechanism in results/diagnostics/v2_mechanism/RESULT.md. Quadrotor order-2 rows unchanged from v10b."
+  ],
+  "frozen": true,
+  "author_settings_confirmed": false,
+  "derived_parameter_evidence": {
+    "quad2d_bugtrap": {
+      "parameter": "witness_radius",
+      "value": 0.010756841964886334,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.13081785524155332,
+      "rms_initial_step_metric": 0.043027367859545335,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad2d_hole": {
+      "parameter": "witness_radius",
+      "value": 0.010756841964886334,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.13081785524155332,
+      "rms_initial_step_metric": 0.043027367859545335,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad3d_block": {
+      "parameter": "witness_radius",
+      "value": 0.015212471795046305,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.185004385083165,
+      "rms_initial_step_metric": 0.06084988718018522,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    },
+    "quad3d_window": {
+      "parameter": "witness_radius",
+      "value": 0.015212471795046305,
+      "classification": "independently_reconstructed",
+      "rule": "One quarter of unconditional RMS rest-root constant-pseudo-control displacement in the declared flat metric",
+      "maximum_initial_step_metric": 0.185004385083165,
+      "rms_initial_step_metric": 0.06084988718018522,
+      "previous_witness_radius": 0.15,
+      "selection_radius": 1.0,
+      "evidence": "results/verification/2026-11-24_neighbor_index_v1/witness_scale_diagnostic/summary.json",
+      "scope": "Removes an analytically confirmed initial-phase obstruction; does not establish optimal parameters or author fidelity"
+    }
+  },
+  "seed_set": "low_dof_final_v2b",
+  "timing_repeats": 5,
+  "v2b_note": "v2b (declared 2026-11-28, before any run on seeds 8001-8030). Only change from low_dof_v2_order2: the unicycle flat chart kappa (paper Eq. 10, kappa in {0,1} = forward/backward) of unicycle_wall is set to forward (reverse_chart false); unicycle_bugtrap stays backward. Evidence: paper Fig. 5a (results/diagnostics/v2_chart/paper_fig5a_crop.png): the drawn robot poses on Wall trail the direction of motion (forward), on Bugtrap they lead it (backward). The robot is a single sphere (paper Sec. VII-A), so kappa only changes the boundary lifts. The v10 choice (reverse on both maps) was made on development seeds when no evidence had been read. Found AFTER the 7001-7030 held-out results showed long Wall paths (results/diagnostics/v2_chart/chart_study.json, dev seeds 1001-1010), hence the fresh seed set. Levers stay frozen (no reselection)."
+}

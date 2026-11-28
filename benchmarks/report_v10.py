@@ -68,7 +68,11 @@ def time_verdict(local, paper, k_hw):
     return ratio, 'DIFFERENT_FASTER' if ratio < LOW else 'DIFFERENT_SLOWER' if ratio > HIGH else 'WITHIN_BAND'
 
 
-def verdict(complete, controlled, valid_frac, time_flags, length_ok, label=None):
+def verdict(complete, controlled, valid_frac, time_flags, length_ok, label=None, returned_invalid=None):
+    """returned_invalid (Table I): attempts that RETURNED a path failing the check. When the valid fraction is below
+    the gate only because attempts ran out of budget (returned_invalid == 0) the row is UNSOLVED_IN_BUDGET, not
+    DIFFERENT_INVALID (flask_v2 relabel, 2026-11-28: same gate, clearer name; a row with any invalid return keeps
+    DIFFERENT_INVALID; Table II keeps DIFFERENT_INVALID)."""
     if not complete:
         return 'PENDING'
     if not controlled:
@@ -76,7 +80,7 @@ def verdict(complete, controlled, valid_frac, time_flags, length_ok, label=None)
     if label == 'VARIANT':
         return 'VARIANT_NOT_PAPER_PROTOCOL'
     if valid_frac < MIN_VALID:
-        return 'DIFFERENT_INVALID'
+        return 'UNSOLVED_IN_BUDGET' if returned_invalid == 0 else 'DIFFERENT_INVALID'
     for flag in time_flags:
         if flag != 'WITHIN_BAND':
             return flag
@@ -117,6 +121,10 @@ def table_i(campaign, stage, seed_list, paper, k_hw, controlled):
                 label = 'VARIANT'
             else:
                 judged, label = full_valid, None
+            # flask_v2: rows produced with a v2 lever (config/low_dof_v2_order2.json) carry their own label.
+            if label is None and (settings.get('parent_candidates', 1) > 1 or settings.get('duration_multipliers')
+                                  or (case.startswith('unicycle') and settings.get('propagation_max') == 2.0)):
+                label = 'V2_PROTOCOL'
             ref = paper.get(case, {}).get(v, {})
             times = {r['seed']: [attempt_ms(r)] for r in judged}
             t = stats([x[0] for x in times.values()])
@@ -129,7 +137,9 @@ def table_i(campaign, stage, seed_list, paper, k_hw, controlled):
                             valid_ci=wilson(len(judged), len(g)), time_ms=t, length_m=length,
                             paper_ms=ref.get('planning_ms'), paper_length_m=ref.get('length_m'),
                             ratio_mean=ratio, ratio_mean_ci=[x / (k_hw * ref['planning_ms']) if x is not None and ref.get('planning_ms') else None for x in ci],
-                            status=verdict(complete, controlled, len(judged) / max(1, len(g)), [flag], length_ok, label)))
+                            returned=sum(bool(r.get('solved')) for r in g),
+                            status=verdict(complete, controlled, len(judged) / max(1, len(g)), [flag], length_ok, label,
+                                           returned_invalid=sum(bool(r.get('solved')) for r in g) - len(judged))))
     return out
 
 

@@ -1,33 +1,42 @@
-"""FLASK on the DynoBench systems (unicycle, 2D/3D quadrotor) with the settings used in our Table I runs.
+"""FLASK on the DynoBench systems (unicycle, 2D/3D quadrotor) with the settings behind the README tables.
 
-    python examples/flat_quickstart.py quad3d_block rrt_connect
-    python examples/flat_quickstart.py unicycle_wall sst_bvp
+    python examples/flat_quickstart.py unicycle_wall rrt_connect            # v2 settings (README headline)
+    python examples/flat_quickstart.py unicycle_wall rrt_connect --v1       # the paper read literally, for comparison
+    python examples/flat_quickstart.py quad3d_block sst_bvp --seeds 10      # full quadrotor model (r = 4)
+
+Every returned path is checked independently on the ORIGINAL model and obstacles (dense |v|, |omega| / attitude and
+collision checks). Times are on your CPU; the paper's are on an i7-6900K (README: ours / k_hw).
 """
+import argparse
 import json
-import sys
 from pathlib import Path
 
-from flask_repro.dynobench import load
-from flask_repro.flat_models import Unicycle
-from flask_repro.planning import PlannerSettings, plan, validate
+import numpy as np
 
-case = sys.argv[1] if len(sys.argv) > 1 else 'quad3d_block'
-algorithm = sys.argv[2] if len(sys.argv) > 2 else 'rrt_connect'      # rrt_connect | sst_bvp | sst_simd | rrt_dp
+from flask_repro.planning import plan, validate
+from flask_repro.profiles import ALGORITHMS, CASES, load_profile
 
-# Aerial systems: order 4 = full quadrotor model (recommended); order 2 is the paper's reduced protocol.
-config = 'low_dof_v10_order2.json' if case.startswith('unicycle') else 'low_dof_v10_order4.json'
-profile = json.loads((Path(__file__).resolve().parents[1] / 'config' / config).read_text())
-override = profile['case_overrides'][case]
-geometry, boundary = profile['geometry'] | override.get('geometry', {}), profile['boundary'] | override.get('boundary', {})
+p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+p.add_argument('case', nargs='?', default='unicycle_wall', choices=CASES)
+p.add_argument('algorithm', nargs='?', default='rrt_connect', choices=ALGORITHMS)
+p.add_argument('--v1', action='store_true', help='unicycle: the literal v1 settings instead of v2')
+p.add_argument('--order2', action='store_true', help="quadrotors: the paper's reduced order r = 2 (not full-model feasible)")
+p.add_argument('--seeds', type=int, default=5, help='number of seeds, starting at 1')
+a = p.parse_args()
 
-model, planning_world, world, start, goal, _ = load(case, **geometry, lift_speed=boundary['lift_speed'])
-if isinstance(model, Unicycle):
-    model.reverse = boundary['reverse_chart']
-for key, value in (profile.get('model', {}) | override.get('model', {})).items():
-    setattr(model, key, value)
-
-settings = PlannerSettings(**(profile['settings'] | override.get('settings', {}) | dict(algorithm=algorithm)))
-record = plan(model, planning_world, start, goal, settings, seed=1)
-check = validate(record, model, world, settings)        # independent check on the original model and obstacles
-print(f'{case} / {algorithm}: solved={record.solved} valid={check["valid"]} plan={record.plan_ns / 1e6:.2f} ms '
-      f'duration={record.trajectory.duration:.2f} s edges={len(record.trajectory.edges)}')
+profile = 'v1' if a.v1 else 'order2' if a.order2 else 'v2'
+s = load_profile(a.case, a.algorithm, profile)
+print(f'{a.case} / {a.algorithm}  (profile {profile}: {s.profile_file})')
+times, lengths = [], []
+for seed in range(1, a.seeds + 1):
+    r = plan(s.model, s.planning, s.start, s.goal, s.settings, seed)
+    check = validate(r, s.model, s.original, s.settings)
+    ms = (r.plan_ns + r.postprocess_ns) / 1e6
+    length = r.trajectory.length(len(s.original.lower)) if r.solved else float('nan')
+    print(f'  seed {seed}: solved={r.solved} valid={check["valid"]} time={ms:8.3f} ms length={length:5.2f} m '
+          f'duration={r.trajectory.duration if r.solved else float("nan"):5.2f} s')
+    times.append(ms); lengths.append(length)
+paper = json.loads((Path(__file__).resolve().parents[1] / 'config/paper_reference_tables.json').read_text())['table_i']
+ref = paper.get(a.case, {}).get(a.algorithm, {})
+print(f'mean time {np.mean(times):.3f} ms, mean length {np.nanmean(lengths):.2f} m  |  paper: '
+      f'{ref.get("planning_ms", "-")} ms (i7-6900K), {ref.get("length_m", "-")} m')

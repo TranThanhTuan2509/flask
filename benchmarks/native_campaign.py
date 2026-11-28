@@ -122,7 +122,8 @@ def run(args):
         input_provenance['derivative_order']=model.order
         input_provenance['dynamics']=f'Flatness reconstruction with integrator-chain order {model.order}'
         for algorithm in args.algorithms:
-            cfg=PlannerSettings(**(profile['settings']|override.get('settings',{})|dict(algorithm=algorithm)))
+            # flask_v2: optional per-planner settings (levers frozen per algorithm by results/diagnostics/v2_factorial)
+            cfg=PlannerSettings(**(profile['settings']|override.get('settings',{})|override.get('algorithm_settings',{}).get(algorithm,{})|dict(algorithm=algorithm)))
             diagnostics=configuration_diagnostics(model,start,cfg)
             repeats=int(profile.get('timing_repeats',1))
             for seed in seeds:

@@ -1,0 +1,31 @@
+{
+  "declared": "2026-11-28, before any run of benchmarks/v2_generalization.py. Question: do the v2 options (chosen on unicycle Bugtrap/Wall development seeds) also help on unicycle problems that were never used to choose anything, or did they only fit the two paper maps?",
+  "problems": {
+    "maps": ["unicycle_kink", "unicycle_kink_v1", "unicycle_parallelpark"],
+    "maps_source": "DynoBench (MIT); third_party/dynobench_subset/README.md. Not in the FLASK paper, so there is no paper number to compare with.",
+    "map_seeds": "9001-9030 (config/seed_registry.json generalization_v2_maps)",
+    "random_scenes": "seeds 9101-9200, verification/v5_random_low_dof.scene(): 6 m world, 3-8 random boxes 0.3-1.5 m, random start/goal positions and headings; the scene seed is also the planner seed",
+    "charts": "every problem is run on BOTH flat charts (forward kappa = 0 and backward kappa = 1, Eq. 10) and reported per chart: the comparison v1 vs v2 always holds the chart fixed"
+  },
+  "settings": {
+    "v1": "config/low_dof_v1_literal_v2b.json, unicycle family settings (the unicycle_bugtrap override; Bugtrap and Wall overrides differ only in the chart)",
+    "v2": "config/low_dof_v2b_order2.json, same family settings + per-planner algorithm_settings (frozen 2026-11-28, results/diagnostics/v2_factorial/selection.json)",
+    "planners": ["rrt_connect", "sst_bvp", "sst_simd", "rrt_dp"],
+    "budget_s": 10.0,
+    "nothing_tuned": "no setting is changed for these problems; v2 settings are never changed after seeing these results (any later change would need a new unseen set)"
+  },
+  "timing": "parallel workers, each pinned to one even P-core (0, 2, ..., 14; siblings left idle); v1 and v2 of the same (problem, chart, planner, seed) run back to back on the same core, so the v1/v2 time ratio is paired. These times are for the v1/v2 comparison only, not for comparison with the paper.",
+  "metrics": {
+    "solved": "returned a path within the budget",
+    "valid": "returned path passes planning.validate on the ORIGINAL model and obstacles (dense |v| <= 1, |omega| <= 1.5, collision, start/goal); every attempt is in the denominator",
+    "censored_time": "plan + post-processing time, an unsolved attempt counts as the budget (10 s); per cell the median over attempts",
+    "length": "mean over attempts solved by BOTH v1 and v2 (paired), reported only"
+  },
+  "cells": "maps: (map, chart, planner) = 3 x 2 x 4 = 24 cells of 30 seeds; random: (chart, planner) = 2 x 4 = 8 cells of 100 scenes",
+  "criteria": {
+    "G1_safety": "every path returned by v2 is valid on the original model (0 invalid returns) and no attempt crashes. Same check reported for v1.",
+    "G2_no_loss_in_solving": "in every cell, v2 solved count >= v1 solved count - 2 (maps, of 30) or - 5 (random, of 100)",
+    "G3_speed": "v2 median censored time < v1 median censored time in at least 80 % of the cells that at least one of v1/v2 solved at least once",
+    "verdict": "GENERALIZES if G1, G2 and G3 hold; otherwise PARTIAL (list failing cells) or DOES_NOT_GENERALIZE (G1 fails, or G2/G3 fail in more than half of the cells). Reported in the README whatever the outcome."
+  }
+}

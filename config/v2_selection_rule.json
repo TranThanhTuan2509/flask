@@ -1,0 +1,28 @@
+{
+  "declared": "2026-11-28, before any factorial run (Phase 3 of the flask_v2 plan). Inputs: results/diagnostics/v2_mechanism/RESULT.md (L1, L3, L5 carried) and results/diagnostics/propagation_dynoplan_v10 (L6, declared 2026-11-25 as a labelled variant; source = the baseline library's own defaults, Dynoplan benchmark/config/algs/sst_v0.yaml, unicycle control duration 2-20 x 0.1 s). A quick smoke run on dev seeds 1001-1010 (parallel, untimed) preceded this file; it informed which levers act on which planner, not the rule below.",
+  "seeds": [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010],
+  "timing": "serial, process pinned to config/machine.json measurement_cpu (10), sibling idle; plan_ns + postprocess_ns",
+  "base_profiles": {
+    "unicycle": "config/low_dof_v10_order2_v10b.json",
+    "quadrotor_order4": "config/low_dof_v10_order4_v10b.json"
+  },
+  "levers": {
+    "L1": {"setting": "parent_candidates", "values": [1, 5, 10, 20], "applies_to": ["rrt_connect"]},
+    "L3": {"setting": "duration_multipliers", "values": [[], [1.5, 2.0, 3.0]], "applies_to": ["rrt_connect", "sst_bvp", "sst_simd", "rrt_dp"]},
+    "L5": {"setting": "control_bound", "values": [2.0, 1.0], "applies_to": ["sst_bvp", "sst_simd", "rrt_dp"], "cases": "unicycle only"},
+    "L6": {"setting": ["propagation_min", "propagation_max"], "values": [[0.0, 0.3], [0.2, 2.0]], "applies_to": ["sst_bvp", "sst_simd", "rrt_dp"], "cases": "unicycle only"}
+  },
+  "grid": {
+    "unicycle rrt_connect": "L1 x L3 (8 configurations)",
+    "unicycle sst_bvp, sst_simd, rrt_dp": "L3 x L5 x L6 (8 configurations each)",
+    "quadrotor order 4 rrt_connect": "L1 x L3 (8 configurations)",
+    "quadrotor order 4 sst_bvp": "L3 (2 configurations)"
+  },
+  "rule": [
+    "1. Per (case, algorithm), a configuration is eligible only if every one of the 10 attempts returns a path valid on the ORIGINAL model (planning.validate dense check; the interval certificate of order-4 paths runs in the held-out campaign, as in v10b). Otherwise maximise the valid count first.",
+    "2. Among eligible configurations pick the lowest MEAN planning time (plan + post-processing), because the paper's Table I reports means.",
+    "3. Simplicity tie-break: a configuration with fewer levers switched on replaces the winner when its mean is within 10 % of the winner's.",
+    "4. One configuration per (robot family, algorithm) is frozen for the held-out campaign: the configuration chosen for the most cases of that family/algorithm; ties resolved by the lower summed mean time over the family's cases. (A single setting per planner, not per environment, as the paper uses one planner per row.)",
+    "5. Never select by closeness to the paper's numbers. Path length is reported, not optimised."
+  ]
+}

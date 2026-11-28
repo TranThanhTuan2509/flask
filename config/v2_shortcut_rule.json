@@ -1,0 +1,24 @@
+{
+  "declared": "2026-11-28, before any run on the seeds below. Context: diagnosis of the long unicycle Wall paths (results/diagnostics/v2_shortcut/RESULT.md): RRTConnect returns its first solution, and the paper's Alg. 4 connects only the states at the knots of the path, so a detour through a far node survives whenever the bypass of that node collides. Lever L7 (Settings::shortcut_subdivisions / shortcut_rounds) runs further Alg. 4 rounds over states inside the edges and accepts a bypass only if it lowers the LQMT cost. A Python prototype and a native probe on Wall RRTConnect, development seeds 1001-1030, preceded this file; those seeds are therefore not used below.",
+  "purpose": "L7 is a path-quality lever (Alg. 4 is the paper's path-quality step). It is selected for path length under a time cap, never for closeness to the paper's numbers.",
+  "seeds": "development_v2_shortcut (1101-1130) in config/seed_registry.json",
+  "timing": "serial, process pinned to config/machine.json measurement_cpu (10); plan_ns + postprocess_ns",
+  "base_profiles": "flask_repro.profiles.load_profile(case, algorithm, 'v2'): config/low_dof_v2b_order2.json (unicycle), config/low_dof_v2_order4.json (quadrotors, r = 4)",
+  "grid": {"shortcut_subdivisions x shortcut_rounds": [[1, 1], [2, 2], [2, 3], [2, 4], [4, 2], [4, 3], [4, 4], [8, 2], [8, 3], [8, 4]]},
+  "scope": {
+    "included": ["unicycle_bugtrap and unicycle_wall x rrt_connect, sst_bvp, sst_simd, rrt_dp",
+                 "quad2d_bugtrap, quad2d_hole, quad3d_block, quad3d_window (r = 4) x rrt_connect, sst_bvp"],
+    "excluded": {"quadrotor r = 4 sst_simd, rrt_dp": "6-27 s mean per attempt with frequent budget exhaustion (final_v2c), too costly for a 10-configuration grid; they keep L7 off",
+                 "quadrotor r = 2": "the paper's reduced-order comparison protocol, kept as in v1",
+                 "v1 literal profile": "the paper's single Alg. 4 pass by definition"}
+  },
+  "rule": [
+    "1. Per (case, algorithm) a configuration is eligible only if it solves every seed the baseline (1, 1) solves and every returned path is valid on the ORIGINAL model (planning.validate; order-4 paths additionally get the interval certificate in the held-out campaign).",
+    "2. ... and only if its mean total time is at most 1.5 x the baseline's mean total time on that case (post-processing may add at most half of the planning time).",
+    "3. Per (family, algorithm) a configuration must be eligible on every case of the family. Among those, pick the lowest mean over the cases of (mean path length / baseline mean path length).",
+    "4. L7 is switched on for that (family, algorithm) only if this normalized length is at most 0.95 (at least 5 % shorter); otherwise it stays off.",
+    "5. Tie-break: configurations within 0.01 of the best normalized length -> the lower summed mean time.",
+    "6. Never select by closeness to the paper's numbers: lengths are compared with our own baseline only."
+  ],
+  "held_out": "The frozen choice is then measured on seeds low_dof_final_v2d (8101-8130) for every Table I row (unicycle v2 and v1 literal, quadrotors r = 2 and r = 4 with the interval certificate), and the generalization check (config/v2_generalization_rule.json, unchanged) is re-run."
+}

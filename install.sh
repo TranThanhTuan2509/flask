@@ -3,7 +3,7 @@
 # Tested on Ubuntu 22.04, Python 3.10, GCC 11.4, CMake 3.22, x86-64 with AVX2.
 #   sudo apt install build-essential cmake git python3.10-venv python3.10-dev libeigen3-dev
 #   ./install.sh               # core: planners, validators, tests
-#   ./install.sh --showcase    # + MuJoCo showcases (Unitree G1 policy, Skydio X2, CPU torch)
+#   ./install.sh --showcase    # + MuJoCo showcases (G1 policy, Menagerie X2 / 2F-85 / Panda, CPU torch)
 set -euo pipefail
 cd "$(dirname "$0")"
 JOBS="${JOBS:-$(nproc)}"

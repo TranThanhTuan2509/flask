@@ -127,6 +127,88 @@ def stages_v10b(out, cpu):
     ]
 
 
+def stages_v2(out, cpu):
+    """flask_v2 held-out campaign (seeds 7001-7030, config/seed_registry.json low_dof_final_v2).
+    v2 profiles hold the levers frozen by results/diagnostics/v2_factorial/selection.json; the v1 literal profile is
+    the v10b order-2 profile on the same seeds (unicycle only: the order-2 quadrotor settings are unchanged in v2),
+    so the v1/v2 comparison is paired. The manipulator planner is unchanged in v2 (Table II stays v10b)."""
+    c = str(cpu)
+    native = lambda name, profile, *extra: (name, [PY, '-m', 'benchmarks.native_campaign', '--output', str(out / name),
+                                                   '--profile', profile, '--cpu', c, '--final', *extra])
+    aerial = ['--cases', 'quad2d_bugtrap', 'quad2d_hole', 'quad3d_block', 'quad3d_window']
+    return [
+        ('hardware_calibration', [PY, '-m', 'benchmarks.hardware_calibration', '--output', str(out / 'hardware_calibration.json'), '--cpu', c]),
+        native('table_i_v2', 'config/low_dof_v2_order2.json'),
+        native('table_i_v1_literal', 'config/low_dof_v1_literal_v2seeds.json', '--cases', 'unicycle_bugtrap', 'unicycle_wall'),
+        native('table_i_v2_repeat_rrtc', 'config/low_dof_v2_order2.json', '--algorithms', 'rrt_connect'),
+        native('table_i_v2_order4', 'config/low_dof_v2_order4.json', *aerial),
+        ('table_i_v2_order4_interval', [PY, '-m', 'benchmarks.validate_continuous_aerial', '--sources', str(out / 'table_i_v2_order4'),
+                                        '--output', str(out / 'table_i_v2_order4_interval'), '--cpu', c]),
+    ]
+
+
+def stages_v2b(out, cpu):
+    """flask_v2b: unicycle Table I on fresh seeds 8001-8030 (config/seed_registry.json low_dof_final_v2b). Only change from
+    v2: unicycle_wall uses the forward flat chart (kappa = 0, Eq. 10), read from the paper's Fig. 5a; levers unchanged.
+    v1 literal runs on the same seeds with the same chart, so the comparison stays paired."""
+    c = str(cpu)
+    native = lambda name, profile, *extra: (name, [PY, '-m', 'benchmarks.native_campaign', '--output', str(out / name),
+                                                   '--profile', profile, '--cpu', c, '--final', *extra])
+    unicycle = ['--cases', 'unicycle_bugtrap', 'unicycle_wall']
+    return [
+        ('hardware_calibration', [PY, '-m', 'benchmarks.hardware_calibration', '--output', str(out / 'hardware_calibration.json'), '--cpu', c]),
+        native('table_i_v2b', 'config/low_dof_v2b_order2.json', *unicycle),
+        native('table_i_v1_literal_v2b', 'config/low_dof_v1_literal_v2b.json', *unicycle),
+    ]
+
+
+def stages_v2c(out, cpu):
+    """flask_v2 final campaign (release code): the v2/v2b profiles and held-out seeds unchanged (unicycle 8001-8030,
+    quadrotors 7001-7030); the only difference from 2026-11-28_final_v2/_v2b is the binary, which now checks
+    workspace bounds exactly (PlannerSettings.exact_bounds, default; tests/test_exact_bounds.py). Re-run so that every
+    published number comes from the released code. No setting was changed."""
+    c = str(cpu)
+    native = lambda name, profile, *extra: (name, [PY, '-m', 'benchmarks.native_campaign', '--output', str(out / name),
+                                                   '--profile', profile, '--cpu', c, '--final', *extra])
+    unicycle = ['--cases', 'unicycle_bugtrap', 'unicycle_wall']
+    aerial = ['--cases', 'quad2d_bugtrap', 'quad2d_hole', 'quad3d_block', 'quad3d_window']
+    return [
+        ('hardware_calibration', [PY, '-m', 'benchmarks.hardware_calibration', '--output', str(out / 'hardware_calibration.json'), '--cpu', c]),
+        native('table_i_unicycle', 'config/low_dof_v2b_order2.json', *unicycle),
+        native('table_i_unicycle_v1_literal', 'config/low_dof_v1_literal_v2b.json', *unicycle),
+        native('table_i_quad_order2', 'config/low_dof_v2_order2.json', *aerial),
+        native('table_i_repeat_rrtc_unicycle', 'config/low_dof_v2b_order2.json', *unicycle, '--algorithms', 'rrt_connect'),
+        native('table_i_repeat_rrtc_quad_order2', 'config/low_dof_v2_order2.json', *aerial, '--algorithms', 'rrt_connect'),
+        native('table_i_quad_order4', 'config/low_dof_v2_order4.json', *aerial),
+        ('table_i_quad_order4_interval', [PY, '-m', 'benchmarks.validate_continuous_aerial', '--sources', str(out / 'table_i_quad_order4'),
+                                          '--output', str(out / 'table_i_quad_order4_interval'), '--cpu', c]),
+    ]
+
+
+
+def stages_v2d(out, cpu):
+    """flask_v2 v2d campaign: lever L7 (Alg. 4 over subdivided edges) as frozen by config/v2_shortcut_rule.json, on
+    held-out seeds 8101-8130 never used before, for every Table I row. Unicycle v2 + L7 and the v1 literal profile,
+    quadrotors r = 2 (paper's reduced-order protocol, unchanged) and r = 4 (+ L7 for RRTConnect and BVP-SST*) with
+    the interval certificate; repeated RRTConnect stages for determinism."""
+    c = str(cpu)
+    native = lambda name, profile, *extra: (name, [PY, '-m', 'benchmarks.native_campaign', '--output', str(out / name),
+                                                   '--profile', profile, '--cpu', c, '--final', *extra])
+    unicycle = ['--cases', 'unicycle_bugtrap', 'unicycle_wall']
+    aerial = ['--cases', 'quad2d_bugtrap', 'quad2d_hole', 'quad3d_block', 'quad3d_window']
+    return [
+        ('hardware_calibration', [PY, '-m', 'benchmarks.hardware_calibration', '--output', str(out / 'hardware_calibration.json'), '--cpu', c]),
+        native('table_i_unicycle', 'config/low_dof_v2d_order2.json', *unicycle),
+        native('table_i_unicycle_v1_literal', 'config/low_dof_v1_literal_v2d.json', *unicycle),
+        native('table_i_quad_order2', 'config/low_dof_v2d_quad_order2.json', *aerial),
+        native('table_i_repeat_rrtc_unicycle', 'config/low_dof_v2d_order2.json', *unicycle, '--algorithms', 'rrt_connect'),
+        native('table_i_repeat_rrtc_quad_order4', 'config/low_dof_v2d_order4.json', *aerial, '--algorithms', 'rrt_connect'),
+        native('table_i_quad_order4', 'config/low_dof_v2d_order4.json', *aerial),
+        ('table_i_quad_order4_interval', [PY, '-m', 'benchmarks.validate_continuous_aerial', '--sources', str(out / 'table_i_quad_order4'),
+                                          '--output', str(out / 'table_i_quad_order4_interval'), '--cpu', c]),
+    ]
+
+
 def stages(out, cpu):
     c = str(cpu)
     native = lambda name, profile, *extra: (name, [PY, '-m', 'benchmarks.native_campaign', '--output', str(out / name),
@@ -163,7 +245,7 @@ def main(args):
     records = []
     # Warm-up probe (discarded): the first probe of v7 ran cold (FLASKCC 34.9 ms vs ~23 ms afterwards).
     (out / 'warmup_probe.json').write_text(json.dumps(fixed_work_probe(args.cpu), indent=2) + '\n')
-    plan = dict(v7=stages, v8=stages_v8, v9=stages_v9, v10=stages_v10, v10b=stages_v10b)[args.plan]
+    plan = dict(v7=stages, v8=stages_v8, v9=stages_v9, v10=stages_v10, v10b=stages_v10b, v2=stages_v2, v2b=stages_v2b, v2c=stages_v2c, v2d=stages_v2d)[args.plan]
     selected = [s for s in plan(out, args.cpu) if not args.only or s[0] in args.only]
     for name, command in selected:
         assert manifest({})['source_sha256'] == before['source_sha256'], 'Source changed before ' + name
@@ -192,6 +274,6 @@ if __name__ == '__main__':
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--cpu', type=int, default=default_cpu())
     p.add_argument('--only', nargs='+')
-    p.add_argument('--plan', choices=['v7', 'v8', 'v9', 'v10', 'v10b'], default='v7')
+    p.add_argument('--plan', choices=['v7', 'v8', 'v9', 'v10', 'v10b', 'v2', 'v2b', 'v2c', 'v2d'], default='v7')
     p.add_argument('--allow-uncontrolled', action='store_true')
     main(p.parse_args())
