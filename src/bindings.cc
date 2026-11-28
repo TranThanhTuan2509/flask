@@ -103,6 +103,40 @@ struct Environment
         return {filter_ns, build_ns, points.size()};
     }
 
+    // A held object: spheres given in the end-effector frame (VAMP Attachment). Every manipulator check
+    // (FLASKCC, count_collisions, validate) then also checks these spheres, posed by the end-effector FK.
+    void attach(const std::vector<std::array<float, 4>> &spheres,
+                const std::array<std::array<float, 4>, 4> &tf)
+    {
+        if (spheres.empty())
+        {
+            throw std::invalid_argument("attach needs at least one sphere");
+        }
+        Eigen::Isometry3f T = Eigen::Isometry3f::Identity();
+        for (int i = 0; i < 4; ++i)
+            for (int j = 0; j < 4; ++j)
+                T.matrix()(i, j) = tf[i][j];
+        vc::Attachment<float> a(T);
+        for (const auto &s : spheres)
+        {
+            if (!(s[3] > 0.F) || !std::isfinite(s[0]) || !std::isfinite(s[1]) || !std::isfinite(s[2]))
+            {
+                throw std::invalid_argument("attachment spheres need finite centres and positive radii");
+            }
+            a.spheres.emplace_back(s[0], s[1], s[2], s[3]);
+        }
+        e.attachments.emplace(a);
+        ev.reset();
+    }
+
+    void detach()
+    {
+        e.attachments.reset();
+        ev.reset();
+    }
+
+    auto attached() const -> bool { return e.attachments.has_value(); }
+
     auto prepare() -> std::size_t
     {
         const auto t0 = std::chrono::steady_clock::now();
@@ -129,6 +163,10 @@ struct Environment
 };
 
 template <std::size_t n> using V = std::array<double, n>;
+template <typename T> struct RobotTag
+{
+    using type = T;
+};
 
 template <typename Robot> void register_robot(nb::module_ &m)
 {
@@ -402,7 +440,8 @@ template <typename Robot> void register_robot(nb::module_ &m)
                       }
                       block[j] = vamp::FloatVector<flask::K>(col);
                   }
-                  if (!Robot::template fkcc<flask::K>(ev, block))
+                  if (!(ev.attachments ? Robot::template fkcc_attach<flask::K>(ev, block)
+                                       : Robot::template fkcc<flask::K>(ev, block)))
                   {
                       for (std::size_t k = 0; k < flask::K && i + k < Q.size(); ++k)
                       {
@@ -411,7 +450,8 @@ template <typename Robot> void register_robot(nb::module_ &m)
                           {
                               b1[j] = vamp::FloatVector<flask::K>(static_cast<float>(Q[i + k][j]));
                           }
-                          if (!Robot::template fkcc<flask::K>(ev, b1))
+                          if (!(ev.attachments ? Robot::template fkcc_attach<flask::K>(ev, b1)
+                                           : Robot::template fkcc<flask::K>(ev, b1)))
                           {
                               ++counter;
                               if (first < 0)
@@ -435,7 +475,9 @@ template <typename Robot> void register_robot(nb::module_ &m)
                       return false;
                   block[j] = vamp::FloatVector<flask::K>(static_cast<float>(q[j]));
               }
-              return Robot::template fkcc<flask::K>(env.vec(), block);
+              const auto &ev = env.vec();
+              return ev.attachments ? Robot::template fkcc_attach<flask::K>(ev, block)
+                                    : Robot::template fkcc<flask::K>(ev, block);
           });
 }
 
@@ -534,6 +576,13 @@ nb::dict run_flat(const std::vector<std::vector<double>> &a,
     for (double value : cfg.control_bounds)
         if (!std::isfinite(value) || value <= 0.)
             throw std::invalid_argument("control_bounds must be finite and positive");
+    if (cfg.parent_candidates == 0)
+        throw std::invalid_argument("parent_candidates must be at least 1");
+    for (double value : cfg.duration_multipliers)
+        if (!std::isfinite(value) || value <= 1.)
+            throw std::invalid_argument("duration_multipliers must be finite and greater than one");
+    if (cfg.shortcut_subdivisions == 0 || cfg.shortcut_rounds == 0)
+        throw std::invalid_argument("shortcut_subdivisions and shortcut_rounds must be at least 1");
     flask::flat::Result<R, N> r;
     {
         nb::gil_scoped_release release;
@@ -562,12 +611,17 @@ nb::dict run_flat(const std::vector<std::vector<double>> &a,
     c["control"] = r.counters.control;
     c["singular"] = r.counters.singular;
     c["nonfinite"] = r.counters.nonfinite;
+    c["moving"] = r.counters.moving;
     out["rejections"] = c;
     nb::dict diagnostics;
     diagnostics["phase_restart_iterations"] = r.phase_restart_iterations;
     diagnostics["planning_bvp_calls"] = r.planning_bvp_calls;
     diagnostics["postprocessing_bvp_calls"] = r.bvp_calls - r.planning_bvp_calls;
     diagnostics["samples"] = r.samples;
+    diagnostics["parent_reranks"] = r.parent_reranks;
+    diagnostics["duration_fallbacks"] = r.duration_fallbacks;
+    diagnostics["duration_fallback_accepts"] = r.duration_fallback_accepts;
+    diagnostics["shortcut_extra_accepts"] = r.shortcut_extra_accepts;
     diagnostics["rest_samples"] = r.rest_samples;
     diagnostics["accepted_propagations"] = r.accepted_propagations;
     diagnostics["witness_rejections"] = r.witness_rejections;
@@ -935,6 +989,13 @@ NB_MODULE(_core, m)
                   flat_state<2, 2>(b), derivative_weight, turn_radius);
           }, nb::arg("start"), nb::arg("goal"), nb::arg("derivative_weight") = .2,
              nb::arg("turn_radius") = 2. / 3.);
+    nb::class_<flask::flat::MovingPiece>(m, "MovingPiece")
+        .def(nb::init<>())
+        .def_rw("t0", &flask::flat::MovingPiece::t0)
+        .def_rw("T", &flask::flat::MovingPiece::T)
+        .def_rw("radius", &flask::flat::MovingPiece::radius)
+        .def_rw("c", &flask::flat::MovingPiece::c);
+
     nb::class_<flask::flat::Settings>(m, "LowDOFSettings")
         .def(nb::init<>())
         .def_rw("rho", &flask::flat::Settings::rho)
@@ -949,6 +1010,7 @@ NB_MODULE(_core, m)
         .def_rw("control_bounds", &flask::flat::Settings::control_bounds)
         .def_rw("indexed_search", &flask::flat::Settings::indexed_search)
         .def_rw("early_constraint_screening", &flask::flat::Settings::early_constraint_screening)
+        .def_rw("exact_bounds", &flask::flat::Settings::exact_bounds)
         .def_rw("rest_sample_probability", &flask::flat::Settings::rest_sample_probability)
         .def_rw("selection_radius", &flask::flat::Settings::selection_radius)
         .def_rw("witness_radius", &flask::flat::Settings::witness_radius)
@@ -976,7 +1038,13 @@ NB_MODULE(_core, m)
         .def_rw("phase_restart", &flask::flat::Settings::phase_restart)
         .def_rw("unicycle_rest_turns", &flask::flat::Settings::unicycle_rest_turns)
         .def_rw("spatial_only_validation", &flask::flat::Settings::spatial_only_validation)
-        .def_rw("yaw_winding", &flask::flat::Settings::yaw_winding);
+        .def_rw("yaw_winding", &flask::flat::Settings::yaw_winding)
+        .def_rw("parent_candidates", &flask::flat::Settings::parent_candidates)
+        .def_rw("duration_multipliers", &flask::flat::Settings::duration_multipliers)
+        .def_rw("shortcut_subdivisions", &flask::flat::Settings::shortcut_subdivisions)
+        .def_rw("shortcut_rounds", &flask::flat::Settings::shortcut_rounds)
+        .def_rw("moving_obstacles", &flask::flat::Settings::moving_obstacles)
+        .def_rw("moving_margin", &flask::flat::Settings::moving_margin);
     m.def(
         "flat_bvp",
         [](const std::vector<std::vector<double>> &a, const std::vector<std::vector<double>> &b,
@@ -1008,7 +1076,7 @@ NB_MODULE(_core, m)
            const std::vector<double> &hi, double radius, const flask::flat::Settings &cfg,
            uint64_t seed, int variant)
         {
-            if (variant < 0 || variant > 3)
+            if (variant < 0 || variant > 4)
                 throw std::invalid_argument("unknown planner variant");
             if (robot == "unicycle")
                 return run_flat<2, 2>(a, b, 0, env, lo, hi, radius, cfg, seed, variant);
@@ -1072,6 +1140,11 @@ NB_MODULE(_core, m)
         .def("add_pointcloud", &Environment::add_pointcloud, nb::arg("pc"), nb::arg("r_min"),
              nb::arg("r_max"), nb::arg("r_point"), nb::arg("min_dist") = 0.F,
              nb::arg("cull_r") = 1.2F, nb::arg("original") = std::array<float, 3>{0.F, 0.F, 0.91F})
+        .def("attach", &Environment::attach, nb::arg("spheres"),
+             nb::arg("tf") = std::array<std::array<float, 4>, 4>{{{1.F, 0.F, 0.F, 0.F}, {0.F, 1.F, 0.F, 0.F},
+                                                                   {0.F, 0.F, 1.F, 0.F}, {0.F, 0.F, 0.F, 1.F}}})
+        .def("detach", &Environment::detach)
+        .def_prop_ro("attached", &Environment::attached)
         .def("prepare", &Environment::prepare);
 
     nb::class_<flask::PlannerSettings>(m, "PlannerSettings")
@@ -1221,12 +1294,49 @@ NB_MODULE(_core, m)
 
     m.attr("K") = flask::K;
 
+    // End-effector pose and collision spheres of the VAMP model (showcases: grasp frames, swept volumes).
+    auto kinematics = [](nb::module_ &r, auto robot_tag)
+    {
+        using Robot = typename decltype(robot_tag)::type;
+        constexpr std::size_t n = Robot::dimension;
+        r.def("eefk",
+              [](const V<n> &q)
+              {
+                  std::array<float, n> a;
+                  for (std::size_t i = 0; i < n; ++i)
+                      a[i] = static_cast<float>(q[i]);
+                  const Eigen::Matrix4f M = Robot::eefk(a).matrix();
+                  std::array<std::array<double, 4>, 4> out;
+                  for (int i = 0; i < 4; ++i)
+                      for (int j = 0; j < 4; ++j)
+                          out[i][j] = M(i, j);
+                  return out;
+              });
+        r.def("sphere_fk",
+              [](const V<n> &q)
+              {
+                  typename Robot::template ConfigurationBlock<1> b;
+                  for (std::size_t i = 0; i < n; ++i)
+                      b[i] = static_cast<float>(q[i]);
+                  typename Robot::template Spheres<1> o;
+                  Robot::template sphere_fk<1>(b, o);
+                  std::vector<std::array<double, 4>> out(Robot::n_spheres);
+                  for (std::size_t i = 0; i < Robot::n_spheres; ++i)
+                      out[i] = {o.x[{i, 0}], o.y[{i, 0}], o.z[{i, 0}], o.r[{i, 0}]};
+                  return out;
+              });
+        r.attr("end_effector") = Robot::end_effector;
+    };
+
     auto ur5 = m.def_submodule("ur5");
     register_robot<vamp::robots::UR5>(ur5);
     auto panda = m.def_submodule("panda");
     register_robot<vamp::robots::Panda>(panda);
     auto fetch = m.def_submodule("fetch");   // showcase: torso + 7-DoF arm, VAMP sphere model (111 spheres)
     register_robot<vamp::robots::Fetch>(fetch);
+    kinematics(ur5, RobotTag<vamp::robots::UR5>{});
+    kinematics(panda, RobotTag<vamp::robots::Panda>{});
+    kinematics(fetch, RobotTag<vamp::robots::Fetch>{});
     // showcase: fully actuated point robot (flat output = position, r = 2) with a settable collision radius,
     // used for the humanoid base (omnidirectional walking) in simulation/showcase/g1_courtyard.py
     auto sphere = m.def_submodule("sphere");

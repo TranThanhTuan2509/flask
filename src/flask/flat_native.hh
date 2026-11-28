@@ -419,6 +419,14 @@ bool normalize(const Vec<V> &a, const Vec<V> &da, const Vec<V> &dda, Vec<V> &v, 
     ddv = mul(sub(sub(dda, mul(v, ddn)), mul(dv, V(2.f) * dn)), V(1.f) / n);
     return true;
 }
+// flask_v2 showcase: a time-parameterized sphere obstacle, piece by piece (another robot's trajectory in
+// prioritized space-time planning). Position on [t0, t0 + T] is sum_k c[j][k] s^k with s = (t - t0) / T;
+// T = +inf marks a hold: the sphere stays at c[j][0] from t0 on (a robot hovering at its goal).
+struct MovingPiece
+{
+    double t0 = 0., T = 0., radius = 0.;
+    std::array<std::vector<double>, 3> c{};
+};
 struct Settings
 {
     double rho = 1, range = .35, goal_bias = .1, validation_dt = .02, spacing = .025,
@@ -462,6 +470,10 @@ struct Settings
     bool indexed_search = false;
     // Necessary endpoint checks precede the unchanged analytic extrema tests.
     bool early_constraint_screening = true;
+    // flask_v2: workspace bounds checked exactly on the position polynomial (extrema at the endpoints and the
+    // roots of its derivative), with no tolerance, as the independent validator does. false (historical): only
+    // at the edge samples, with a 1e-5 m slack, which let a path graze the boundary by ~1e-5 m between samples.
+    bool exact_bounds = true;
     // SST* phases (Li, Littlefield, Bekris 2016, Alg. 9). true (historical): discard the tree and
     // witnesses at every phase. false: SST Sec. 4.3 ("SST is assumed to be operating on the same
     // graph data structure G over repeated calls") -- only the radii shrink; tree and witnesses persist.
@@ -486,11 +498,38 @@ struct Settings
     // turns so that the yaw is continuous; recovery uses only sin/cos of yaw, so validity is unchanged.
     // false (historical): yaw is treated as a real output.
     bool yaw_winding = false;
+    // flask_v2 lever L1 (results/diagnostics/v2_mechanism): parent selection of RRTConnect. 1 (v1): the
+    // nearest node under the search metric. k > 1: the k metric-nearest nodes are re-ranked by the paper's
+    // LQMT cost C_loc(T*) (Eq. 24) of the edge steered to the target, and the cheapest is the parent.
+    // The proposal z_f is still drawn independently of the tree (Alg. 2 order).
+    size_t parent_candidates = 1;
+    // flask_v2 lever L3: when the optimal-duration (T*) edge is rejected by a dynamic limit (not by a
+    // collision), fixed-time edges (Example 4) with T = c T* are tried in the given order and the first
+    // valid one is used. Empty (v1): T* only. Applied wherever an exact BVP is steered and validated:
+    // direct start-goal edge, RRTConnect extend/connect, the BVP goal connection of BVP-SST*, Alg. 4.
+    std::vector<double> duration_multipliers;
+    // flask_v2 lever L7, beyond the paper (results/diagnostics/v2_shortcut): Alg. 4 connects only the states at
+    // the knots of the path, so a detour through a far node survives whenever the bypass of that node collides.
+    // With shortcut_subdivisions = m > 1, up to shortcut_rounds - 1 further rounds split every edge at m - 1
+    // interior times (the restriction of the polynomial is the Hermite polynomial between its own end states, so
+    // the path is unchanged), run the same greedy loop over the finer states, and accept a bypass only if it
+    // lowers the LQMT cost of what it replaces. Untouched pieces are merged back. 1 / 1 (v1): the paper's pass.
+    size_t shortcut_subdivisions = 1;
+    size_t shortcut_rounds = 1;
+    // flask_v2 showcase, beyond the paper: prioritized space-time planning. Every edge of the forward tree
+    // (SST family: BVP-SST*, SIMD-SST*, DP-RRT; time from the start is known at every node) must keep the
+    // robot's position at least radius + piece.radius + moving_margin from every moving piece at the same
+    // absolute time. The distance is checked exactly: the squared distance is a polynomial in time, minimized at
+    // its interval ends and the roots of its derivative. A solution must also stay clear while it holds the
+    // goal afterwards. Alg. 4 and L7 shortcuts are accepted only if the whole re-timed path stays clear.
+    // Empty (default): no effect. RRTConnect is rejected (its goal tree has no absolute time).
+    std::vector<MovingPiece> moving_obstacles;
+    double moving_margin = 0.;
 };
 struct Counters
 {
     size_t edges = 0, batches = 0, collision = 0, speed = 0, angular = 0, singular = 0, control = 0,
-           bounds = 0, bvp = 0, nonfinite = 0;
+           bounds = 0, bvp = 0, nonfinite = 0, moving = 0;
 };
 using Simd = vamp::FloatVector<vamp::FloatVectorWidth>;
 using Environment = vamp::collision::Environment<Simd>;
@@ -609,6 +648,90 @@ inline std::vector<double> polynomial_derivative(const std::vector<double> &a)
 // collinear, so the heading is constant along the edge (kappa chosen per edge, Eq. 10), the yaw rate is
 // identically zero and zero speed (rest endpoints, or a stop and reversal along the line) is admissible
 // for the first-order unicycle. Returns 0 (not straight), 1 (valid straight edge), -1 (speed violated).
+// q(v) = p(alpha v + beta) (Horner on polynomials).
+inline std::vector<double> compose_affine(const std::vector<double> &p, double alpha, double beta)
+{
+    std::vector<double> q{0.};
+    for (auto it = p.rbegin(); it != p.rend(); ++it)
+    {
+        q = polynomial_product(q, {beta, alpha});
+        q[0] += *it;
+    }
+    return q;
+}
+// Exact clearance of two moving pieces over their common time span.
+inline bool pieces_clear(const MovingPiece &a, const MovingPiece &b, int dims, double clearance)
+{
+    const double lo = std::max(a.t0, b.t0);
+    const double hi = std::min(a.t0 + a.T, b.t0 + b.T);
+    if (!(hi >= lo))
+        return true;
+    const double need = clearance * clearance;
+    if (std::isinf(hi))
+    {   // both hold from lo on
+        double d = 0.;
+        for (int j = 0; j < dims; ++j)
+            d += (a.c[j][0] - b.c[j][0]) * (a.c[j][0] - b.c[j][0]);
+        return d >= need;
+    }
+    const double L = hi - lo;
+    auto local = [&](const MovingPiece &m, int j)
+    {
+        if (std::isinf(m.T))
+            return std::vector<double>{m.c[j][0]};
+        return compose_affine(m.c[j], L / m.T, (lo - m.t0) / m.T);
+    };
+    std::vector<double> D{0.};
+    for (int j = 0; j < dims; ++j)
+    {
+        auto pa = local(a, j), pb = local(b, j);
+        std::vector<double> diff(std::max(pa.size(), pb.size()), 0.);
+        for (size_t k = 0; k < pa.size(); ++k)
+            diff[k] += pa[k];
+        for (size_t k = 0; k < pb.size(); ++k)
+            diff[k] -= pb[k];
+        auto sq = polynomial_product(diff, diff);
+        if (sq.size() > D.size())
+            D.resize(sq.size(), 0.);
+        for (size_t k = 0; k < sq.size(); ++k)
+            D[k] += sq[k];
+    }
+    auto points = roots_between(polynomial_derivative(D), 0., 1.);
+    points.push_back(0.);
+    points.push_back(1.);
+    for (double v : points)
+        if (!(polynomial::evaluate(D, v) >= need))
+            return false;
+    return true;
+}
+template <int R, int N> MovingPiece edge_piece(const Edge<R, N> &e, double t0, double radius, int dims)
+{
+    MovingPiece m;
+    m.t0 = t0;
+    m.T = e.T;
+    m.radius = radius;
+    for (int j = 0; j < dims; ++j)
+        for (int k = 0; k < 2 * R; ++k)
+            m.c[j].push_back(e.c[k * N + j]);
+    return m;
+}
+inline MovingPiece hold_piece(const std::array<double, 3> &p, double t0, double radius, int dims)
+{
+    MovingPiece m;
+    m.t0 = t0;
+    m.T = std::numeric_limits<double>::infinity();
+    m.radius = radius;
+    for (int j = 0; j < dims; ++j)
+        m.c[j] = {p[j]};
+    return m;
+}
+inline bool piece_clear_of(const MovingPiece &own, const Settings &cfg, int dims)
+{
+    for (const auto &o : cfg.moving_obstacles)
+        if (!pieces_clear(own, o, dims, own.radius + o.radius + cfg.moving_margin))
+            return false;
+    return true;
+}
 inline int unicycle_rest_edge(const Edge<2, 2> &e, Counters &counter, double max_speed)
 {
     // Normalized cubic y(s) = c0 + c1 s + c2 s^2 + c3 s^3; dy/dt = (c1 + 2 c2 s + 3 c3 s^2) / T.
@@ -742,6 +865,25 @@ bool validation_kernel(const Edge<R, N> &e, int robot, const World &world, const
             if (!rest_straight && !unicycle_extrema_valid(e, counter, cfg.max_speed, cfg.max_yaw_rate,
                                                           cfg.early_constraint_screening))
                 return false;
+        }
+    if (cfg.exact_bounds)
+        for (int j = 0; j < world.dimensions; ++j)
+        {
+            std::vector<double> velocity(2 * R - 1);
+            for (int k = 1; k < 2 * R; ++k)
+                velocity[k - 1] = k * e.c[k * N + j];
+            auto rs = roots_between(velocity, 0, 1);
+            rs.push_back(0);
+            rs.push_back(1);
+            for (double s : rs)
+            {
+                const double y = e.value(0, j, s * e.T);
+                if (!(y >= world.lower[j] && y <= world.upper[j]))
+                {
+                    ++counter.bounds;
+                    return false;
+                }
+            }
         }
     constexpr int K = V::num_scalars;
     constexpr int sampling_width = vamp::FloatVectorWidth;
@@ -952,6 +1094,8 @@ template <int R, int N> struct Result
     size_t bvp_calls = 0, planning_bvp_calls = 0, samples = 0, rest_samples = 0;
     size_t accepted_propagations = 0, witness_rejections = 0;
     size_t metric_evaluations = 0;
+    // flask_v2 diagnostics: L1 re-ranked parent choices; L3 fixed-time attempts and accepted ones.
+    size_t parent_reranks = 0, duration_fallbacks = 0, duration_fallback_accepts = 0, shortcut_extra_accepts = 0;
     // acceptance V3d: cost of the search's best path before Alg. 4 post-processing (NaN when unsolved)
     double search_cost = std::numeric_limits<double>::quiet_NaN();
 };
@@ -1101,6 +1245,29 @@ template <int R, int N> class ExactSearchIndex
         index.nearest(buffer, key, index.size(), best_distance + margin(key));
         for (const auto &candidate : buffer) consider(candidate.first);
         return best;
+    }
+    // flask_v2 L1: the k eligible nodes closest to target (search-metric order, ties by index).
+    template <class Eligible, class Metric>
+    void k_nearest(const State<R, N> &target, size_t k, const Eligible &eligible, const Metric &metric,
+                   std::vector<size_t> &result) const
+    {
+        Key key = encode(target);
+        std::vector<std::pair<double, size_t>> found;
+        size_t count = std::min(index.size(), std::max<size_t>(k, 1));
+        while (count)
+        {
+            index.nearest(buffer, key, count);
+            found.clear();
+            for (const auto &candidate : buffer)
+                if (eligible(candidate.first.index))
+                    found.push_back({metric(candidate.first.entry->state, target), candidate.first.index});
+            if (found.size() >= k || count == index.size()) break;
+            count = std::min(index.size(), 2 * count);
+        }
+        std::sort(found.begin(), found.end());
+        result.clear();
+        for (size_t i = 0; i < found.size() && i < k; ++i)
+            result.push_back(found[i].second);
     }
     template <class Eligible, class Metric, class Cost>
     size_t best_near(const State<R, N> &target, double radius, const Eligible &eligible,
@@ -1322,8 +1489,46 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
         double cost = 0;
         bool active = true, alive = true;
         size_t children = 0;
+        double t = 0.;   // time from the start along the tree (forward trees; used by moving_obstacles)
     };
     auto edge_ok = [&](const Edge<R, N> &e) { return valid(e, robot, world, cfg, out.counters); };
+    const bool moving = !cfg.moving_obstacles.empty();
+    const int mdims = std::min(3, world.dimensions);
+    if (moving && variant == 0)
+        throw std::invalid_argument("moving_obstacles need a forward-tree planner (rrt_forward, BVP-SST*, SIMD-SST*, DP-RRT); "
+                                    "RRTConnect's goal tree has no absolute time");
+    auto moving_ok = [&](const Edge<R, N> &e, double tau)
+    {
+        if (!moving || piece_clear_of(edge_piece<R, N>(e, tau, world.radius, mdims), cfg, mdims))
+            return true;
+        ++out.counters.moving;
+        return false;
+    };
+    auto hold_ok = [&](const State<R, N> &z, double tau)
+    {
+        if (!moving)
+            return true;
+        std::array<double, 3> pos{};
+        for (int j = 0; j < mdims; ++j)
+            pos[j] = z[j];
+        if (piece_clear_of(hold_piece(pos, tau, world.radius, mdims), cfg, mdims))
+            return true;
+        ++out.counters.moving;
+        return false;
+    };
+    auto path_ok = [&](const std::vector<Edge<R, N>> &path)
+    {
+        if (!moving)
+            return true;
+        double tau = 0.;
+        for (const auto &e : path)
+        {
+            if (!moving_ok(e, tau))
+                return false;
+            tau += e.T;
+        }
+        return hold_ok(path.back().state(path.back().T), tau);
+    };
     auto exact = [&](const State<R, N> &a, const State<R, N> &b)
     {
         ++out.bvp_calls;
@@ -1331,6 +1536,46 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             if (cfg.yaw_winding)
                 return winding_bvp<R, N>(a, b, cfg.rho, out.bvp_calls);
         return bvp<R, N>(a, b, cfg.rho);
+    };
+    // Steer with the exact BVP and validate. flask_v2 L3 (Settings::duration_multipliers): if T* fails on a
+    // dynamic limit (the collision counter did not move), retry fixed-time edges at c T* (Example 4).
+    // validate_degenerate mirrors the v1 call sites exactly (counters stay identical with the levers off).
+    auto steer = [&](const State<R, N> &a, const State<R, N> &b, Edge<R, N> &e,
+                     bool validate_degenerate = true)
+    {
+        e = exact(a, b);
+        if (!(e.T > 0.) || !std::isfinite(e.T))
+        {
+            if (validate_degenerate)
+                edge_ok(e);
+            return false;
+        }
+        const size_t collisions = out.counters.collision;
+        if (edge_ok(e))
+            return true;
+        if (cfg.duration_multipliers.empty() || out.counters.collision != collisions)
+            return false;
+        State<R, N> target = b;
+        if constexpr (N == 4)
+            if (cfg.yaw_winding)  // keep the yaw winding chosen by the T* edge
+                target[3] += std::round((e.state(e.T)[3] - b[3]) / (2. * M_PI)) * (2. * M_PI);
+        const double T0 = e.T;
+        for (double c : cfg.duration_multipliers)
+        {
+            ++out.bvp_calls;
+            ++out.duration_fallbacks;
+            auto f = fixed<R, N>(a, target, c * T0);
+            const size_t before = out.counters.collision;
+            if (edge_ok(f))
+            {
+                ++out.duration_fallback_accepts;
+                e = f;
+                return true;
+            }
+            if (out.counters.collision != before)
+                return false;
+        }
+        return false;
     };
     auto continuous = [&](std::vector<Edge<R, N>> &edges)
     {
@@ -1394,8 +1639,8 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
     }
     if (variant == 0 && cfg.rrt_mode != 1 && now() - t0 < cfg.budget_ns)
     {
-        auto direct = exact(start, goal);
-        if (edge_ok(direct))
+        Edge<R, N> direct;
+        if (steer(start, goal, direct))
         {
             out.solved = true;
             out.reason = "solved";
@@ -1422,7 +1667,8 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
     std::unique_ptr<NearestIndex<R, N>> start_index, goal_index;
     std::unique_ptr<ExactSearchIndex<R, N>> start_exact, goal_exact, witness_exact;
     const bool use_exact_index = cfg.indexed_search && cfg.metric_mode != 1 &&
-                                (variant == 1 || variant == 2 || cfg.metric_mode == 2);
+                                (variant == 1 || variant == 2 || cfg.metric_mode == 2 ||
+                                 ((variant == 0 || variant == 4) && cfg.parent_candidates > 1));
     auto make_exact_index = [&]()
     { return std::make_unique<ExactSearchIndex<R, N>>(cfg.derivative_metric_weight,
                 cfg.metric_mode == 2, cfg.metric_mode == 2 ? cfg.max_speed / cfg.max_yaw_rate : 1.); };
@@ -1441,7 +1687,7 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             witness_exact->insert(0, start);
         }
     }
-    if ((variant == 0 || variant == 3) && cfg.metric_mode == 0)
+    if ((variant == 0 || variant == 3 || variant == 4) && cfg.metric_mode == 0)
     {
         start_index =
             std::make_unique<NearestIndex<R, N>>(cfg.max_nodes, cfg.derivative_metric_weight);
@@ -1471,6 +1717,47 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                     ds = d;
                 }
             }
+        return best;
+    };
+    // flask_v2 L1 (Settings::parent_candidates): cheapest LQMT edge among the k metric-nearest nodes.
+    std::vector<size_t> parent_buffer;
+    auto parent = [&](const std::vector<Node> &tree, const State<R, N> &z, bool forward)
+    {
+        if (cfg.parent_candidates <= 1)
+            return nearest(tree, z);
+        auto &exact_index = &tree == &st ? start_exact : goal_exact;
+        auto eligible = [&](size_t id) { return tree[id].alive; };
+        if (exact_index)
+            exact_index->k_nearest(z, cfg.parent_candidates, eligible, metric, parent_buffer);
+        else
+        {
+            std::vector<std::pair<double, size_t>> all;
+            for (size_t i = 0; i < tree.size(); ++i)
+                if (eligible(i))
+                    all.push_back({metric(tree[i].z, z), i});
+            size_t k = std::min(all.size(), cfg.parent_candidates);
+            std::partial_sort(all.begin(), all.begin() + k, all.end());
+            parent_buffer.clear();
+            for (size_t i = 0; i < k; ++i)
+                parent_buffer.push_back(all[i].second);
+        }
+        if (parent_buffer.size() <= 1)
+            return parent_buffer.empty() ? nearest(tree, z) : parent_buffer[0];
+        ++out.parent_reranks;
+        size_t best = parent_buffer[0];
+        double best_cost = std::numeric_limits<double>::infinity();
+        for (size_t id : parent_buffer)
+        {
+            if (tree[id].z == z)
+                return id;
+            auto e = forward ? exact(tree[id].z, z) : exact(z, tree[id].z);
+            double c = e.T > 0. ? e.cost(cfg.rho) : std::numeric_limits<double>::infinity();
+            if (c < best_cost)
+            {
+                best_cost = c;
+                best = id;
+            }
+        }
         return best;
     };
     auto update_index = [&](const std::vector<Node> &tree, size_t id, const State<R, N> &z)
@@ -1533,7 +1820,7 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                       size_t &index, bool continue_from_index = false)
     {
         if (!continue_from_index)
-            index = nearest(tree, target);
+            index = parent(tree, target, forward);
         if (tree[index].z == target)
             return ExtendStatus::Reached;
         if (!may_expand())
@@ -1555,13 +1842,14 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                 auto b = forward ? e.state(e.T * frac) : e.state(e.T);
                 sub = fixed<R, N>(a, b, e.T * frac);
             }
-            if (edge_ok(sub))
+            if (edge_ok(sub) && (!forward || moving_ok(sub, tree[index].t)))
             {
                 auto z = reached ? target : (forward ? sub.state(sub.T) : sub.state(0));
                 if (z == tree[index].z)
                     return ExtendStatus::Trapped;
                 tree[index].children++;
                 tree.push_back({z, index, sub, tree[index].cost + sub.cost(cfg.rho)});
+                tree.back().t = tree[index].t + sub.T;
                 index = tree.size() - 1;
                 update_index(tree, index, z);
                 return reached ? ExtendStatus::Reached : ExtendStatus::Advanced;
@@ -1574,7 +1862,7 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
     const double ompl_range = cfg.range_fraction * double(R);  // compound extent = number of levels
     auto grow = [&](std::vector<Node> &tree, const State<R, N> &target, bool forward, size_t &index)
     {
-        size_t i = nearest(tree, target);
+        size_t i = parent(tree, target, forward);
         index = i;
         if (tree[i].z == target)
             return ExtendStatus::Reached;
@@ -1606,8 +1894,8 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                 return ExtendStatus::Trapped;
             reach = false;
         }
-        auto e = forward ? exact(tree[i].z, dz) : exact(dz, tree[i].z);
-        if (!(e.T > 0) || !edge_ok(e))
+        Edge<R, N> e;
+        if (!(forward ? steer(tree[i].z, dz, e, false) : steer(dz, tree[i].z, e, false)))
             return ExtendStatus::Trapped;
         tree[i].children++;
         tree.push_back({dz, i, e, tree[i].cost + e.cost(cfg.rho)});
@@ -1664,6 +1952,31 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                 ++out.reached_connections;
             }
         }
+        else if (variant == 4)
+        {
+            // flask_v2 showcase: single forward tree (FLASK-RRT): extend towards a sample (goal-biased) as
+            // RRTConnect does, then try the exact BVP from the new node to the goal. Every node has an absolute time,
+            // so moving obstacles (prioritized space-time planning) are checked on every edge.
+            auto target = u(gen) < cfg.goal_bias ? goal : sample();
+            size_t ai = 0;
+            if (extend(st, target, true, ai) == ExtendStatus::Trapped)
+                continue;
+            Edge<R, N> tail;
+            bool reached = false;
+            if (st[ai].z == goal)
+                reached = hold_ok(goal, st[ai].t);
+            else if (steer(st[ai].z, goal, tail) && moving_ok(tail, st[ai].t) &&
+                     hold_ok(tail.state(tail.T), st[ai].t + tail.T))
+                reached = true;
+            if (reached)
+            {
+                out.edges = chain(st, ai);
+                if (!(st[ai].z == goal))
+                    out.edges.push_back(tail);
+                out.solved = true;
+                out.first_ns = now() - t0;
+            }
+        }
         else if (variant == 0)
         {
             bool forward = (it % 2 == 0);
@@ -1673,13 +1986,13 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             size_t ai = 0;
             if (extend(a, target, forward, ai) == ExtendStatus::Trapped)
                 continue;
-            size_t bi = nearest(b, a[ai].z);
+            size_t bi = parent(b, a[ai].z, !forward);
             Edge<R, N> bridge;
             bool connected = a[ai].z == b[bi].z, have_bridge = false;
             if (!connected)
             {
-                bridge = forward ? exact(a[ai].z, b[bi].z) : exact(b[bi].z, a[ai].z);
-                connected = have_bridge = edge_ok(bridge);
+                connected = have_bridge = forward ? steer(a[ai].z, b[bi].z, bridge)
+                                                  : steer(b[bi].z, a[ai].z, bridge);
             }
             while (!connected && now() - t0 < cfg.budget_ns &&
                    st.size() + gt.size() < cfg.max_nodes)
@@ -1694,8 +2007,8 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                     ++out.reached_connections;
                     break;
                 }
-                bridge = forward ? exact(a[ai].z, b[bi].z) : exact(b[bi].z, a[ai].z);
-                connected = have_bridge = edge_ok(bridge);
+                connected = have_bridge = forward ? steer(a[ai].z, b[bi].z, bridge)
+                                                  : steer(b[bi].z, a[ai].z, bridge);
             }
             if (connected)
             {
@@ -1757,7 +2070,7 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             auto e = propagate<R, N>(st[ni].z, w,
                                      cfg.propagation_min +
                                          u(gen) * (cfg.propagation_max - cfg.propagation_min));
-            if (!edge_ok(e))
+            if (!edge_ok(e) || !moving_ok(e, st[ni].t))
                 continue;
             ++out.accepted_propagations;
             auto z = e.state(e.T);
@@ -1814,6 +2127,7 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             }
             st[ni].children++;
             st.push_back({z, ni, e, cost});
+            st.back().t = st[ni].t + e.T;
             size_t j = st.size() - 1;
             update_index(st, j, z);
             if (sst)
@@ -1822,11 +2136,11 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
             Edge<R, N> tail;
             if (variant == 1)
             {
-                tail = exact(z, goal);
-                reached = edge_ok(tail);
+                reached = steer(z, goal, tail) && moving_ok(tail, st[j].t) &&
+                          hold_ok(tail.state(tail.T), st[j].t + tail.T);
             }
             else
-                reached = goal_distance(z, goal) < cfg.goal_tolerance;
+                reached = goal_distance(z, goal) < cfg.goal_tolerance && hold_ok(z, st[j].t);
             if (reached)
             {
                 auto path = chain(st, j);
@@ -1869,14 +2183,90 @@ Result<R, N> solve(const State<R, N> &start, const State<R, N> &goal, int robot,
                     if (cfg.unicycle_rest_turns && robot == 0)
                         for (int i = N; i < R * N; ++i)
                             from[i] = to[i] = 0.;
-                auto e = exact(from, to);
-                if (edge_ok(e))
+                Edge<R, N> e;
+                if (steer(from, to, e))
                 {
-                    out.edges.erase(out.edges.begin() + a, out.edges.begin() + b + 1);
-                    out.edges.insert(out.edges.begin() + a, e);
+                    auto trial = out.edges;
+                    trial.erase(trial.begin() + a, trial.begin() + b + 1);
+                    trial.insert(trial.begin() + a, e);
+                    if (!path_ok(trial))   // re-timed path must stay clear of the moving obstacles
+                        continue;
+                    out.edges = std::move(trial);
                     break;
                 }
             }
+        }
+        // flask_v2 L7: further rounds of Alg. 4 over subdivided edges (off by default; see Settings).
+        const bool rest_turns = (R == 2 && N == 2) && cfg.unicycle_rest_turns && robot == 0;
+        const size_t m = cfg.shortcut_subdivisions;
+        for (size_t round = 1; round < cfg.shortcut_rounds && m > 1 && !rest_turns; ++round)
+        {
+            struct Piece
+            {
+                Edge<R, N> e;
+                long owner;      // index into out.edges, -1 for a new bypass edge
+                double t0, t1;   // span of the owner edge
+            };
+            std::vector<Piece> pieces;
+            for (size_t i = 0; i < out.edges.size(); ++i)
+            {
+                const auto &src = out.edges[i];
+                for (size_t k = 0; k < m; ++k)
+                {
+                    const double t0 = src.T * double(k) / double(m), t1 = src.T * double(k + 1) / double(m);
+                    pieces.push_back({fixed<R, N>(src.state(t0), src.state(t1), t1 - t0), long(i), t0, t1});
+                }
+            }
+            bool changed = false;
+            for (size_t a = 0; a + 1 < pieces.size(); ++a)
+                for (size_t b = pieces.size() - 1; b > a; --b)
+                {
+                    if (pieces[a].owner >= 0 && pieces[a].owner == pieces[b].owner)
+                        break;   // inside one edge: the polynomial already joins these states
+                    double replaced = 0.;
+                    for (size_t k = a; k <= b; ++k)
+                        replaced += pieces[k].e.cost(cfg.rho);
+                    Edge<R, N> e;
+                    if (steer(pieces[a].e.state(0), pieces[b].e.state(pieces[b].e.T), e) && e.cost(cfg.rho) < replaced)
+                    {
+                        if (moving)
+                        {
+                            std::vector<Edge<R, N>> trial;
+                            for (size_t k = 0; k < a; ++k)
+                                trial.push_back(pieces[k].e);
+                            trial.push_back(e);
+                            for (size_t k = b + 1; k < pieces.size(); ++k)
+                                trial.push_back(pieces[k].e);
+                            if (!path_ok(trial))
+                                continue;
+                        }
+                        pieces.erase(pieces.begin() + a, pieces.begin() + b + 1);
+                        pieces.insert(pieces.begin() + a, Piece{e, -1, 0., e.T});
+                        ++out.shortcut_extra_accepts;
+                        changed = true;
+                        break;
+                    }
+                }
+            if (!changed)
+                break;
+            std::vector<Edge<R, N>> merged;
+            for (size_t k = 0; k < pieces.size();)
+            {
+                size_t l = k;
+                while (pieces[k].owner >= 0 && l + 1 < pieces.size() && pieces[l + 1].owner == pieces[k].owner)
+                    ++l;
+                const auto &p = pieces[k];
+                if (p.owner < 0)
+                    merged.push_back(p.e);
+                else
+                {
+                    const auto &src = out.edges[size_t(p.owner)];
+                    const double t0 = p.t0, t1 = pieces[l].t1;
+                    merged.push_back(t0 == 0. && t1 == src.T ? src : fixed<R, N>(src.state(t0), src.state(t1), t1 - t0));
+                }
+                k = l + 1;
+            }
+            out.edges = merged;
         }
         continuous(out.edges);
         out.post_ns = now() - begin;
