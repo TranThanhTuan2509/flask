@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/C%2B%2B-17-lightgrey.svg">
 </p>
 
-<p align="center"><img src="showcase/showcase_2/gif/flask_showcase_3x2.gif" width="85%"></p>
+<p align="center"><img src="showcase/showcase_2/gif/flask_showcase_3x2.gif" width="95%"></p>
 <p align="center"><em>FLASK on one CPU core in MuJoCo: Unitree G1 and Skydio X2 (full quadrotor model); UR5 and Fetch
 pick-and-place; UR5 + Panda hand-over and three quadrotors sharing two windows (multi-robot). Planning times are
 measured; controllers use only noisy onboard-style sensing; playback is sped up.</em></p>
